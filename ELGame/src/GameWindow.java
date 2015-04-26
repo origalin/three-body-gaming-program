@@ -1,3 +1,5 @@
+import javax.swing.ButtonModel;
+
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.StatusLineManager;
 import org.eclipse.jface.action.ToolBarManager;
@@ -16,6 +18,8 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Label;
+
 
 
 public class GameWindow extends ApplicationWindow {
@@ -47,12 +51,13 @@ public class GameWindow extends ApplicationWindow {
 		txtVer.setForeground(SWTResourceManager.getColor(255, 255, 255));
 		txtVer.setEditable(false);
 		txtVer.setText("ver 0.01");
-		txtVer.setBounds(1175, 577, 89, 30);
+		txtVer.setBounds(1175, 600, 89, 20);
 		
-		Composite composite = new Composite(container, SWT.NONE);
-		composite.setBounds(524, 251, 185, 64);
-		composite.setBackgroundImage(SWTResourceManager.getImage("./res/buttom1.png"));
-		composite.setBackgroundMode(3);
+		ImageButton button=new ImageButton(container, backgImage, backgImage, backgImage, backgImage);
+		button.setBounds(524, 165, 185, 69);
+		
+
+		
 
 		return container;
 	}
@@ -86,16 +91,6 @@ public class GameWindow extends ApplicationWindow {
 	 * Launch the application.
 	 * @param args
 	 */
-	public static void main(String args[]) {
-		try {
-			GameWindow window = new GameWindow();
-			window.setBlockOnOpen(true);
-			window.open();
-			Display.getCurrent().dispose();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Configure the shell.
@@ -113,5 +108,10 @@ public class GameWindow extends ApplicationWindow {
 	@Override
 	protected Point getInitialSize() {
 		return new Point(1280, 688);
+	}
+	class button1 implements ImageButton.OnClickListener{
+		public void onClick(){
+			
+		}
 	}
 }
