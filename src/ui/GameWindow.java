@@ -1,6 +1,7 @@
 package ui;
 
 import el.*;
+import el.Math;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -191,8 +192,10 @@ public class GameWindow extends JFrame {
 				int GP = 0;
 				GP = (int) ((int) 50*((Begin.EV-500)/100+1));
 				Begin.HP = (int) (Begin.HP + GP);
-				int i[] = 
-				SciPanel.setpoints(i);
+				int i[] = {Chemistry.point,Biology.point,Physics.point,Math.point,Computer.point,Art.point};
+				sciPanel.setpoints(i);
+				sciPanel.setpointsavailable(Begin.HP);
+				sciPanel.pointsavailable.setText("可分配学科点：" + sciPanel.availablepoints);
 				 sciDialog.setVisible(true);
 				 sciPanel.setVisible(true);
 			}

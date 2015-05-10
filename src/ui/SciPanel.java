@@ -23,8 +23,8 @@ import el.Math;
 import el.Physics;
 
 public class SciPanel extends JLabel {
-	public int availablepoints;
-	int[] scipoints = new int[6];
+	public static int availablepoints;
+	static int[] scipoints = new int[6];
 	ImageIcon start1 = new ImageIcon("image/buttongreen1.png");
 	ImageIcon start2 = new ImageIcon("image/buttongreen2.png");
 	ImageIcon start3 = new ImageIcon("image/buttongreen3.png");
@@ -147,7 +147,7 @@ public class SciPanel extends JLabel {
 		sciIcon.add(comButton);
 		sciIcon.add(artButton);
 		pointsavailable.setEditable(false);
-		pointsavailable.setText("可分配学科点：" + availablepoints);
+
 		pointsavailable.setFont(new Font("微软雅黑", Font.BOLD, 20));
 		pointsavailable.setForeground(new Color(0, 0, 0));
 		pointsavailable.setOpaque(false);
@@ -177,11 +177,11 @@ public class SciPanel extends JLabel {
 		add(pointsavailable);
 	}
 
-	void setpoints(int[] i) {
+	static void setpoints(int[] i) {
 		scipoints = i;// 顺序：化学 生物 物理 数学 计算机 艺术
 	}
 
-	void setpointsavailable(int i) {
+	static void setpointsavailable(int i) {
 		availablepoints = i;
 	}
 
