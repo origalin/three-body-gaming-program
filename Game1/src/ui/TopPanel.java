@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,5 +19,12 @@ public class TopPanel extends JPanel{
 				topPanelIcon.getIconHeight());
 		topLabel.setOpaque(false);
 		add(topLabel);
+		
+//		   topLabel as a new text player
+		topLabel.setText("Radom News.");
+		topLabel.setHorizontalTextPosition(JLabel.CENTER);
+		topLabel.setVerticalTextPosition(JLabel.CENTER);
+		topLabel.setFont(new Font("Î¢ÈíÑÅºÚ",Font.BOLD,20));
+		
 	}
 }
