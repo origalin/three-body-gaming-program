@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 public class SciPanel extends JLabel {
 	public int availablepoints;
+	int[] scipoints = new int[6];
 	ImageIcon start1 = new ImageIcon("image/buttongreen1.png");
 	ImageIcon start2 = new ImageIcon("image/buttongreen2.png");
 	ImageIcon start3 = new ImageIcon("image/buttongreen3.png");
@@ -34,7 +35,6 @@ public class SciPanel extends JLabel {
 	JTextField[] iconData = { new JTextField(), new JTextField(),
 			new JTextField(), new JTextField(), new JTextField(),
 			new JTextField() };
-	int[] scipoints = new int[6];
 	int i1 = 0;
 
 	public SciPanel(ImageIcon i) {
@@ -140,14 +140,14 @@ public class SciPanel extends JLabel {
 					.setFont(new Font("微软雅黑", Font.BOLD, 20));
 			iconData[sciIcon.indexOf(b)]
 					.setHorizontalAlignment(JTextField.CENTER);
-
+			i1++;
 			add(iconData[sciIcon.indexOf(b)]);
 		}
 		add(pointsavailable);
 	}
 
 	void setpoints(int[] i) {
-		scipoints = i;
+		scipoints = i;// 顺序：化学 生物 物理 数学 计算机 艺术
 	}
 
 	void setpointsavailable(int i) {

@@ -7,6 +7,8 @@ import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.Closeable;
@@ -18,7 +20,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
@@ -32,67 +33,70 @@ public class GameWindow extends JFrame {
 	SciPanel sciPanel;
 	private ImageIcon backgroundTitle;
 	ImageIcon backgroundMain;
-	JPanel mainPanel ;
+	JPanel mainPanel;
 	JLabel labelTitle;
-	// private JPanel gameWindowScnPanel;
+	JLabel bottomLabel;
+	ImageButton[] bottombottons = new ImageButton[3];
+	ImageButton roundButton;
+
 	public GameWindow() {
 
-		// 定义窗体打开时的默认获得焦点的组件
 		frontPanel = getLayeredPane();
 		final ImageButton[] imageButton = new ImageButton[3];
 		backgroundScn = new ImageIcon("image/scnpanel.png");
 		background = new ImageIcon("image/background.png");// 背景图片
 		backgroundTitle = new ImageIcon("image/title.png");
-
-		// backgroundTest=new ImageIcon("image/scnpanel.png");
-
 		final ImageIcon start1 = new ImageIcon("image/button1.png");
 		ImageIcon start2 = new ImageIcon("image/button2.png");
 		ImageIcon start3 = new ImageIcon("image/button3.png");
+		ImageIcon roundIcon1 = new ImageIcon("image/roundbutton.png");
+		ImageIcon roundIcon2 = new ImageIcon("image/roundbutton2.png");
+		ImageIcon roundIcon3 = new ImageIcon("image/roundbutton3.png");
+		
+		
+		
+		
+		//背景图
 		JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面
-		labelTitle = new JLabel(backgroundTitle);
-		// JLabel labelTest=new JLabel(backgroundTest);
-		// 把标签的大小位置设置为图片刚好填充整个面板
-
 		label.setBounds(0, 0, background.getIconWidth(),
 				background.getIconHeight());
-
-		// labelTest.setBounds(0, 0, backgroundTest.getIconWidth(),
-		// backgroundTest.getIconHeight());
-
-		// 把内容窗格转化为JPanel，否则不能用方法setOpaque()来使内容窗格透明
-
-		imagePanel = (JPanel) this.getContentPane();
-		//imagePanel.setLayout(new CardLayout());
-		imagePanel.setOpaque(false);
-
-		imagePanel.setSize(background.getIconWidth(),
-				background.getIconHeight());
-		imagePanel.setLocation(200, 0);
+		
+		
+		
+		//标题文字
+		labelTitle = new JLabel(backgroundTitle);
 		labelTitle.setLocation(430, 60);
 		labelTitle.setSize(backgroundTitle.getIconWidth(),
 				backgroundTitle.getIconHeight());
+		imagePanel = (JPanel) this.getContentPane();
+		imagePanel.setOpaque(false);
+		imagePanel.setSize(background.getIconWidth(),
+				background.getIconHeight());
+		imagePanel.setLocation(200, 0);
 		imagePanel.add(labelTitle);
-		// Font bigFont = new Font("serif", Font.BOLD, 28);
-		// button1.setFont(bigFont);
-		// button2.setFont(bigFont);
-		// button3.setFont(bigFont);
 
-		// this.getLayeredPane().setLayout(null);
-
-		// 把背景图片添加到分层窗格的最底层作为背景
-
+		
+		
+		
+		
+		// 创建开始界面按钮
 		for (int i = 0; i <= 2; i++) {
 			imageButton[i] = new ImageButton(start1, start2, start3, false);
-//			imageButton[i].setSize(start1.getIconWidth(),
-//					start1.getIconHeight());
 			imageButton[i].setLocation(530, 290 + (i) * 120);
 			imageButton[i].setVisible(true);
+			imageButton[i].setHorizontalTextPosition(JButton.CENTER);
+			imageButton[i].setVerticalTextPosition(JButton.CENTER);
+			imageButton[i].setFont(new Font("微软雅黑", Font.BOLD, 20));
 			imagePanel.add(imageButton[i]);
 		}
-		
-		
-		
+		imageButton[0].setText("开始游戏");
+
+		imageButton[1].setText("制作人员");
+
+		imageButton[2].setText("退出游戏");
+
+
+		// 创建星球图片
 		backgroundMain = new ImageIcon("image/planet.png");
 		backgroundMain.setImage(backgroundMain.getImage().getScaledInstance(
 				600, 600, Image.SCALE_DEFAULT));
@@ -101,106 +105,98 @@ public class GameWindow extends JFrame {
 		labelBackground.setBounds(0, 0, backgroundMain.getIconWidth(),
 				backgroundMain.getIconHeight());
 		mainPanel.setOpaque(false);
-		mainPanel.setBounds(340, 30, backgroundMain.getIconWidth(), backgroundMain.getIconHeight());
+		mainPanel.setBounds(340, 30, backgroundMain.getIconWidth(),
+				backgroundMain.getIconHeight());
 		mainPanel.add(labelBackground);
-		
-		
-		
-		
-		
+		imagePanel.add(mainPanel);
 
+		// 创建底部按钮
+		ImageIcon bottomImage = new ImageIcon("image/bottompanel.png");
+		bottomLabel = new JLabel(bottomImage);
+		bottomLabel.setBounds(240, 560, bottomImage.getIconWidth(),
+				bottomImage.getIconHeight());
+		for (int i = 0; i <= 2; i++) {
+			bottombottons[i] = new ImageButton(start1, start2, start3, false);
+			bottombottons[i].setLocation(290 + 250 * i, 620);
+			bottombottons[i].setHorizontalTextPosition(JButton.CENTER);
+			bottombottons[i].setVerticalTextPosition(JButton.CENTER);
+			bottombottons[i].setFont(new Font("微软雅黑", Font.BOLD, 20));
+		}
+		bottombottons[0].setText("学科");
+
+		bottombottons[1].setText("科技");
+
+		bottombottons[2].setText("建造");
 		
-		
-		
-		
-		
-		
+		//创建回合按钮
+		roundButton = new ImageButton(roundIcon1, roundIcon2, roundIcon3, false);
+		roundButton.setLocation(1100, 570);
+
+		// 创建学科面板
 		sciPanel = new SciPanel(backgroundScn);
 		sciDialog.setBounds(500, 500, backgroundScn.getIconWidth(),
 				backgroundScn.getIconHeight());
 		sciDialog.setLocationRelativeTo(imagePanel);
 		sciDialog.setUndecorated(true);
 		sciDialog.add(sciPanel);
-		// ((JPanel) sciDialog.getContentPane()).setOpaque(false);
-		// sciDialog.getRootPane().setOpaque(false);
 		sciDialog.getRootPane().setOpaque(false);
 		sciDialog.getContentPane().setBackground(new Color(0, 0, 0, 0));
 		sciDialog.setBackground(new Color(0, 0, 0, 0));
 		sciDialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 
-		imageButton[0].addMouseListener(new MouseListener() {
+		// 按钮功能
+		imageButton[0].addActionListener(new ActionListener() {
 
 			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				/*
-				 * int i=e.getButton(); if(i==MouseEvent.BUTTON1){
-				 * backgroundScn=new ImageIcon("image/scnpanel.png");
-				 * labelScn=new JLabel(backgroundScn);
-				 * labelScn.setSize(backgroundScn
-				 * .getIconWidth(),backgroundScn.getIconHeight());
-				 * labelScn.setBounds(0,0,background.getIconWidth(),
-				 * backgroundScn.getIconHeight()); labelScn.setLocation(100,
-				 * 100); labelScn.setOpaque(false); imagePanel.add(labelScn);
-				 * repaint();
-				 * 
-				 * }
-				 */
-				int i = e.getButton();
-				if (i == MouseEvent.BUTTON1) {
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
 
-					/*
-					 * imagePanel.add(sciPanel); setComponentZOrder(sciPanel,0);
-					 * imageButton[0].setVisible(false); repaint();
-					 */
-//					sciDialog.setVisible(true);
-//					sciPanel.setVisible(true);
-					TopPanel topPanel = new TopPanel();
-					labelTitle.setVisible(false);
-					frontPanel.add(topPanel,0);
-					frontPanel.add(mainPanel,1);
-					validate();
 
-					
-					
-					
-						
-					
+				TopPanel topPanel = new TopPanel();
+				labelTitle.setVisible(false);
+				frontPanel.add(topPanel, 1);
+				frontPanel.add(bottomLabel, 1);
+				for (ImageButton im : bottombottons) {
+					frontPanel.add(im, 0);
 				}
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
+				for(ImageButton ib : imageButton) {
+					ib.setVisible(false);
+				}
+				frontPanel.add(roundButton);
+				validate();
 
 			}
 		});
-
-		// labelTest.setLocation(300,100);
-		// imagePanel.add(labelTest);
+		imageButton[1].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				
+			}
+		});
+		imageButton[2].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				dispose();
+			}
+		});
+		bottombottons[0].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				 sciDialog.setVisible(true);
+				 sciPanel.setVisible(true);
+			}
+		});
+		
+		
 
 		imagePanel.add(label);
-
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		this.setSize(background.getIconWidth(), background.getIconHeight());
 		this.setUndecorated(false);
 		this.setVisible(true);
