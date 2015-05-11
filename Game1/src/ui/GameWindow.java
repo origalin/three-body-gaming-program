@@ -150,7 +150,9 @@ public class GameWindow extends JFrame {
 
 		// 创建学科面板
 		sciPanel = new SciPanel(backgroundScn);
-		sciDialog.setBounds(500, 500, backgroundScn.getIconWidth(),
+		sciPanel.setVisible(false);
+		frontPanel.add(sciPanel,0);
+		/*sciDialog.setBounds(500, 500, backgroundScn.getIconWidth(),
 				backgroundScn.getIconHeight());
 		sciDialog.setLocationRelativeTo(imagePanel);
 		sciDialog.setUndecorated(true);
@@ -158,7 +160,7 @@ public class GameWindow extends JFrame {
 		sciDialog.getRootPane().setOpaque(false);
 		sciDialog.getContentPane().setBackground(new Color(0, 0, 0, 0));
 		sciDialog.setBackground(new Color(0, 0, 0, 0));
-		sciDialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		sciDialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);*/
 
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
@@ -207,7 +209,6 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				 sciDialog.setVisible(true);
 				 sciPanel.setVisible(true);
 			}
 		});

@@ -46,8 +46,7 @@ public class SciPanel extends JLabel {
 
 	public SciPanel(ImageIcon i) {
 		super(i);
-		setBounds(0, 0, i.getIconWidth(), i.getIconHeight());
-		setLocation(150, 25);
+		setBounds(240, 30, i.getIconWidth(), i.getIconHeight());
 		setOpaque(false);
 		confirmButton.setLocation(70, 530);
 		confirmButton.setText("х╥хо");
