@@ -3,11 +3,14 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.GraphicsConfiguration;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -25,7 +28,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
 	JLayeredPane frontPanel;
-	//JDialog sciDialog = new JDialog(this);
+	// JDialog sciDialog = new JDialog(this);
 	private ImageIcon backgroundScn;
 	ImageIcon backgroundTec;
 	private JPanel imagePanel;
@@ -63,17 +66,13 @@ public class GameWindow extends JFrame {
 		ImageIcon pause1 = new ImageIcon("image/messagel.png");
 		ImageIcon pause2 = new ImageIcon("image/messagel2.png");
 		ImageIcon pause3 = new ImageIcon("image/messagel3.png");
-		
-		
-		
-		//背景图
+
+		// 背景图
 		JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面
 		label.setBounds(0, 0, background.getIconWidth(),
 				background.getIconHeight());
-		
-		
-		
-		//标题文字
+
+		// 标题文字
 		labelTitle = new JLabel(backgroundTitle);
 		labelTitle.setLocation(430, 60);
 		labelTitle.setSize(backgroundTitle.getIconWidth(),
@@ -85,10 +84,6 @@ public class GameWindow extends JFrame {
 		imagePanel.setLocation(200, 0);
 		imagePanel.add(labelTitle);
 
-		
-		
-		
-		
 		// 创建开始界面按钮
 		for (int i = 0; i <= 2; i++) {
 			imageButton[i] = new ImageButton(start1, start2, start3, false);
@@ -104,20 +99,19 @@ public class GameWindow extends JFrame {
 		imageButton[1].setText("制作人员");
 
 		imageButton[2].setText("退出游戏");
-		
-		
-		//创建时间标签
+
+		// 创建时间标签
 		timeLabel = new JLabel(message);
-		timeLabel.setBounds(1060, 20, message.getIconWidth(), message.getIconHeight());
+		timeLabel.setBounds(1060, 20, message.getIconWidth(),
+				message.getIconHeight());
 		frontPanel.add(timeLabel);
 		timeLabel.setVisible(false);
-		
-		//创建暂停按钮
+
+		// 创建暂停按钮
 		pauseButton = new ImageButton(pause1, pause2, pause3, false);
 		pauseButton.setLocation(50, 20);
 		frontPanel.add(pauseButton);
 		pauseButton.setVisible(false);
-
 
 		// 创建星球图片
 		backgroundMain = new ImageIcon("image/planet.png");
@@ -132,15 +126,22 @@ public class GameWindow extends JFrame {
 				backgroundMain.getIconHeight());
 		mainPanel.add(labelBackground);
 		imagePanel.add(mainPanel);
+		
+		//创建顶部面板
+		topPanel = new TopPanel();
+		topPanel.setVisible(false);
+		frontPanel.add(topPanel, -1);
 
-		// 创建底部按钮
+		// 创建底部面板按钮
 		ImageIcon bottomImage = new ImageIcon("image/bottompanel.png");
 		bottomLabel = new JLabel(bottomImage);
-		bottomLabel.setBounds(240, 560, bottomImage.getIconWidth(),
+		bottomLabel.setBounds(240, 597, bottomImage.getIconWidth(),
 				bottomImage.getIconHeight());
+		bottomLabel.setVisible(false);
+		frontPanel.add(bottomLabel, -1);
 		for (int i = 0; i <= 2; i++) {
 			bottombottons[i] = new ImageButton(start1, start2, start3, false);
-			bottombottons[i].setLocation(290 + 250 * i, 620);
+			bottombottons[i].setLocation(290 + 250 * i, 660);
 			bottombottons[i].setHorizontalTextPosition(JButton.CENTER);
 			bottombottons[i].setVerticalTextPosition(JButton.CENTER);
 			bottombottons[i].setFont(new Font("微软雅黑", Font.BOLD, 20));
@@ -154,33 +155,32 @@ public class GameWindow extends JFrame {
 			frontPanel.add(im, 0);
 			im.setVisible(false);
 		}
-		
-		//创建回合按钮
+
+		// 创建回合按钮
 		roundButton = new ImageButton(roundIcon1, roundIcon2, roundIcon3, false);
-		roundButton.setLocation(1100, 570);
+		roundButton.setLocation(1100, 620);
 		frontPanel.add(roundButton);
 		roundButton.setVisible(false);
 
 		// 创建学科面板
 		sciPanel = new SciPanel(backgroundScn);
 		sciPanel.setVisible(false);
-		frontPanel.add(sciPanel,0);
-		/*sciDialog.setBounds(500, 500, backgroundScn.getIconWidth(),
-				backgroundScn.getIconHeight());
-		sciDialog.setLocationRelativeTo(imagePanel);
-		sciDialog.setUndecorated(true);
-		sciDialog.add(sciPanel);
-		sciDialog.getRootPane().setOpaque(false);
-		sciDialog.getContentPane().setBackground(new Color(0, 0, 0, 0));
-		sciDialog.setBackground(new Color(0, 0, 0, 0));
-		sciDialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);*/
-		
-		
-		
-		//创建科技面板
-		tecPanel = new TecPanel(backgroundScn);
+		frontPanel.add(sciPanel, 0);
+		/*
+		 * sciDialog.setBounds(500, 500, backgroundScn.getIconWidth(),
+		 * backgroundScn.getIconHeight());
+		 * sciDialog.setLocationRelativeTo(imagePanel);
+		 * sciDialog.setUndecorated(true); sciDialog.add(sciPanel);
+		 * sciDialog.getRootPane().setOpaque(false);
+		 * sciDialog.getContentPane().setBackground(new Color(0, 0, 0, 0));
+		 * sciDialog.setBackground(new Color(0, 0, 0, 0));
+		 * sciDialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		 */
+
+		// 创建科技面板
+		tecPanel = new TecPanel(backgroundTec);
 		tecPanel.setVisible(false);
-		frontPanel.add(tecPanel,0);
+		frontPanel.add(tecPanel, 0);
 
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
@@ -189,20 +189,17 @@ public class GameWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 
-
-				topPanel = new TopPanel();
+				
 				labelTitle.setVisible(false);
-				frontPanel.add(topPanel, -1);
-				frontPanel.add(bottomLabel, -1);
 				for (ImageButton im : bottombottons) {
 					im.setVisible(true);
 				}
-				for(ImageButton ib : imageButton) {
+				for (ImageButton ib : imageButton) {
 					ib.setVisible(false);
 				}
 
-
-
+				topPanel.setVisible(true);
+				bottomLabel.setVisible(true);
 				roundButton.setVisible(true);
 				pauseButton.setVisible(true);
 				timeLabel.setVisible(true);
@@ -211,15 +208,15 @@ public class GameWindow extends JFrame {
 			}
 		});
 		imageButton[1].addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				
+
 			}
 		});
 		imageButton[2].addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
@@ -227,15 +224,15 @@ public class GameWindow extends JFrame {
 			}
 		});
 		bottombottons[0].addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				 sciPanel.setVisible(true);
+				sciPanel.setVisible(true);
 			}
 		});
 		bottombottons[1].addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
@@ -243,7 +240,7 @@ public class GameWindow extends JFrame {
 			}
 		});
 		pauseButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
@@ -252,7 +249,7 @@ public class GameWindow extends JFrame {
 				roundButton.setVisible(false);
 				timeLabel.setVisible(false);
 				topPanel.setVisible(false);
-				for(ImageButton ib : imageButton) {
+				for (ImageButton ib : imageButton) {
 					ib.setVisible(true);
 				}
 				for (ImageButton im : bottombottons) {
@@ -262,8 +259,13 @@ public class GameWindow extends JFrame {
 				repaint();
 			}
 		});
-		
-		
+
+		// 设置鼠标
+		String url = "image/cursor.gif"; // 储存鼠标图片的位置
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		Image image = new ImageIcon(url).getImage();
+		Cursor cursor = tk.createCustomCursor(image, new Point(0, 0), "invisi");
+		setCursor(cursor); // panel 也可以是其他组件
 
 		imagePanel.add(label);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

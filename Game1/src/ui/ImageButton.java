@@ -14,7 +14,6 @@ class ImageButton extends JButton {
 	public ImageButton(ImageIcon normalImage, ImageIcon mouseOverImage,
 			ImageIcon mouseDownImage, boolean isdisabled) {
 		super();
-		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		this.setSize(normalImage.getIconWidth(), normalImage.getIconHeight());
 		setMargin(new Insets(0, 0, 0, 0));// 设置边距
 		setContentAreaFilled(false);// 不绘制按钮区域
