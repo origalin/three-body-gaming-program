@@ -106,11 +106,14 @@ public class GameWindow extends JFrame {
 		//创建时间标签
 		timeLabel = new JLabel(message);
 		timeLabel.setBounds(1060, 20, message.getIconWidth(), message.getIconHeight());
+		frontPanel.add(timeLabel);
+		timeLabel.setVisible(false);
 		
 		//创建暂停按钮
 		pauseButton = new ImageButton(pause1, pause2, pause3, false);
 		pauseButton.setLocation(50, 20);
-		
+		frontPanel.add(pauseButton);
+		pauseButton.setVisible(false);
 
 
 		// 创建星球图片
@@ -144,10 +147,16 @@ public class GameWindow extends JFrame {
 		bottombottons[1].setText("科技");
 
 		bottombottons[2].setText("建造");
+		for (ImageButton im : bottombottons) {
+			frontPanel.add(im, 0);
+			im.setVisible(false);
+		}
 		
 		//创建回合按钮
 		roundButton = new ImageButton(roundIcon1, roundIcon2, roundIcon3, false);
 		roundButton.setLocation(1100, 570);
+		frontPanel.add(roundButton);
+		roundButton.setVisible(false);
 
 		// 创建学科面板
 		sciPanel = new SciPanel(backgroundScn);
@@ -173,18 +182,20 @@ public class GameWindow extends JFrame {
 
 				topPanel = new TopPanel();
 				labelTitle.setVisible(false);
-				frontPanel.add(topPanel, 1);
+				frontPanel.add(topPanel, -1);
 				frontPanel.add(bottomLabel, -1);
 				for (ImageButton im : bottombottons) {
-					frontPanel.add(im, 0);
 					im.setVisible(true);
 				}
 				for(ImageButton ib : imageButton) {
 					ib.setVisible(false);
 				}
-				frontPanel.add(roundButton);
-				frontPanel.add(pauseButton);
-				frontPanel.add(timeLabel);
+
+
+
+				roundButton.setVisible(true);
+				pauseButton.setVisible(true);
+				timeLabel.setVisible(true);
 				validate();
 
 			}
@@ -218,11 +229,11 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				frontPanel.remove(pauseButton);
-				frontPanel.remove(bottomLabel);
-				frontPanel.remove(roundButton);
-				frontPanel.remove(timeLabel);
-				frontPanel.remove(topPanel);
+				pauseButton.setVisible(false);
+				bottomLabel.setVisible(false);
+				roundButton.setVisible(false);
+				timeLabel.setVisible(false);
+				topPanel.setVisible(false);
 				for(ImageButton ib : imageButton) {
 					ib.setVisible(true);
 				}
