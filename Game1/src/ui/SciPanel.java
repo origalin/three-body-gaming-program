@@ -13,6 +13,13 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import el.Art;
+import el.Begin;
+import el.Biology;
+import el.Chemistry;
+import el.Computer;
+import el.Math;
+import el.Physics;
 
 public class SciPanel extends JLabel {
 	public int availablepoints;
@@ -61,7 +68,10 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-
+				if(Math.botton == true&&Begin.HP>=14){
+					Math.point++;
+					Begin.HP=Begin.HP-14;
+				}
 			}
 		});
 		phyButton.setLocation(425, 115);
@@ -70,6 +80,10 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
+				if(Physics.botton == true&&Begin.HP>=11){
+					Physics.point++;
+					Begin.HP=Begin.HP-11;
+				}
 
 			}
 		});
@@ -79,6 +93,10 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
+				if(Chemistry.botton == true&&Begin.HP>=11){
+					Chemistry.point++;
+					Begin.HP=Begin.HP-11;
+				}
 
 			}
 		});
@@ -88,6 +106,10 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
+				if(Computer.botton == true&&Begin.HP>=11){
+					Computer.point++;
+					Begin.HP=Begin.HP-10;
+				}
 
 			}
 		});
@@ -97,6 +119,10 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
+				if(Art.botton == true&&Begin.HP>=11){
+					Art.point++;
+					Begin.HP=Begin.HP-12;
+				}
 
 			}
 		});
@@ -106,6 +132,11 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
+				if(Biology.botton == true&&Begin.HP>=11){
+					Biology.point++;
+					Begin.HP=Begin.HP-11;
+				}
+
 
 			}
 		});
