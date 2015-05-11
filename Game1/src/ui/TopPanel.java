@@ -14,7 +14,7 @@ public class TopPanel extends JPanel {
 	TopPanel() {
 		super();
 		setOpaque(false);
-		setBounds(250, -5, topPanelIcon.getIconWidth(),
+		setBounds(275, -5, topPanelIcon.getIconWidth(),
 				topPanelIcon.getIconHeight());
 		topLabel = new JLabel(topPanelIcon);
 		topLabel.setBounds(0, 0, topPanelIcon.getIconWidth(),

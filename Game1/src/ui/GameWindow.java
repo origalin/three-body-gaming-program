@@ -121,7 +121,7 @@ public class GameWindow extends JFrame {
 		labelBackground.setBounds(0, 0, backgroundMain.getIconWidth(),
 				backgroundMain.getIconHeight());
 		mainPanel.setOpaque(false);
-		mainPanel.setBounds(350, 30, backgroundMain.getIconWidth(),
+		mainPanel.setBounds(360, 30, backgroundMain.getIconWidth(),
 				backgroundMain.getIconHeight());
 		mainPanel.add(labelBackground);
 		imagePanel.add(mainPanel);
