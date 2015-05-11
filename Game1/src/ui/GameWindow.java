@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Font;
+import java.awt.GraphicsConfiguration;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -42,8 +43,8 @@ public class GameWindow extends JFrame {
 	ImageButton roundButton;
 	TopPanel topPanel;
 
-	public GameWindow() {
-
+	public GameWindow(GraphicsConfiguration gc) {
+		super(gc);
 		frontPanel = getLayeredPane();
 		final ImageButton[] imageButton = new ImageButton[3];
 		backgroundScn = new ImageIcon("image/scnpanel.png");
@@ -173,7 +174,7 @@ public class GameWindow extends JFrame {
 				topPanel = new TopPanel();
 				labelTitle.setVisible(false);
 				frontPanel.add(topPanel, 1);
-				frontPanel.add(bottomLabel, 1);
+				frontPanel.add(bottomLabel, -1);
 				for (ImageButton im : bottombottons) {
 					frontPanel.add(im, 0);
 					im.setVisible(true);

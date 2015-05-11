@@ -29,8 +29,8 @@ public class Economy{
 			EMVEIR = (Begin.EMV-60)*0.005;//和环境关系
 		}
 		
-		EIR = Math.EIR + Physics.EIR + Biology.EIR + Chemistry.EIR + Art.EIR + Computer.EIR
-			+ HVEIR + EMVEIR + ToolFunction.OEIRF();
+		//EIR = Math.EIR + Physics.EIR + Biology.EIR + Chemistry.EIR + Art.EIR + Computer.EIR
+			//+ HVEIR + EMVEIR + ToolFunction.OEIRF();
 
 		Begin.EV = (int) (Begin.EV * (EIR+1));
 	}
