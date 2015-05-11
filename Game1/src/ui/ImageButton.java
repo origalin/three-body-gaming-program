@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 class ImageButton extends JButton {
-
 	public ImageButton(ImageIcon normalImage, ImageIcon mouseOverImage,
 			ImageIcon mouseDownImage, boolean isdisabled) {
 		super();
@@ -28,6 +27,14 @@ class ImageButton extends JButton {
 			setIcon(normalImage);
 			setRolloverIcon(normalImage);
 			setPressedIcon(normalImage);
+			setEnabled(false);
+		}
+	}
+	public void setavalible(boolean b) {
+		if(b==true) {
+			setEnabled(true);
+		}
+		else {
 			setEnabled(false);
 		}
 	}

@@ -25,13 +25,15 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
 	JLayeredPane frontPanel;
-	JDialog sciDialog = new JDialog(this);
+	//JDialog sciDialog = new JDialog(this);
 	private ImageIcon backgroundScn;
+	ImageIcon backgroundTec;
 	private JPanel imagePanel;
 	// private JPanel panel=new JPanel();
 	// private ImageIcon backgroundTest;
 	private ImageIcon background;
 	SciPanel sciPanel;
+	TecPanel tecPanel;
 	private ImageIcon backgroundTitle;
 	ImageIcon backgroundMain;
 	JPanel mainPanel;
@@ -48,6 +50,7 @@ public class GameWindow extends JFrame {
 		frontPanel = getLayeredPane();
 		final ImageButton[] imageButton = new ImageButton[3];
 		backgroundScn = new ImageIcon("image/scnpanel.png");
+		backgroundTec = new ImageIcon("image/tecpanel.png");
 		background = new ImageIcon("image/background.png");// 背景图片
 		backgroundTitle = new ImageIcon("image/title.png");
 		final ImageIcon start1 = new ImageIcon("image/button1.png");
@@ -171,6 +174,13 @@ public class GameWindow extends JFrame {
 		sciDialog.getContentPane().setBackground(new Color(0, 0, 0, 0));
 		sciDialog.setBackground(new Color(0, 0, 0, 0));
 		sciDialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);*/
+		
+		
+		
+		//创建科技面板
+		tecPanel = new TecPanel(backgroundScn);
+		tecPanel.setVisible(false);
+		frontPanel.add(tecPanel,0);
 
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
@@ -222,6 +232,14 @@ public class GameWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				 sciPanel.setVisible(true);
+			}
+		});
+		bottombottons[1].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO 自动生成的方法存根
+				tecPanel.setVisible(true);
 			}
 		});
 		pauseButton.addActionListener(new ActionListener() {

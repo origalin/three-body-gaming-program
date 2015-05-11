@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 import el.Art;
 import el.Begin;
 import el.Biology;
@@ -21,6 +22,7 @@ import el.Computer;
 import el.Math;
 import el.Physics;
 
+@SuppressWarnings("serial")
 public class SciPanel extends JLabel {
 	public int availablepoints;
 	int[] scipoints = new int[6];
@@ -54,13 +56,13 @@ public class SciPanel extends JLabel {
 		confirmButton.setVerticalTextPosition(JButton.CENTER);
 		confirmButton.setFont(new Font("微软雅黑", Font.BOLD, 20));
 		confirmButton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				setVisible(false);
 			}
 		});
+		add(confirmButton);
 		mathButton.setLocation(260, 115);
 		mathButton.addActionListener(new ActionListener() {
 
