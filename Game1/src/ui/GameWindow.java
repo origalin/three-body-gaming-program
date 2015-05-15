@@ -37,6 +37,7 @@ public class GameWindow extends JFrame {
 	private ImageIcon background;
 	SciPanel sciPanel;
 	TecPanel tecPanel;
+	ObjectPanel objectPanel;
 	private ImageIcon backgroundTitle;
 	ImageIcon backgroundMain;
 	JPanel mainPanel;
@@ -47,6 +48,7 @@ public class GameWindow extends JFrame {
 	ImageButton[] bottombottons = new ImageButton[3];
 	ImageButton roundButton;
 	TopPanel topPanel;
+	ImageIcon objectBackground;
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -56,6 +58,7 @@ public class GameWindow extends JFrame {
 		backgroundTec = new ImageIcon("image/tecpanel.png");
 		background = new ImageIcon("image/background.png");// 背景图片
 		backgroundTitle = new ImageIcon("image/title.png");
+		objectBackground =new ImageIcon("image/prdpanel.png");
 		final ImageIcon start1 = new ImageIcon("image/button1.png");
 		ImageIcon start2 = new ImageIcon("image/button2.png");
 		ImageIcon start3 = new ImageIcon("image/button3.png");
@@ -66,7 +69,6 @@ public class GameWindow extends JFrame {
 		ImageIcon pause1 = new ImageIcon("image/messagel.png");
 		ImageIcon pause2 = new ImageIcon("image/messagel2.png");
 		ImageIcon pause3 = new ImageIcon("image/messagel3.png");
-
 		// 背景图
 		JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面
 		label.setBounds(0, 0, background.getIconWidth(),
@@ -181,7 +183,11 @@ public class GameWindow extends JFrame {
 		tecPanel = new TecPanel(backgroundTec);
 		tecPanel.setVisible(false);
 		frontPanel.add(tecPanel, 0);
-
+		
+//		创建生产面板
+		objectPanel=new ObjectPanel(objectBackground);
+		objectPanel.setVisible(false);
+		frontPanel.add(objectPanel,0);
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
 
@@ -239,6 +245,14 @@ public class GameWindow extends JFrame {
 				tecPanel.setVisible(true);
 			}
 		});
+		bottombottons[2].addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				objectPanel.setVisible(true);
+			}
+		});
 		pauseButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -259,6 +273,7 @@ public class GameWindow extends JFrame {
 				repaint();
 			}
 		});
+		
 
 		// 设置鼠标
 		String url = "image/cursor.gif"; // 储存鼠标图片的位置
@@ -270,7 +285,7 @@ public class GameWindow extends JFrame {
 		imagePanel.add(label);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(background.getIconWidth(), background.getIconHeight());
-		this.setUndecorated(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
 	}
