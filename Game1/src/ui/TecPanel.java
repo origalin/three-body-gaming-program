@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 public class TecPanel extends JLabel {
 	ImageIcon start1 = new ImageIcon("image/button1.png");
@@ -38,8 +39,10 @@ public class TecPanel extends JLabel {
 			}
 		});
 		add(confirmButton);
-		JScrollPane tecScrollPane =new JScrollPane();
-		tecScrollPane.setBounds(50, 20, 500, 500);
-		add(tecScrollPane);
+		
+		
+		
+		JTextField pointsfield = new JTextField();
+		
 	}
 }
