@@ -270,7 +270,7 @@ public class GameWindow extends JFrame {
 		imagePanel.add(label);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(background.getIconWidth(), background.getIconHeight());
-		this.setUndecorated(false);
+		this.setUndecorated(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
 	}
