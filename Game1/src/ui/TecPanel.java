@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,6 +44,22 @@ public class TecPanel extends JLabel {
 		
 		
 		JTextField pointsfield = new JTextField();
+		pointsfield.setOpaque(false);
+		pointsfield.setFont(new Font("微软雅黑", Font.BOLD, 20));
+		pointsfield.setBounds(100, 20, 500, 40);
+		pointsfield.setBorder(null);
+		pointsfield.setText("化学:"+SciPanel.scipoints[0]+ " 生物:"+SciPanel.scipoints[1]+ " 物理:" +SciPanel.scipoints[2]+ " 数学:"+SciPanel.scipoints[3] +" 计算机:"+SciPanel.scipoints[4]+ " 艺术:"+SciPanel.scipoints[5]);
+		pointsfield.setEditable(false);
+		add(pointsfield);
+		
+		//科技树部分
+		JPanel treePanel = new JPanel();
+		treePanel.setBounds(55, 70, 690, 450);
+		treePanel.setLayout(new CardLayout());
+		treePanel.setOpaque(false);
+		add(treePanel);
+		JLabel treeLabel1 = new JLabel();
+		treeLabel1.setBounds(0, 0, 690, 450);
 		
 	}
 }
