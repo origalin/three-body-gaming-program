@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.io.Closeable;
 
 import javax.swing.ImageIcon;
@@ -49,6 +50,9 @@ public class GameWindow extends JFrame {
 	ImageButton roundButton;
 	TopPanel topPanel;
 	ImageIcon objectBackground;
+	public static int x;
+	public static int y;
+	final MessageLabel messageLabel;
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -185,9 +189,9 @@ public class GameWindow extends JFrame {
 		frontPanel.add(tecPanel, 0);
 		
 //		创建生产面板
-		objectPanel=new ObjectPanel(objectBackground);
-		objectPanel.setVisible(false);
-		frontPanel.add(objectPanel,0);
+//		objectPanel=new ObjectPanel(objectBackground);
+//		objectPanel.setVisible(false);
+//		frontPanel.add(objectPanel,0);
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
 
@@ -250,7 +254,7 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				objectPanel.setVisible(true);
+				//objectPanel.setVisible(true);
 			}
 		});
 		pauseButton.addActionListener(new ActionListener() {
@@ -281,6 +285,23 @@ public class GameWindow extends JFrame {
 		Image image = new ImageIcon(url).getImage();
 		Cursor cursor = tk.createCustomCursor(image, new Point(0, 0), "invisi");
 		setCursor(cursor); // panel 也可以是其他组件
+		
+		//获取鼠标坐标
+		addMouseMotionListener(new MouseMotionListener() {
+			
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				x = e.getX();
+				y = e.getY();
+			}
+			
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				
+			}
+		});
 
 		imagePanel.add(label);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -288,6 +309,49 @@ public class GameWindow extends JFrame {
 		this.setUndecorated(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
+		
+		//设置信息面板
+		messageLabel = new MessageLabel();
+		messageLabel.setVisible(false);
+		frontPanel.add(messageLabel,0);
+		for(final ImageButton im : tecPanel.tecButton) {
+			im.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO 自动生成的方法存根
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO 自动生成的方法存根
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO 自动生成的方法存根
+					messageLabel.setVisible(false);
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO 自动生成的方法存根
+
+					messageLabel.setLocation(GameWindow.x, GameWindow.y);
+					messageLabel.setVisible(true);
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO 自动生成的方法存根
+					
+				}
+			});
+		}
+
 	}
 
 }
+
