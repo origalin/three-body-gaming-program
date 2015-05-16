@@ -1,5 +1,6 @@
 package ui;
 
+import el.*;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -164,6 +165,7 @@ public class GameWindow extends JFrame {
 		frontPanel.add(roundButton);
 		roundButton.setVisible(false);
 
+
 		// 创建学科面板
 		sciPanel = new SciPanel(backgroundScn);
 		sciPanel.setVisible(false);
@@ -188,6 +190,7 @@ public class GameWindow extends JFrame {
 		objectPanel=new ObjectPanel(objectBackground);
 		objectPanel.setVisible(false);
 		frontPanel.add(objectPanel,0);
+		
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
 
@@ -230,10 +233,13 @@ public class GameWindow extends JFrame {
 			}
 		});
 		bottombottons[0].addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
+				int i[] = {Sci.chemistry.point,Sci.biology.point,Sci.physics.point,
+						Sci.math.point,Sci.computer.point,Sci.art.point};
+				sciPanel.setpoints(i);
+				sciPanel.setpointsavailable(Begin.HP);
+				sciPanel.pointsavailable.setText("可分配学科点：" + sciPanel.availablepoints);
 				sciPanel.setVisible(true);
 			}
 		});
@@ -241,7 +247,8 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO 自动生成的方法存根
+				Theory theory = new Theory();
+				theory.judgeSumA();
 				tecPanel.setVisible(true);
 			}
 		});
@@ -271,6 +278,18 @@ public class GameWindow extends JFrame {
 				}
 				labelTitle.setVisible(true);
 				repaint();
+			}
+		});
+		
+		
+		
+		roundButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Next next = new Next();
+				next.goNext();
 			}
 		});
 		
