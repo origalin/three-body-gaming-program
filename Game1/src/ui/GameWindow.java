@@ -181,9 +181,9 @@ public class GameWindow extends JFrame {
 		frontPanel.add(tecPanel, 0);
 		
 //		创建生产面板
-//		objectPanel=new ObjectPanel(objectBackground);
-//		objectPanel.setVisible(false);
-//		frontPanel.add(objectPanel,0);
+		objectPanel=new ObjectPanel(objectBackground);
+		objectPanel.setVisible(false);
+		frontPanel.add(objectPanel,0);
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
 
@@ -246,7 +246,7 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//objectPanel.setVisible(true);
+				objectPanel.setVisible(true);
 			}
 		});
 		pauseButton.addActionListener(new ActionListener() {
