@@ -57,7 +57,7 @@ public class ObjectPanel extends JLabel{
 		
 		
 //		可建造物品框
-		toSetGrid=new JPanel()
+		toSetGrid=new JPanel();
 		toSetCard.setLayout(new CardLayout());
 		toSetGrid.setLayout(new GridLayout(5,5));
 		toSetCard.setBounds(50,20,500,500);
@@ -66,7 +66,6 @@ public class ObjectPanel extends JLabel{
 		toSetGrid.setVisible(true);
 		toSetCard.setOpaque(false);
 		toSetGrid.setOpaque(false);
-		toSetGrid.
 		toSetCard.add(toSetGrid);
 		add(toSetCard);
 		

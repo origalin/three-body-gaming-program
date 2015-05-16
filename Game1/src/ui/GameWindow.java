@@ -1,5 +1,7 @@
 package ui;
 
+import el.*;
+import el.Math;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -37,7 +39,7 @@ public class GameWindow extends JFrame {
 	private ImageIcon background;
 	SciPanel sciPanel;
 	TecPanel tecPanel;
-	ObjectPanel objectPanel;
+	//ObjectPanel objectPanel;
 	private ImageIcon backgroundTitle;
 	ImageIcon backgroundMain;
 	JPanel mainPanel;
@@ -163,6 +165,8 @@ public class GameWindow extends JFrame {
 		roundButton.setLocation(1100, 620);
 		frontPanel.add(roundButton);
 		roundButton.setVisible(false);
+//		Next next = new Next();
+//		next.goNext();
 
 		// 创建学科面板
 		sciPanel = new SciPanel(backgroundScn);
@@ -185,9 +189,10 @@ public class GameWindow extends JFrame {
 		frontPanel.add(tecPanel, 0);
 		
 //		创建生产面板
-		objectPanel=new ObjectPanel(objectBackground);
-		objectPanel.setVisible(false);
-		frontPanel.add(objectPanel,0);
+		//objectPanel=new ObjectPanel(objectBackground);
+		//objectPanel.setVisible(false);
+		//frontPanel.add(objectPanel,0);
+		
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
 
@@ -230,10 +235,12 @@ public class GameWindow extends JFrame {
 			}
 		});
 		bottombottons[0].addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
+				int i[] = {Chemistry.point,Biology.point,Physics.point,Math.point,Computer.point,Art.point};
+				sciPanel.setpoints(i);
+				sciPanel.setpointsavailable(Begin.HP);
+				sciPanel.pointsavailable.setText("可分配学科点：" + sciPanel.availablepoints);
 				sciPanel.setVisible(true);
 			}
 		});
@@ -241,7 +248,8 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO 自动生成的方法存根
+				Theory theory = new Theory();
+				theory.judgeSumA();
 				tecPanel.setVisible(true);
 			}
 		});
@@ -250,7 +258,7 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				objectPanel.setVisible(true);
+				//objectPanel.setVisible(true);
 			}
 		});
 		pauseButton.addActionListener(new ActionListener() {

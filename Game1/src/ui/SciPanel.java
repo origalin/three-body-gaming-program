@@ -25,7 +25,7 @@ import el.Physics;
 @SuppressWarnings("serial")
 public class SciPanel extends JLabel {
 	public int availablepoints;
-	public static int[] scipoints = new int[6];
+	public static int[] scipoints = {Chemistry.point,Biology.point,Physics.point,Math.point,Computer.point,Art.point};
 	ImageIcon start1 = new ImageIcon("image/buttongreen1.png");
 	ImageIcon start2 = new ImageIcon("image/buttongreen2.png");
 	ImageIcon start3 = new ImageIcon("image/buttongreen3.png");
@@ -72,6 +72,7 @@ public class SciPanel extends JLabel {
 				if(Math.botton == true&&Begin.HP>=14){
 					Math.point++;
 					Begin.HP=Begin.HP-14;
+					iconData[3].repaint();
 				}
 			}
 		});
