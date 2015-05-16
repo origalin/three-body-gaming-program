@@ -22,12 +22,12 @@ public class Theory {
 		chemistryPoint = chemistry;
 		artPoint = art;
 		computerPoint = computer;
-		Math.point -= 14;
-		Physics.point -= 11;
-		Biology.point -= 11;
-		Chemistry.point -= 11;
-		Art.point -= 12;
-		Computer.point -= 10;
+		Sci.math.point -= 14;
+		Sci.physics.point -= 11;
+		Sci.biology.point -= 11;
+		Sci.chemistry.point -= 11;
+		Sci.art.point -= 12;
+		Sci.computer.point -= 10;
 	}
 	
 	public void judgeC(Theory theory){
@@ -36,12 +36,12 @@ public class Theory {
 	}
 	
 	private boolean judgeA(Theory theory){
-		if(Math.point>=theory.mathPoint&&
-				Physics.point>=theory.physicsPoint&&
-				Biology.point>=theory.biologyPoint&&
-				Chemistry.point>=theory.chemistryPoint&&
-				Art.point>=theory.artPoint&&
-				Computer.point>=theory.artPoint)
+		if(Sci.math.point>=theory.mathPoint&&
+			Sci.physics.point>=theory.physicsPoint&&
+			Sci.biology.point>=theory.biologyPoint&&
+			Sci.chemistry.point>=theory.chemistryPoint&&
+			Sci.art.point>=theory.artPoint&&
+			Sci.computer.point>=theory.artPoint)
 			return true;
 		return false;
 	}

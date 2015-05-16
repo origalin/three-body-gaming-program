@@ -14,7 +14,7 @@ public class ToolFunction {
 	static int OHIR = 0;
 	static int OEMIR  = 0;
 	
-	public static void add(Tools tool){  //只调用函数，调用方不用这个值,没有返回值
+	public static void add(Tools tool){
 		if(tool.isClicked = true){
 			mathPointSum = mathPointSum +  tool.mathPoint;
 			physicsPointSum = physicsPointSum +  tool.physicsPoint;
@@ -36,7 +36,7 @@ public class ToolFunction {
 		return ToolIR;
 	}
 	
-	public static double OEIRF(){  //又要调用这个函数，又要用这个函数产生的值，所以要有返回值 object EIR function
+	public static double OEIRF(){  //object EIR function
 		OEIR = 0.3*(0.036*mathPointSum + 0.0345*physicsPointSum + 0.0343*biologyPointSum + 
 				0.0343*chemistryPointSum + 0.03075*artPointSum + 0.0377*computerPointSum) 
 				+ getToolIR();

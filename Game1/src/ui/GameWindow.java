@@ -1,7 +1,6 @@
 package ui;
 
 import el.*;
-import el.Math;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -165,8 +164,7 @@ public class GameWindow extends JFrame {
 		roundButton.setLocation(1100, 620);
 		frontPanel.add(roundButton);
 		roundButton.setVisible(false);
-//		Next next = new Next();
-//		next.goNext();
+
 
 		// 创建学科面板
 		sciPanel = new SciPanel(backgroundScn);
@@ -237,7 +235,8 @@ public class GameWindow extends JFrame {
 		bottombottons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int i[] = {Chemistry.point,Biology.point,Physics.point,Math.point,Computer.point,Art.point};
+				int i[] = {Sci.chemistry.point,Sci.biology.point,Sci.physics.point,
+						Sci.math.point,Sci.computer.point,Sci.art.point};
 				sciPanel.setpoints(i);
 				sciPanel.setpointsavailable(Begin.HP);
 				sciPanel.pointsavailable.setText("可分配学科点：" + sciPanel.availablepoints);
@@ -279,6 +278,18 @@ public class GameWindow extends JFrame {
 				}
 				labelTitle.setVisible(true);
 				repaint();
+			}
+		});
+		
+		
+		
+		roundButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Next next = new Next();
+				next.goNext();
 			}
 		});
 		
