@@ -1,6 +1,7 @@
 package ui;
 
 import el.*;
+
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -247,8 +248,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Theory theory = new Theory();
-				theory.judgeSumA();
+				Theory.judgeSumA();
 				tecPanel.setVisible(true);
 			}
 		});
@@ -280,9 +280,7 @@ public class GameWindow extends JFrame {
 				repaint();
 			}
 		});
-		
-		
-		
+			
 		roundButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -290,9 +288,9 @@ public class GameWindow extends JFrame {
 				// TODO Auto-generated method stub
 				Next next = new Next();
 				next.goNext();
+				topPanel.topLabel.setText("–««Ú Ù–‘£∫"+Begin.EV);
 			}
-		});
-		
+		});		
 
 		// …Ë÷√ Û±Í
 		String url = "image/cursor.gif"; // ¥¢¥Ê Û±ÍÕº∆¨µƒŒª÷√

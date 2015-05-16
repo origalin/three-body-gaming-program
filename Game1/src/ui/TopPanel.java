@@ -6,6 +6,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import el.Begin;
+
 @SuppressWarnings("serial")
 public class TopPanel extends JPanel {
 	ImageIcon topPanelIcon = new ImageIcon("image/toppanel.png");
@@ -22,7 +24,7 @@ public class TopPanel extends JPanel {
 		topLabel.setOpaque(false);
 		add(topLabel);
 
-		topLabel.setText("–««Ú Ù–‘£∫");
+		topLabel.setText("–««Ú Ù–‘£∫"+Begin.EV);
 		topLabel.setFont(new Font("Œ¢»Ì—≈∫⁄ ", Font.BOLD, 28));
 		topLabel.setHorizontalTextPosition(JLabel.CENTER);
 

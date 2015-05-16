@@ -19,14 +19,14 @@ public class Economy{
 	public void economy(){
 		
 		if(Begin.HV>60){
-			HVEIR = (Begin.HV-60)*0.01;//和幸福值关系
+			HVEIR = (Begin.HV-60)*0.001;//和幸福值关系
 		}
 		else if(Begin.HV<50){
-			HVEIR = (Begin.HV-50)*0.01;
+			HVEIR = (Begin.HV-50)*0.001;
 		}
 
 		else if(Begin.EMV<60){
-			EMVEIR = (Begin.EMV-60)*0.005;//和环境关系
+			EMVEIR = (Begin.EMV-60)*0.0005;//和环境关系
 		}
 		
 		EIR = Sci.math.EIR + Sci.physics.EIR + Sci.biology.EIR + 
