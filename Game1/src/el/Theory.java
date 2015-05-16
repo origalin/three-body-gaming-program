@@ -11,9 +11,6 @@ public class Theory {
 	public static boolean isClicked = false;//如果被点就能点物品
 	public static boolean isAvailable = false;//如果点数够就会发光
 	
-	public Theory(){
-		
-	}
 	
 	public Theory (int math,int physics,int biology,int chemistry,int art,int computer){
 		mathPoint = math;
@@ -30,7 +27,7 @@ public class Theory {
 //			对应物品会出现在建造栏中
 	}
 	
-	private boolean judgeA(Theory theory){
+	private static boolean judgeA(Theory theory){
 		if(Sci.math.point>=theory.mathPoint&&
 			Sci.physics.point>=theory.physicsPoint&&
 			Sci.biology.point>=theory.biologyPoint&&
@@ -40,9 +37,12 @@ public class Theory {
 			return true;
 		return false;
 	}
+
+
+	public static void judgeSumA() {
+		judgeA(fly);
+	}	
 	
-	
-	
-	
+	public static Theory fly = new Theory(1,2,3,4,5,6);
 }
 

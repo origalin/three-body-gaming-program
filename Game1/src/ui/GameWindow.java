@@ -1,5 +1,6 @@
 package ui;
 
+import el.*;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GraphicsConfiguration;
@@ -226,10 +227,12 @@ public class GameWindow extends JFrame {
 			}
 		});
 		bottombottons[0].addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO 自动生成的方法存根
+				int i[] = {Sci.chemistry.point,Sci.biology.point,Sci.physics.point,
+						Sci.math.point,Sci.computer.point,Sci.art.point};
+				sciPanel.setpoints(i);
+				sciPanel.pointsavailable.setText("可分配学科点：" + Begin.HP);
 				sciPanel.setVisible(true);
 			}
 		});
@@ -237,7 +240,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO 自动生成的方法存根
+				Theory.judgeSumA();
 				tecPanel.setVisible(true);
 			}
 		});
@@ -270,6 +273,17 @@ public class GameWindow extends JFrame {
 			}
 		});
 		
+		
+		roundButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Next next = new Next();
+				next.goNext();
+				topPanel.topLabel.setText("星球属性："+Begin.EV);
+			}
+		});		
 
 		// 设置鼠标
 		String url = "image/cursor.gif"; // 储存鼠标图片的位置
