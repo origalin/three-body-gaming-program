@@ -300,6 +300,7 @@ public class GameWindow extends JFrame {
 			public void mouseDragged(MouseEvent e) {
 				// TODO 自动生成的方法存根
 				
+				
 			}
 		});
 
