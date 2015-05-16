@@ -32,7 +32,7 @@ public class ObjectPanel extends JLabel{
 	ImageButton confirmButton = new ImageButton(start1, start2, start3, false);
 	public ObjectPanel(ImageIcon i) {
 		super(i);
-		setBounds(240, 28, i.getIconWidth(), i.getIconHeight());
+		setBounds(232, 48, i.getIconWidth(), i.getIconHeight());
 		setOpaque(false);
 		
 		
