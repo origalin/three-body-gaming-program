@@ -1,6 +1,7 @@
 package ui;
 
 import el.*;
+
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -38,7 +39,7 @@ public class GameWindow extends JFrame {
 	private ImageIcon background;
 	SciPanel sciPanel;
 	TecPanel tecPanel;
-	//ObjectPanel objectPanel;
+	ObjectPanel objectPanel;
 	private ImageIcon backgroundTitle;
 	ImageIcon backgroundMain;
 	JPanel mainPanel;
@@ -187,9 +188,9 @@ public class GameWindow extends JFrame {
 		frontPanel.add(tecPanel, 0);
 		
 //		创建生产面板
-		//objectPanel=new ObjectPanel(objectBackground);
-		//objectPanel.setVisible(false);
-		//frontPanel.add(objectPanel,0);
+		objectPanel=new ObjectPanel(objectBackground);
+		objectPanel.setVisible(false);
+		frontPanel.add(objectPanel,0);
 		
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
@@ -247,8 +248,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Theory theory = new Theory();
-				theory.judgeSumA();
+				Theory.judgeSumA();
 				tecPanel.setVisible(true);
 			}
 		});
@@ -257,7 +257,7 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//objectPanel.setVisible(true);
+				objectPanel.setVisible(true);
 			}
 		});
 		pauseButton.addActionListener(new ActionListener() {
@@ -280,9 +280,7 @@ public class GameWindow extends JFrame {
 				repaint();
 			}
 		});
-		
-		
-		
+			
 		roundButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -290,9 +288,9 @@ public class GameWindow extends JFrame {
 				// TODO Auto-generated method stub
 				Next next = new Next();
 				next.goNext();
+				topPanel.topLabel.setText("星球属性："+Begin.EV);
 			}
-		});
-		
+		});		
 
 		// 设置鼠标
 		String url = "image/cursor.gif"; // 储存鼠标图片的位置

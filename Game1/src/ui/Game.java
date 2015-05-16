@@ -4,7 +4,10 @@ import java.awt.DisplayMode;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
+import el.Sci;
+
 public class Game {
+	public static Sci art = new Sci(2.1, 0.25, 0);
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment(); 
