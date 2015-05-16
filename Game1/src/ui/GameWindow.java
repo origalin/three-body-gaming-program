@@ -1,27 +1,18 @@
 package ui;
 
-import el.*;
-
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.GraphicsConfiguration;
 import java.awt.Image;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.Closeable;
-
+import java.awt.event.MouseMotionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -51,6 +42,9 @@ public class GameWindow extends JFrame {
 	ImageButton roundButton;
 	TopPanel topPanel;
 	ImageIcon objectBackground;
+	public static int x;
+	public static int y;
+	final MessageLabel messageLabel;
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -166,7 +160,6 @@ public class GameWindow extends JFrame {
 		frontPanel.add(roundButton);
 		roundButton.setVisible(false);
 
-
 		// 创建学科面板
 		sciPanel = new SciPanel(backgroundScn);
 		sciPanel.setVisible(false);
@@ -191,7 +184,6 @@ public class GameWindow extends JFrame {
 		objectPanel=new ObjectPanel(objectBackground);
 		objectPanel.setVisible(false);
 		frontPanel.add(objectPanel,0);
-		
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
 
@@ -234,12 +226,10 @@ public class GameWindow extends JFrame {
 			}
 		});
 		bottombottons[0].addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int i[] = {Sci.chemistry.point,Sci.biology.point,Sci.physics.point,
-						Sci.math.point,Sci.computer.point,Sci.art.point};
-				sciPanel.setpoints(i);
-				sciPanel.pointsavailable.setText("可分配学科点：" + Begin.HP);
+				// TODO 自动生成的方法存根
 				sciPanel.setVisible(true);
 			}
 		});
@@ -247,7 +237,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Theory.judgeSumA();
+				// TODO 自动生成的方法存根
 				tecPanel.setVisible(true);
 			}
 		});
@@ -279,17 +269,7 @@ public class GameWindow extends JFrame {
 				repaint();
 			}
 		});
-			
-		roundButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				Next next = new Next();
-				next.goNext();
-				topPanel.topLabel.setText("星球属性："+Begin.EV);
-			}
-		});		
+		
 
 		// 设置鼠标
 		String url = "image/cursor.gif"; // 储存鼠标图片的位置
@@ -297,6 +277,24 @@ public class GameWindow extends JFrame {
 		Image image = new ImageIcon(url).getImage();
 		Cursor cursor = tk.createCustomCursor(image, new Point(0, 0), "invisi");
 		setCursor(cursor); // panel 也可以是其他组件
+		
+		//获取鼠标坐标
+		addMouseMotionListener(new MouseMotionListener() {
+			
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				x = e.getX();
+				y = e.getY();
+			}
+			
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				
+				
+			}
+		});
 
 		imagePanel.add(label);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -304,6 +302,49 @@ public class GameWindow extends JFrame {
 		this.setUndecorated(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
+		
+		//设置信息面板
+		messageLabel = new MessageLabel();
+		messageLabel.setVisible(false);
+		frontPanel.add(messageLabel,0);
+		for(final ImageButton im : tecPanel.tecButton) {
+			im.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO 自动生成的方法存根
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO 自动生成的方法存根
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO 自动生成的方法存根
+					messageLabel.setVisible(false);
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO 自动生成的方法存根
+
+					messageLabel.setLocation(GameWindow.x, GameWindow.y);
+					messageLabel.setVisible(true);
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO 自动生成的方法存根
+					
+				}
+			});
+		}
+
 	}
 
 }
+
