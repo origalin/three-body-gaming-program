@@ -67,10 +67,9 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=14){
 					Sci.math.point++;
-					availablepoints -= 14;
 					Begin.HP -= 14;
 					iconData[3].setText(Sci.math.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 			}
 		});
@@ -82,10 +81,9 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=11){
 					Sci.physics.point++;
-					availablepoints -= 11;
 					Begin.HP -= 11;
 					iconData[2].setText(Sci.physics.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 
 			}
@@ -98,10 +96,9 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=11){
 					Sci.chemistry.point++;
-					availablepoints -= 11;
 					Begin.HP -= 11;
 					iconData[0].setText(Sci.chemistry.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 
 			}
@@ -114,10 +111,9 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=11){
 					Sci.computer.point++;
-					availablepoints -= 10;
 					Begin.HP -= 10;
 					iconData[4].setText(Sci.computer.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 
 			}
@@ -130,10 +126,9 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=11){
 					Sci.art.point++;
-					availablepoints -= 12;
 					Begin.HP -= 12;
 					iconData[5].setText(Sci.art.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 
 			}
@@ -146,10 +141,9 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=11){
 					Sci.biology.point++;
-					availablepoints -= 11;
 					Begin.HP -= 11;
 					iconData[1].setText(Sci.biology.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 			}
 		});
@@ -192,10 +186,6 @@ public class SciPanel extends JLabel {
 
 	void setpoints(int[] i) {
 		scipoints = i;// 顺序：化学 生物 物理 数学 计算机 艺术
-	}
-
-	void setpointsavailable(int i) {
-		availablepoints = i;
 	}
 
 }

@@ -239,8 +239,7 @@ public class GameWindow extends JFrame {
 				int i[] = {Sci.chemistry.point,Sci.biology.point,Sci.physics.point,
 						Sci.math.point,Sci.computer.point,Sci.art.point};
 				sciPanel.setpoints(i);
-				sciPanel.setpointsavailable(Begin.HP);
-				sciPanel.pointsavailable.setText("可分配学科点：" + sciPanel.availablepoints);
+				sciPanel.pointsavailable.setText("可分配学科点：" + Begin.HP);
 				sciPanel.setVisible(true);
 			}
 		});
