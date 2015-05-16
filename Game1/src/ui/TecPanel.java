@@ -4,12 +4,12 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class TecPanel extends JLabel {
@@ -70,30 +70,10 @@ public class TecPanel extends JLabel {
 		treeLabel1.setOpaque(false);
 		treePanel.add(treeLabel1);
 		
-		
-		for(int i1 = 0;i1<=5 ; i1++) {
-			lineImageIcons[i1] = new ImageIcon("image/line"+(i1+1)+".png");
-		}
-		for(int i1 = 0;i1<=5 ; i1++) {
-			lineLabels[i1] = new JLabel(lineImageIcons[i1]);
-		}
-		lineLabels[0].setLocation(115, 56);
-		lineLabels[1].setLocation(115, 177);
-		lineLabels[2].setLocation(115, 268);
-		lineLabels[3].setLocation(116, 290);
-		lineLabels[4].setLocation(376, 56);
-		lineLabels[5].setLocation(115, 384);
-		for(JLabel im : lineLabels) {
-			treeLabel1.add(im);
-		}
-		
-		ImageIcon test = new ImageIcon("image/line5.png");
-		JLabel testLabel = new JLabel(test);
-		treeLabel1.add(testLabel);
+					
 		
 		
-		
-		
+		//科技树按钮
 		for(int i1 = 0;i1<=9 ; i1++) {
 			buttonIcons1[i1] = new ImageIcon("image/anothericon1.png");
 		} 
@@ -108,6 +88,7 @@ public class TecPanel extends JLabel {
 		for(int i1 = 0;i1<=9 ; i1++) {
 			tecButton[i1] = new ImageButton(buttonIcons1[i1], buttonIcons2[i1], buttonIcons3[i1], false);
 		}
+		
 		tecButton[0].setLocation(42, 35);
 		tecButton[1].setLocation(42, 140);
 		tecButton[2].setLocation(42, 245);
@@ -122,6 +103,24 @@ public class TecPanel extends JLabel {
 			treeLabel1.add(im);
 		}
 		
+		
+		//科技树线段
+		for(int i1 = 0;i1<=5 ; i1++) {
+			lineImageIcons[i1] = new ImageIcon("image/line"+(i1+1)+".png");
+		}
+		for(int i1 = 0;i1<=5 ; i1++) {
+			lineLabels[i1] = new JLabel(lineImageIcons[i1]);
+			lineLabels[i1].setBounds(0, 0, lineLabels[i1].getIcon().getIconWidth(), lineLabels[i1].getIcon().getIconHeight());
+		}
+		lineLabels[0].setLocation(112, 65);
+		lineLabels[1].setLocation(112, 174);
+		lineLabels[2].setLocation(112, 180);
+		lineLabels[3].setLocation(112, 290);
+		lineLabels[4].setLocation(373, 65);
+		lineLabels[5].setLocation(373, 381);
+		for(JLabel im : lineLabels) {
+			treeLabel1.add(im);
+		}
 		
 		
 	}

@@ -1,15 +1,10 @@
 package ui;
 
-import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.Insets;
-import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 class ImageButton extends JButton {
 	public ImageButton(ImageIcon normalImage, ImageIcon mouseOverImage,
 			ImageIcon mouseDownImage, boolean isdisabled) {
