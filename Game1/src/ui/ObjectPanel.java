@@ -96,6 +96,11 @@ public class ObjectPanel extends JLabel{
 		
 		
 		
+		
+		
+		
+		
+		
 //		已建造物品框
 		settingBackground.
 		setImage(
