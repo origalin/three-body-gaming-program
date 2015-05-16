@@ -21,8 +21,8 @@ public class Economy{
 		if(Begin.HV>60){
 			HVEIR = (Begin.HV-60)*0.001;//和幸福值关系
 		}
-		else if(Begin.HV<50){
-			HVEIR = (Begin.HV-50)*0.001;
+		else if(Begin.HV<20){
+			HVEIR = (Begin.HV-20)*0.001;
 		}
 
 		else if(Begin.EMV<60){

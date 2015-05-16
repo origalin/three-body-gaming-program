@@ -61,9 +61,9 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=14){
+				if(Begin.HP>=5){
 					Sci.math.point++;
-					Begin.HP -= 14;
+					Begin.HP -= 5;
 					iconData[3].setText(Sci.math.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
@@ -75,9 +75,9 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=11){
+				if(Begin.HP>=4){
 					Sci.physics.point++;
-					Begin.HP -= 11;
+					Begin.HP -= 4;
 					iconData[2].setText(Sci.physics.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
@@ -90,9 +90,9 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=11){
+				if(Begin.HP>=4){
 					Sci.chemistry.point++;
-					Begin.HP -= 11;
+					Begin.HP -= 4;
 					iconData[0].setText(Sci.chemistry.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
@@ -105,9 +105,9 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=11){
+				if(Begin.HP>=2){
 					Sci.computer.point++;
-					Begin.HP -= 10;
+					Begin.HP -= 2;
 					iconData[4].setText(Sci.computer.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
@@ -120,9 +120,9 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=11){
+				if(Begin.HP>=3){
 					Sci.art.point++;
-					Begin.HP -= 12;
+					Begin.HP -= 3;
 					iconData[5].setText(Sci.art.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
@@ -135,9 +135,9 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=11){
+				if(Begin.HP>=3){
 					Sci.biology.point++;
-					Begin.HP -= 11;
+					Begin.HP -= 3;
 					iconData[1].setText(Sci.biology.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}

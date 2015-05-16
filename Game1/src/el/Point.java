@@ -5,7 +5,7 @@ public class Point{
 		
 	public void point(){
 		
-		GP = 50*((Begin.EV-500)/100+1);
+		GP = 20*((Begin.EV-500)/100+1);
 		Begin.HP = Begin.HP + GP;
 	}
 }
