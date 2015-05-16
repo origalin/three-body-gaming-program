@@ -1,6 +1,7 @@
 package ui;
 
 import el.*;
+
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GraphicsConfiguration;
@@ -12,12 +13,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
@@ -241,6 +244,7 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Theory.judgeSumA();
+				tecPanel.pointsfield.setText("化学:"+Sci.physics.point+ " 生物:"+Sci.biology.point+ " 物理:" +Sci.physics.point+ " 数学:"+Sci.math.point +" 计算机:"+Sci.computer.point+ " 艺术:"+Sci.art.point);
 				tecPanel.setVisible(true);
 			}
 		});

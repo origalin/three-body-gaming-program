@@ -12,7 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import el.Sci;
+
 public class TecPanel extends JLabel {
+	JTextField pointsfield;
 	ImageIcon start1 = new ImageIcon("image/button1.png");
 	ImageIcon start2 = new ImageIcon("image/button2.png");
 	ImageIcon start3 = new ImageIcon("image/button3.png");
@@ -50,12 +53,12 @@ public class TecPanel extends JLabel {
 		
 		
 		
-		JTextField pointsfield = new JTextField();
+		pointsfield = new JTextField();
 		pointsfield.setOpaque(false);
 		pointsfield.setFont(new Font("微软雅黑", Font.BOLD, 20));
 		pointsfield.setBounds(100, 20, 500, 40);
 		pointsfield.setBorder(null);
-		pointsfield.setText("化学:"+SciPanel.scipoints[0]+ " 生物:"+SciPanel.scipoints[1]+ " 物理:" +SciPanel.scipoints[2]+ " 数学:"+SciPanel.scipoints[3] +" 计算机:"+SciPanel.scipoints[4]+ " 艺术:"+SciPanel.scipoints[5]);
+		pointsfield.setText("化学:"+Sci.physics.point+ " 生物:"+Sci.biology.point+ " 物理:" +Sci.physics.point+ " 数学:"+Sci.math.point +" 计算机:"+Sci.computer.point+ " 艺术:"+Sci.art.point);
 		pointsfield.setEditable(false);
 		add(pointsfield);
 		
