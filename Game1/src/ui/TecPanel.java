@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
+import javax.security.auth.Refreshable;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -47,6 +48,7 @@ public class TecPanel extends JLabel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				setVisible(false);
+				Refresh();
 			}
 		});
 		add(confirmButton);
@@ -58,7 +60,7 @@ public class TecPanel extends JLabel {
 		pointsfield.setFont(new Font("微软雅黑", Font.BOLD, 20));
 		pointsfield.setBounds(100, 20, 500, 40);
 		pointsfield.setBorder(null);
-		pointsfield.setText("化学:"+Sci.physics.point+ " 生物:"+Sci.biology.point+ " 物理:" +Sci.physics.point+ " 数学:"+Sci.math.point +" 计算机:"+Sci.computer.point+ " 艺术:"+Sci.art.point);
+		pointsfield.setText("化学:"+Sci.chemistry.point+ " 生物:"+Sci.biology.point+ " 物理:" +Sci.physics.point+ " 数学:"+Sci.math.point +" 计算机:"+Sci.computer.point+ " 艺术:"+Sci.art.point);
 		pointsfield.setEditable(false);
 		add(pointsfield);
 		
@@ -103,7 +105,11 @@ public class TecPanel extends JLabel {
 		tecButton[8].setLocation(540, 245);
 		tecButton[9].setLocation(540, 350);
 		for(ImageButton im : tecButton) {
+			im.setavalible(false);
 			treeLabel1.add(im);
+		}
+		for(int i1 = 4;i1<=9;i1++) {
+			tecButton[i1].setVisible(false);
 		}
 		
 		
@@ -123,8 +129,24 @@ public class TecPanel extends JLabel {
 		lineLabels[5].setLocation(373, 381);
 		for(JLabel im : lineLabels) {
 			treeLabel1.add(im);
+			im.setVisible(false);
 		}
 		
 		
+	}
+	public void Refresh() {
+		int[] points = {Sci.chemistry.point,Sci.biology.point,Sci.physics.point,Sci.math.point,Sci.computer.point,Sci.art.point};
+		int[][] pointsneed = {{2,1,0,0,2,0},{4,0,0,0,0,0},{4,1,0,0,2,0},{3,4,0,0,2,0},{3,1,2,0,3,0},{1,0,1,4,0,1},{4,1,5,5,1,1},{4,1,5,7,3,1},{7,6,0,0,5,2},{8,8,4,0,3,2}};
+		for(int i = 0 ;i<=9;i++) {
+			boolean isproable = true;
+			for(int j = 0;j<=5;j++) {
+				if(points[j]<pointsneed[i][j]) {
+					isproable=false;
+				}
+			}
+			if(isproable) {
+				tecButton[i].setavalible(true);
+			}
+		}
 	}
 }
