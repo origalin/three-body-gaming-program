@@ -355,8 +355,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+35, GameWindow.y+35);
 				MessageLabel.setTitle(TecPanel.textTitle[0]);
+				MessageLabel.setContains(TecPanel.textContains[0]);
 				messageLabel.setVisible(true);
 			}
 
@@ -390,8 +391,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+35, GameWindow.y+35);
 				MessageLabel.setTitle(TecPanel.textTitle[1]);
+				MessageLabel.setContains(TecPanel.textContains[1]);
 				messageLabel.setVisible(true);
 			}
 
@@ -425,8 +427,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+35, GameWindow.y+35);
 				MessageLabel.setTitle(TecPanel.textTitle[2]);
+				MessageLabel.setContains(TecPanel.textContains[2]);
 				messageLabel.setVisible(true);
 			}
 
@@ -460,8 +463,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+35, GameWindow.y+35);
 				MessageLabel.setTitle(TecPanel.textTitle[3]);
+				MessageLabel.setContains(TecPanel.textContains[3]);
 				messageLabel.setVisible(true);
 			}
 
@@ -495,8 +499,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+35, GameWindow.y+35);
 				MessageLabel.setTitle(TecPanel.textTitle[4]);
+				MessageLabel.setContains(TecPanel.textContains[4]);
 				messageLabel.setVisible(true);
 			}
 
@@ -530,8 +535,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+35, GameWindow.y+35);
 				MessageLabel.setTitle(TecPanel.textTitle[5]);
+				MessageLabel.setContains(TecPanel.textContains[5]);
 				messageLabel.setVisible(true);
 			}
 
@@ -565,8 +571,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+35, GameWindow.y+35);
 				MessageLabel.setTitle(TecPanel.textTitle[6]);
+				MessageLabel.setContains(TecPanel.textContains[6]);
 				messageLabel.setVisible(true);
 			}
 
@@ -600,8 +607,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+35, GameWindow.y+35);
 				MessageLabel.setTitle(TecPanel.textTitle[7]);
+				MessageLabel.setContains(TecPanel.textContains[7]);
 				messageLabel.setVisible(true);
 			}
 
@@ -635,8 +643,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+35, GameWindow.y+35);
 				MessageLabel.setTitle(TecPanel.textTitle[8]);
+				MessageLabel.setContains(TecPanel.textContains[8]);
 				messageLabel.setVisible(true);
 			}
 
@@ -670,8 +679,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+35, GameWindow.y+35);
 				MessageLabel.setTitle(TecPanel.textTitle[9]);
+				MessageLabel.setContains(TecPanel.textContains[9]);
 				messageLabel.setVisible(true);
 			}
 
@@ -706,8 +716,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+50, GameWindow.y+50);
 				MessageLabel.setTitle(SciPanel.iconTitle[0]);
+				MessageLabel.setContains(SciPanel.iconContains[0]);
 				messageLabel.setVisible(true);
 			}
 
@@ -741,8 +752,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+50, GameWindow.y+50);
 				MessageLabel.setTitle(SciPanel.iconTitle[1]);
+				MessageLabel.setContains(SciPanel.iconContains[1]);
 				messageLabel.setVisible(true);
 			}
 
@@ -776,8 +788,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+50, GameWindow.y+50);
 				MessageLabel.setTitle(SciPanel.iconTitle[2]);
+				MessageLabel.setContains(SciPanel.iconContains[2]);
 				messageLabel.setVisible(true);
 			}
 
@@ -811,8 +824,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+50, GameWindow.y+50);
 				MessageLabel.setTitle(SciPanel.iconTitle[3]);
+				MessageLabel.setContains(SciPanel.iconContains[3]);
 				messageLabel.setVisible(true);
 			}
 
@@ -846,8 +860,9 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				messageLabel.setLocation(GameWindow.x+50, GameWindow.y+50);
 				MessageLabel.setTitle(SciPanel.iconTitle[4]);
+				MessageLabel.setContains(SciPanel.iconContains[4]);
 				messageLabel.setVisible(true);
 			}
 
@@ -883,6 +898,7 @@ public class GameWindow extends JFrame {
 
 				messageLabel.setLocation(GameWindow.x+50, GameWindow.y+50);
 				MessageLabel.setTitle(SciPanel.iconTitle[5]);
+				MessageLabel.setContains(SciPanel.iconContains[5]);
 				messageLabel.setVisible(true);
 			}
 
