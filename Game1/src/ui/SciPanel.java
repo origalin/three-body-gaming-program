@@ -37,7 +37,7 @@ public class SciPanel extends JLabel {
 	ImageButton bioButton = new ImageButton(icon1, icon2, icon3, false);
 	JTextField pointsavailable = new JTextField();
 	static ArrayList<ImageButton> sciIcon = new ArrayList<ImageButton>();
-	JTextField[] iconData = { new JTextField(), new JTextField(),
+	static JTextField[] iconData = { new JTextField(), new JTextField(),
 			new JTextField(), new JTextField(), new JTextField(),
 			new JTextField() };
 	int i1 = 0;
@@ -69,7 +69,7 @@ public class SciPanel extends JLabel {
 		mathButton.addActionListener(new ActionListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=5){
 					Sci.math.point++;

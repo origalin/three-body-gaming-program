@@ -14,6 +14,5 @@ public class Next {
 		hap.happiness();
 		poi.point();
 		bomb.bomb();
-	}
-	
+	}	
 }

@@ -1,9 +1,11 @@
 package ui;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -67,6 +69,7 @@ public class TecPanel extends JLabel {
 				+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 				+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 				+ Sci.art.point);
+		pointsfield.setForeground(new Color(255,255,255));
 		pointsfield.setEditable(false);
 		add(pointsfield);
 
@@ -107,6 +110,11 @@ public class TecPanel extends JLabel {
 				tecButton[0].setavalible(false);
 				lineLabels[0].setVisible(true);
 				tecButton[4].setVisible(true);
+				Sci.math.point -= 4;
+				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+						+ Sci.art.point);
 				Refresh();
 			}
 		});
@@ -120,6 +128,13 @@ public class TecPanel extends JLabel {
 				tecButton[1].setavalible(false);
 				lineLabels[1].setVisible(true);
 				tecButton[5].setVisible(true);
+				Sci.physics.point -= 1;
+				Sci.math.point -= 2;
+				Sci.art.point -= 2;
+				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+						+ Sci.art.point);
 				Refresh();
 			}
 		});
@@ -133,6 +148,14 @@ public class TecPanel extends JLabel {
 				tecButton[2].setavalible(false);
 				lineLabels[2].setVisible(true);
 				tecButton[8].setVisible(true);
+				Sci.biology.point -= 2;
+				Sci.physics.point -= 1;
+				Sci.math.point -= 3;
+				Sci.art.point -= 3;
+				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+						+ Sci.art.point);
 				Refresh();
 			}
 		});
@@ -146,6 +169,14 @@ public class TecPanel extends JLabel {
 				tecButton[3].setavalible(false);
 				lineLabels[3].setVisible(true);
 				tecButton[6].setVisible(true);
+				Sci.chemistry.point -= 3;
+				Sci.biology.point -= 2;
+				Sci.math.point -= 2;
+				Sci.computer.point -= 1;
+				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+						+ Sci.art.point);
 				Refresh();
 			}
 		});
@@ -159,6 +190,14 @@ public class TecPanel extends JLabel {
 				tecButton[4].setavalible(false);
 				lineLabels[4].setVisible(true);
 				tecButton[7].setVisible(true);
+				Sci.physics.point -= 1;
+				Sci.math.point -= 4;
+				Sci.computer.point -= 4;
+				Sci.art.point -= 2;
+				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+						+ Sci.art.point);
 				Refresh();
 			}
 		});
@@ -174,6 +213,14 @@ public class TecPanel extends JLabel {
 				tecButton[7].setVisible(true);
 				lineLabels[2].setVisible(true);
 				tecButton[8].setVisible(true);
+				Sci.physics.point -= 4;
+				Sci.math.point -= 3;
+				Sci.computer.point -= 3;
+				Sci.art.point -= 2;
+				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+						+ Sci.art.point);
 				Refresh();
 			}
 		});
@@ -187,6 +234,16 @@ public class TecPanel extends JLabel {
 				tecButton[6].setavalible(false);
 				lineLabels[5].setVisible(true);
 				tecButton[9].setVisible(true);
+				Sci.chemistry.point -= 5;
+				Sci.biology.point -= 4;
+				Sci.physics.point -= 1;
+				Sci.math.point -= 4;
+				Sci.computer.point -= 3;
+				Sci.art.point -= 1;
+				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+						+ Sci.art.point);
 				Refresh();
 			}
 		});
@@ -198,6 +255,15 @@ public class TecPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				tecButton[7].ispressed = true;
 				tecButton[7].setavalible(false);
+				Sci.physics.point -= 6;
+				Sci.math.point -= 7;
+				Sci.computer.point -= 7;
+				Sci.art.point -= 3;
+				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+						+ Sci.art.point);
+				Refresh();
 			}
 		});
 		tecButton[8].setLocation(540, 245);
@@ -208,6 +274,16 @@ public class TecPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				tecButton[8].ispressed = true;
 				tecButton[8].setavalible(false);
+				Sci.chemistry.point -= 4;
+				Sci.physics.point -= 7;
+				Sci.math.point -= 7;
+				Sci.computer.point -= 6;
+				Sci.art.point -= 2;
+				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+						+ Sci.art.point);
+				Refresh();
 			}
 		});
 		tecButton[9].setLocation(540, 350);
@@ -218,6 +294,17 @@ public class TecPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				tecButton[9].ispressed = true;
 				tecButton[9].setavalible(false);
+				Sci.chemistry.point -= 5;
+				Sci.biology.point -= 7;
+				Sci.physics.point -= 1;
+				Sci.math.point -= 4;
+				Sci.computer.point -= 4;
+				Sci.art.point -= 2;
+				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+						+ Sci.art.point);
+				Refresh();
 			}
 		});
 
@@ -256,10 +343,10 @@ public class TecPanel extends JLabel {
 				Sci.physics.point, Sci.math.point, Sci.computer.point,
 				Sci.art.point };
 		int[][] pointsneed = { { 0, 0, 0, 4, 0, 0 }, { 0, 0, 1, 2, 0, 2 },
-				{ 0, 2, 1, 3, 0, 3 }, { 4, 1, 0, 1, 1, 0 },
-				{ 0, 0, 1, 4, 0, 2 }, { 0, 0, 4, 3, 0, 2 },
-				{ 5, 5, 1, 4, 1, 1 }, { 0, 0, 6, 7, 2, 5 },
-				{ 4, 0, 8, 8, 2, 3 }, { 7, 5, 1, 4, 1, 3 } };
+				{ 0, 2, 1, 3, 0, 3 }, { 3, 2, 0, 2, 1, 0 },
+				{ 0, 0, 1, 4, 4, 2 }, { 0, 0, 4, 3, 3, 2 },
+				{ 5, 4, 1, 4, 3, 1 }, { 0, 0, 6, 7, 7, 3 },
+				{ 4, 0, 7, 7, 6, 2 }, { 5, 7, 1, 4, 4, 2 } };
 		for (int i = 0; i <= 9; i++) {
 			boolean isproable = true;
 			for (int j = 0; j <= 5; j++) {

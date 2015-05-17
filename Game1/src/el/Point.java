@@ -24,11 +24,11 @@ public class Point{
 			b = 0;
 		if(c<=0)
 			c = 0;
-		GP = (int)(0.5*getBasic()*1+0.2*getBasic()*(a+b+c));
-		if(GP>30)
-			GP = 30;
-		if(GP<=0)
-			GP = 0;
+		GP = (int)(0.5*getBasic()*1+0.3*getBasic()*(a+b+c));
+		if(GP>33)
+			GP = 33;
+		if(GP<=5)
+			GP = 5;
 		Begin.HP = Begin.HP + GP;
 	}
 }

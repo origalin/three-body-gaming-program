@@ -237,6 +237,12 @@ public class GameWindow extends JFrame {
 						Sci.art.point };
 				sciPanel.setpoints(i);
 				sciPanel.pointsavailable.setText("可分配学科点：" + Begin.HP);
+					SciPanel.iconData[3].setText(Sci.math.point+"");
+					SciPanel.iconData[2].setText(Sci.physics.point+"");
+					SciPanel.iconData[0].setText(Sci.chemistry.point+"");
+					SciPanel.iconData[4].setText(Sci.computer.point+"");
+					SciPanel.iconData[5].setText(Sci.art.point+"");
+					SciPanel.iconData[1].setText(Sci.biology.point+"");
 				sciPanel.setVisible(true);
 			}
 		});
