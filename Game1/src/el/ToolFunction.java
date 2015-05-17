@@ -11,8 +11,8 @@ public class ToolFunction {
 	boolean isClicked = false;
 	static double ToolIR = 0;
 	static double OEIR = 0;
-	static int OHIR = 0;
-	static int OEMIR  = 0;
+	static double OHIR = 0;
+	static double OEMIR  = 0;
 	
 	public static void add(Tools tool){
 		if(tool.isClicked = true){
@@ -43,15 +43,15 @@ public class ToolFunction {
 		return OEIR;
 	}
 	
-	public static int OHIRF(){
-		OHIR = (int) (0.3*(0.2*mathPointSum + 0.21*physicsPointSum + 0.22*biologyPointSum + 
-				0.22*chemistryPointSum + 0.24*computerPointSum + 0.25*artPointSum + getToolIR()));
+	public static double OHIRF(){
+		OHIR = 0.3*(0.2*mathPointSum + 0.21*physicsPointSum + 0.22*biologyPointSum + 
+				0.22*chemistryPointSum + 0.24*computerPointSum + 0.25*artPointSum + getToolIR());
 		return OHIR;
 	}
 	
-	public static int OEMIRF(){
-		OEMIR = (int) (0.3*(-0.09*physicsPointSum + -0.135*biologyPointSum + -0.18*chemistryPointSum
-				+ -0.09*computerPointSum + getToolIR()));
+	public static double OEMIRF(){
+		OEMIR = 0.3*(-0.09*physicsPointSum + -0.135*biologyPointSum + -0.18*chemistryPointSum
+				+ -0.09*computerPointSum + getToolIR());
 		return OEMIR;
 	}
 
