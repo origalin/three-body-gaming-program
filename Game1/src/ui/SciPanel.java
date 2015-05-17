@@ -42,7 +42,8 @@ public class SciPanel extends JLabel {
 			new JTextField() };
 	int i1 = 0;
 	public static String[] iconTitle = {"化学","生物","物理","数学","计算机","艺术"};
-	public static String[] iconContains = {"需要4科技点\n工业生产的核心","需要2科技点\nFrankenstein！",
+	public static String[] iconContains = {"需要4科技点\n工业生产的核心,不过会对环境造成一定破坏哦",
+		"需要2科技点\nFrankenstein！对环境有一定影响",
 		"需要4科技点\n科技进步，经济增长，物理是破解奥秘的钥匙","需要5科技点\n发展其他各个学科的基础",
 		"需要3科技点\n科技进步离不开的尖端技术","需要3科技点\n陶冶情操，提高人民的幸福感"};
 

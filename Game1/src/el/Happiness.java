@@ -18,9 +18,10 @@ public class Happiness {
 		
 		n = (int) (Begin.HV + HI + ToolFunction.OHIRF());
 		
-		if(n<=100)
-			Begin.HV = n;
-		else
+		if(n<=0)
+			Begin.HV = 0;
+		else if(n>=100)
 			Begin.HV = 100;
+		else Begin.HV = n;
 	}	
 }

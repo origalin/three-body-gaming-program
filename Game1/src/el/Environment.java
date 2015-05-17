@@ -12,9 +12,10 @@ public class Environment {
 				-0.09*SciPanel.chemistrySum + -0.045*SciPanel.computerSum + 1;
 		
 		n = (int) (Begin.EMV + EMI + ToolFunction.OEMIRF());
-		if(n<=100)
-			Begin.EMV = n;
-		else
+		if(n<=0)
+			Begin.EMV = 0;
+		else if(n>=100)
 			Begin.EMV = 100;
+		else Begin.EMV = n;
 	}
 }

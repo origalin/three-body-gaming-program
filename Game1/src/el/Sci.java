@@ -5,16 +5,11 @@ public class Sci {
 	public static double EIR;
 	public double HI;
 	public double EMI;
-	public Sci(double hi,double emi){
-		point = 0;
-		HI = hi;
-		EMI = emi;
-	}
-	
-	public static Sci math = new Sci(0.2, 0);
-	public static Sci physics = new Sci(0.21, -0.09);
-	public static Sci chemistry = new Sci(0.22, -0.18);
-	public static Sci biology = new Sci(0.22, -0.135);
-	public static Sci computer = new Sci(0.24, -0.09);
-	public static Sci art = new Sci(0.25, 0);
+
+	public static Sci math = new Sci();
+	public static Sci physics = new Sci();
+	public static Sci chemistry = new Sci();
+	public static Sci biology = new Sci();
+	public static Sci computer = new Sci();
+	public static Sci art = new Sci();
 }

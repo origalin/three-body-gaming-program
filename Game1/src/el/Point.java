@@ -24,9 +24,9 @@ public class Point{
 			b = 0;
 		if(c<=0)
 			c = 0;
-		GP = (int)(0.5*getBasic()*(a+b+c+1));
-		if(GP>50)
-			GP = 50;
+		GP = (int)(0.5*getBasic()*1+0.2*getBasic()*(a+b+c));
+		if(GP>30)
+			GP = 30;
 		if(GP<=0)
 			GP = 0;
 		Begin.HP = Begin.HP + GP;
