@@ -2,18 +2,13 @@ package el;
 
 public class Sci {
 	public int point;
-	public double EIR;
+	public static double EIR;
 	public double HI;
 	public double EMI;
 	public Sci(double hi,double emi){
 		point = 0;
 		HI = hi;
 		EMI = emi;
-	}
-	
-	public double getEIR(double eir){
-		EIR = eir * Economy.getBasic() * point;
-		return EIR;
 	}
 	
 	public static Sci math = new Sci(0.2, 0);

@@ -14,7 +14,13 @@ import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class SciPanel extends JLabel {
-	public int availablepoints;
+	public static int mathSum;
+	public static int physicsSum;
+	public static int chemistrySum;
+	public static int biologySum;
+	public static int computerSum;
+	public static int artSum;
+	public static int availablepoints;
 	public static int[] scipoints = new int[6];
 	ImageIcon start1 = new ImageIcon("image/buttongreen1.png");
 	ImageIcon start2 = new ImageIcon("image/buttongreen2.png");
@@ -36,7 +42,9 @@ public class SciPanel extends JLabel {
 			new JTextField() };
 	int i1 = 0;
 	public static String[] iconTitle = {"化学","生物","物理","数学","计算机","艺术"};
-	public static String[] iconContains = {"","","","","",""};
+	public static String[] iconContains = {"需要4科技点\n工业生产的核心","需要2科技点\nFrankenstein！",
+		"需要4科技点\n科技进步，经济增长，物理是破解奥秘的钥匙","需要5科技点\n发展其他各个学科的基础",
+		"需要3科技点\n科技进步离不开的尖端技术","需要3科技点\n陶冶情操，提高人民的幸福感"};
 
 
 	public SciPanel(ImageIcon i) {
@@ -64,6 +72,7 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=5){
 					Sci.math.point++;
+					mathSum++;
 					Begin.HP -= 5;
 					iconData[3].setText(Sci.math.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
@@ -78,6 +87,7 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=4){
 					Sci.physics.point++;
+					physicsSum++;
 					Begin.HP -= 4;
 					iconData[2].setText(Sci.physics.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
@@ -93,6 +103,7 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=4){
 					Sci.chemistry.point++;
+					chemistrySum++;
 					Begin.HP -= 4;
 					iconData[0].setText(Sci.chemistry.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
@@ -108,6 +119,7 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=2){
 					Sci.computer.point++;
+					computerSum++;
 					Begin.HP -= 2;
 					iconData[4].setText(Sci.computer.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
@@ -123,6 +135,7 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=3){
 					Sci.art.point++;
+					artSum++;
 					Begin.HP -= 3;
 					iconData[5].setText(Sci.art.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
@@ -138,6 +151,7 @@ public class SciPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				if(Begin.HP>=3){
 					Sci.biology.point++;
+					biologySum++;
 					Begin.HP -= 3;
 					iconData[1].setText(Sci.biology.point+"");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);

@@ -1,37 +1,37 @@
 package el;
 
+import ui.SciPanel;
+
 public class Economy{
-	public static double basic = 0.015;
-	double EIR = 0;
+	public static double EIR = 0;
 	double HVEIR = 0;
 	double EMVEIR = 0;
 	
-	public static double getBasic(){
+	private static double getBasic(){
 		int n = 0;
 		int i = 0;
-		n = Begin.EV/500;
-		for(i=0;i<=(n-1);i++){
-			basic = basic - 0.001;
+		double basic = 0.05;
+		n = Begin.EV/100;
+		for(i=0;i<(n-1);i++){
+			basic -= 0.001;
 		}
 		return basic;
 	}
 
 	public void economy(){
 		
-		if(Begin.HV>60){
-			HVEIR = (Begin.HV-60)*0.001;//和幸福值关系
-		}
-		else if(Begin.HV<20){
-			HVEIR = (Begin.HV-20)*0.001;
+
+		if(Begin.HV<60){
+			HVEIR = (Begin.HV-60)*0.001;
 		}
 
-		else if(Begin.EMV<60){
+		if(Begin.EMV<60){
 			EMVEIR = (Begin.EMV-60)*0.0005;//和环境关系
 		}
 		
-		EIR = Sci.math.getEIR(2.4) + Sci.physics.getEIR(2.3) + Sci.biology.getEIR(2.3) + 
-				Sci.chemistry.getEIR(2.3) + Sci.art.getEIR(2.5) + Sci.computer.getEIR(2.1)
-			+ HVEIR + EMVEIR + ToolFunction.OEIRF();
+		EIR = Economy.getBasic()*(0.72*SciPanel.mathSum+0.69*(SciPanel.physicsSum+SciPanel.chemistrySum
+				+SciPanel.biologySum)+0.63*SciPanel.artSum+0.75*SciPanel.computerSum)+
+				HVEIR + EMVEIR + ToolFunction.OEIRF() - 0.001;
 
 		Begin.EV = (int) (Begin.EV * (EIR+1));
 	}

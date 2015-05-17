@@ -30,7 +30,7 @@ public class ToolFunction {
 		int i = 0;
 		int n = 0;
 		n = moneySum/10;
-		for(i=0;i<=n;i++){
+		for(i=0;i<n;i++){
 			ToolIR = ToolIR + 0.001;
 		}
 		return ToolIR;

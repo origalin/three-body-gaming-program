@@ -20,7 +20,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
@@ -244,7 +243,6 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Theory.judgeSumA();
 				tecPanel.pointsfield.setText("化学:" + Sci.physics.point + " 生物:"
 						+ Sci.biology.point + " 物理:" + Sci.physics.point
 						+ " 数学:" + Sci.math.point + " 计算机:"
@@ -289,7 +287,8 @@ public class GameWindow extends JFrame {
 				// TODO Auto-generated method stub
 				Next next = new Next();
 				next.goNext();
-				topPanel.topLabel.setText("星球属性：" + Begin.EV);
+				topPanel.topLabel.setText("经济值"+Begin.EV+" "+"幸福值"+Begin.HV+" "+"环境值"+Begin.EMV);
+				 
 			}
 		});
 

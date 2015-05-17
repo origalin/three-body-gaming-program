@@ -1,18 +1,20 @@
 package el;
 
+import ui.SciPanel;
+
 public class Happiness {
 	double HI = 0;
 	int n  = 0;
 	public void happiness(){
-		if(Begin.EV>700){
-			HI = (Begin.EV-700)*0.05;
+		if(Begin.EV>500){
+			HI = (Begin.EV-500)*0.02;
 		}		
-		if(Begin.EV<400){
-			HI = (Begin.EV-400)*0.03;
+		if(Begin.EV<50){
+			HI = (Begin.EV-50)*0.04;
 		}
 		
-		HI = 0.2*ToolFunction.mathPointSum + 0.21*ToolFunction.physicsPointSum + 0.22*ToolFunction.biologyPointSum + 
-				0.22*ToolFunction.chemistryPointSum + 0.24*ToolFunction.computerPointSum + 0.25*ToolFunction.artPointSum;
+		HI = 0.05*SciPanel.mathSum + 0.06*SciPanel.physicsSum + 0.07*SciPanel.biologySum + 
+				0.07*SciPanel.chemistrySum + 0.09*SciPanel.computerSum + 0.1*SciPanel.artSum -2;
 		
 		n = (int) (Begin.HV + HI + ToolFunction.OHIRF());
 		

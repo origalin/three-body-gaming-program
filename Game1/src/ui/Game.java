@@ -4,8 +4,6 @@ import java.awt.DisplayMode;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
-import el.Sci;
-
 public class Game {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

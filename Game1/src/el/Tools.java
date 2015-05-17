@@ -44,5 +44,5 @@ public class Tools {
 			tool.emvDamage=0;
 	}
 
-	Tools plane = new Tools(1,2,3,4,5,6,7,8);
+	public static Tools plane = new Tools(1,2,3,4,5,6,7,8);
 }

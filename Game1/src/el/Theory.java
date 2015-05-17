@@ -27,24 +27,6 @@ public class Theory {
 //			对应物品会出现在建造栏中
 	}
 	
-	private static boolean judgeA(Theory theory){
-		if(Sci.math.point>=theory.mathPoint&&
-			Sci.physics.point>=theory.physicsPoint&&
-			Sci.biology.point>=theory.biologyPoint&&
-			Sci.chemistry.point>=theory.chemistryPoint&&
-			Sci.art.point>=theory.artPoint&&
-			Sci.computer.point>=theory.artPoint)
-			return true;
-		return false;
-	}
-
-
-	public static void judgeSumA() {
-		judgeA(fly);
-	}	
-	
-	public static Theory fly = new Theory(1,2,3,4,5,6);
-	
 	public static Theory  geometry=new Theory(0,0,1,2,0,2);//几何
 	public static Theory calculus=new Theory(0,0,0,4,0,0);//微积分
 	public static Theory computerScience=new Theory(0,0,1,4,0,2);//计算机科学
