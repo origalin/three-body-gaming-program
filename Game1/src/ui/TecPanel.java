@@ -358,6 +358,9 @@ public class TecPanel extends JLabel {
 
 				tecButton[i].setavalible(true);
 			}
+			else {
+				tecButton[i].setavalible(false);
+			}
 		}
 		if (!tecButton[4].ispressed || !tecButton[5].ispressed) {
 			tecButton[7].setavalible(false);
