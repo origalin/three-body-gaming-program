@@ -19,16 +19,24 @@ public class Game {
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		JFrame hello = new JFrame();
-		hello.setSize(300, 300);
+		hello.setSize(500, 500);
 		JPanel thePanel = (JPanel) hello.getContentPane();
 		thePanel.setOpaque(false);
-		thePanel.add(new JLabel(new ImageIcon("image/messagepanel.png")));
+		thePanel.add(new JLabel(new ImageIcon("image/beforepanel.png")));
 		thePanel.setVisible(true);
 		hello.setUndecorated(true);
 		AWTUtilities.setWindowOpaque(hello, false);
 		hello.setLocationRelativeTo(null);
 		hello.setVisible(true);
-		Thread.sleep(1000);
+		for(int i = 0;i<=10;i++) {
+			Thread.sleep(10);
+			AWTUtilities.setWindowOpacity(hello, (float) (0.1*i));
+		}
+		Thread.sleep(2000);
+		for(int i = 10;i>=0;i--) {
+			Thread.sleep(10);
+			AWTUtilities.setWindowOpacity(hello, (float) (0.1*i));
+		}
 		hello.dispose();
 
 		GraphicsEnvironment ge = GraphicsEnvironment
