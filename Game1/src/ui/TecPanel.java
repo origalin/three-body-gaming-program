@@ -33,7 +33,7 @@ public class TecPanel extends JLabel {
 	static JLabel[] lineLabels = new JLabel[6];
 	ImageButton confirmButton = new ImageButton(start1, start2, start3, false);
 	static String[] textTitle = {"微积分","几何","微观物质结构","生态学","计算机科学","机械与力学","有机化学","人工智能","核理论","生物工程"};
-	static String[] textContains =  {"","","","","","","","","",""};
+	static String[] textContains =  {"高等数学的一部分，科学体系的根基","研究空间区域关系的数学分支","在分子、原子层次上研究物质的组成、性质、结构与变化规律,研究物质组成","行星生态体系的研究，是掌握生命钥匙的开始","信息技术的飞跃，具有无限可能\n解锁：电子管计算机 多媒体设备","工程技术投入应用，用钢铁代替血肉\n解锁：载具 高精度工具","有机化合物及有机物质的结构、性质、反应的发现\n解锁：塑料","从绝对理性到感性的突破，社会伦理将因此改变\n解锁：智能机械","掌握物质深处的巨大能量\n解锁：核武器","这个种族已然主宰生命的一部分\n解锁：生物制药"};
 	public TecPanel(ImageIcon i) {
 		super(i);
 		setBounds(232, 48, i.getIconWidth(), i.getIconHeight());

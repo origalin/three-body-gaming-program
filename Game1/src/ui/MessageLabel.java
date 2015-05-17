@@ -4,6 +4,7 @@ import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
@@ -12,7 +13,7 @@ public  class MessageLabel extends JLabel{
 	static int y;
 	static ImageIcon messageIcon = new ImageIcon("image/messagepanel.png");
 	static JTextField title = new JTextField();
-	static JTextField contains = new JTextField();
+	static JTextArea contains = new JTextArea();
 	public MessageLabel() {
 		
 		super(messageIcon);
@@ -28,6 +29,7 @@ public  class MessageLabel extends JLabel{
 		contains.setBounds(5,50,240,100);
 		contains.setOpaque(false);
 		contains.setBorder(null);
+		contains.setLineWrap(true);
 		contains.setFont(new Font("ËÎÌו", Font.BOLD, 15));
 		add(title);
 		add(contains);
