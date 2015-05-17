@@ -6,12 +6,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -34,12 +30,13 @@ public class SciPanel extends JLabel {
 	ImageButton artButton = new ImageButton(icon1, icon2, icon3, false);
 	ImageButton bioButton = new ImageButton(icon1, icon2, icon3, false);
 	JTextField pointsavailable = new JTextField();
-	ArrayList<ImageButton> sciIcon = new ArrayList<ImageButton>();
+	static ArrayList<ImageButton> sciIcon = new ArrayList<ImageButton>();
 	JTextField[] iconData = { new JTextField(), new JTextField(),
 			new JTextField(), new JTextField(), new JTextField(),
 			new JTextField() };
 	int i1 = 0;
-	
+	public static String[] iconTitle = {"化学","生物","物理","数学","计算机","艺术"};
+	public static String[] iconContains = {"","","","","",""};
 
 
 	public SciPanel(ImageIcon i) {
@@ -65,12 +62,11 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=14){
+				if(Begin.HP>=5){
 					Sci.math.point++;
-					availablepoints -= 14;
-					Begin.HP -= 14;
+					Begin.HP -= 5;
 					iconData[3].setText(Sci.math.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 			}
 		});
@@ -80,12 +76,11 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=11){
+				if(Begin.HP>=4){
 					Sci.physics.point++;
-					availablepoints -= 11;
-					Begin.HP -= 11;
+					Begin.HP -= 4;
 					iconData[2].setText(Sci.physics.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 
 			}
@@ -96,12 +91,11 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=11){
+				if(Begin.HP>=4){
 					Sci.chemistry.point++;
-					availablepoints -= 11;
-					Begin.HP -= 11;
+					Begin.HP -= 4;
 					iconData[0].setText(Sci.chemistry.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 
 			}
@@ -112,12 +106,11 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=11){
+				if(Begin.HP>=2){
 					Sci.computer.point++;
-					availablepoints -= 10;
-					Begin.HP -= 10;
+					Begin.HP -= 2;
 					iconData[4].setText(Sci.computer.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 
 			}
@@ -128,12 +121,11 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=11){
+				if(Begin.HP>=3){
 					Sci.art.point++;
-					availablepoints -= 12;
-					Begin.HP -= 12;
+					Begin.HP -= 3;
 					iconData[5].setText(Sci.art.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 
 			}
@@ -144,12 +136,11 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				if(Begin.HP>=11){
+				if(Begin.HP>=3){
 					Sci.biology.point++;
-					availablepoints -= 11;
-					Begin.HP -= 11;
+					Begin.HP -= 3;
 					iconData[1].setText(Sci.biology.point+"");
-					pointsavailable.setText("可分配学科点：" + availablepoints);
+					pointsavailable.setText("可分配学科点：" + Begin.HP);
 				}
 			}
 		});
@@ -192,10 +183,6 @@ public class SciPanel extends JLabel {
 
 	void setpoints(int[] i) {
 		scipoints = i;// 顺序：化学 生物 物理 数学 计算机 艺术
-	}
-
-	void setpointsavailable(int i) {
-		availablepoints = i;
 	}
 
 }

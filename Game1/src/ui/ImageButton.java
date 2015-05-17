@@ -1,19 +1,18 @@
 package ui;
 
-import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.Insets;
-import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 class ImageButton extends JButton {
+	ImageIcon disable;
+	boolean ispressed = false;
 	public ImageButton(ImageIcon normalImage, ImageIcon mouseOverImage,
 			ImageIcon mouseDownImage, boolean isdisabled) {
 		super();
+		setUI(new MyButtonUI());
+		disable = mouseOverImage;
 		this.setSize(normalImage.getIconWidth(), normalImage.getIconHeight());
 		setMargin(new Insets(0, 0, 0, 0));// 设置边距
 		setContentAreaFilled(false);// 不绘制按钮区域
