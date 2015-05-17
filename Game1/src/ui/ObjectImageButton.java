@@ -13,7 +13,7 @@ public class ObjectImageButton extends ImageButton {
 			ImageIcon mouseDownImage, boolean isdisabled) {
 		
 		super(normalImage, mouseOverImage, mouseDownImage, isdisabled);
-		this.setSize(60,60);
+		
 		// TODO Auto-generated constructor stub
 		
 		
