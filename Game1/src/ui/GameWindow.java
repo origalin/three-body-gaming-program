@@ -226,6 +226,7 @@ public class GameWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				dispose();
+				System.exit(0);
 			}
 		});
 		bottombottons[0].addActionListener(new ActionListener() {
