@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 
 public class ObjectImageButton extends ImageButton {
 	public int location=-1;
-
 	public ObjectImageButton(ImageIcon normalImage, ImageIcon mouseOverImage,
 			ImageIcon mouseDownImage, boolean isdisabled) {
 		
