@@ -49,7 +49,6 @@ public class TecPanel extends JLabel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				setVisible(false);
-				Refresh();
 			}
 		});
 		add(confirmButton);
@@ -99,6 +98,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				tecButton[0].ispressed = true;
+				tecButton[0].setavalible(false);
 				lineLabels[0].setVisible(true);
 				tecButton[4].setVisible(true);
 				Refresh();
@@ -110,6 +111,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				tecButton[1].ispressed = true;
+				tecButton[1].setavalible(false);
 				lineLabels[1].setVisible(true);
 				tecButton[5].setVisible(true);
 				Refresh();
@@ -121,6 +124,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				tecButton[2].ispressed = true;
+				tecButton[2].setavalible(false);
 				lineLabels[2].setVisible(true);
 				tecButton[8].setVisible(true);
 				Refresh();
@@ -132,6 +137,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				tecButton[3].ispressed = true;
+				tecButton[3].setavalible(false);
 				lineLabels[3].setVisible(true);
 				tecButton[6].setVisible(true);
 				Refresh();
@@ -143,6 +150,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				tecButton[4].ispressed = true;
+				tecButton[4].setavalible(false);
 				lineLabels[4].setVisible(true);
 				tecButton[7].setVisible(true);
 				Refresh();
@@ -154,6 +163,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				tecButton[5].ispressed = true;
+				tecButton[5].setavalible(false);
 				lineLabels[4].setVisible(true);
 				tecButton[7].setVisible(true);
 				lineLabels[2].setVisible(true);
@@ -167,6 +178,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				tecButton[6].ispressed = true;
+				tecButton[6].setavalible(false);
 				lineLabels[5].setVisible(true);
 				tecButton[9].setVisible(true);
 				Refresh();
@@ -178,7 +191,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-
+				tecButton[7].ispressed = true;
+				tecButton[7].setavalible(false);
 			}
 		});
 		tecButton[8].setLocation(540, 245);
@@ -187,7 +201,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-
+				tecButton[8].ispressed = true;
+				tecButton[8].setavalible(false);
 			}
 		});
 		tecButton[9].setLocation(540, 350);
@@ -196,7 +211,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-
+				tecButton[9].ispressed = true;
+				tecButton[9].setavalible(false);
 			}
 		});
 
