@@ -1,7 +1,5 @@
 package el;
 
-import java.io.ObjectInputStream.GetField;
-
 public class Sci {
 	public int point;
 	public double EIR;
