@@ -312,6 +312,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
+
 				// TODO 自动生成的方法存根
 
 
@@ -354,7 +355,7 @@ public class GameWindow extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 
-				messageLabel.setLocation(tecPanel.tecButton[0].getLocation().x+50,tecPanel.tecButton[0].getLocation().y+50);
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
 				MessageLabel.setTitle(TecPanel.textTitle[0]);
 				messageLabel.setVisible(true);
 			}
