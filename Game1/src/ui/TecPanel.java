@@ -255,11 +255,11 @@ public class TecPanel extends JLabel {
 		int[] points = { Sci.chemistry.point, Sci.biology.point,
 				Sci.physics.point, Sci.math.point, Sci.computer.point,
 				Sci.art.point };
-		int[][] pointsneed = { { 0,0,0,4,0,0 }, { 0,0,1,2,0,2 },
-				{ 0,2,1,3,0,3 }, { 4,1,0,1,1,0 },
-				{ 0,0,1,4,0,2}, { 0,0,4,3,0,2 },
-				{ 5,5,1,4,1,1 }, {0,0,6,7,2,5 },
-				{ 4,0,8,8,2,3 }, { 7,5,1,4,1,3 } };
+		int[][] pointsneed = { { 0, 0, 0, 4, 0, 0 }, { 0, 0, 1, 2, 0, 2 },
+				{ 0, 2, 1, 3, 0, 3 }, { 4, 1, 0, 1, 1, 0 },
+				{ 0, 0, 1, 4, 0, 2 }, { 0, 0, 4, 3, 0, 2 },
+				{ 5, 5, 1, 4, 1, 1 }, { 0, 0, 6, 7, 2, 5 },
+				{ 4, 0, 8, 8, 2, 3 }, { 7, 5, 1, 4, 1, 3 } };
 		for (int i = 0; i <= 9; i++) {
 			boolean isproable = true;
 			for (int j = 0; j <= 5; j++) {
