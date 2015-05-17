@@ -49,6 +49,7 @@ public class GameWindow extends JFrame {
 	public static int x;
 	public static int y;
 	final MessageLabel messageLabel;
+	int tec;
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -58,7 +59,7 @@ public class GameWindow extends JFrame {
 		backgroundTec = new ImageIcon("image/tecpanel.png");
 		background = new ImageIcon("image/background.png");// 背景图片
 		backgroundTitle = new ImageIcon("image/title.png");
-		objectBackground =new ImageIcon("image/prdpanel.png");
+		objectBackground = new ImageIcon("image/prdpanel.png");
 		final ImageIcon start1 = new ImageIcon("image/button1.png");
 		ImageIcon start2 = new ImageIcon("image/button2.png");
 		ImageIcon start3 = new ImageIcon("image/button3.png");
@@ -128,8 +129,8 @@ public class GameWindow extends JFrame {
 				backgroundMain.getIconHeight());
 		mainPanel.add(labelBackground);
 		imagePanel.add(mainPanel);
-		
-		//创建顶部面板
+
+		// 创建顶部面板
 		topPanel = new TopPanel();
 		topPanel.setVisible(false);
 		frontPanel.add(topPanel, -1);
@@ -183,11 +184,11 @@ public class GameWindow extends JFrame {
 		tecPanel = new TecPanel(backgroundTec);
 		tecPanel.setVisible(false);
 		frontPanel.add(tecPanel, 0);
-		
-//		创建生产面板
-		objectPanel=new ObjectPanel(objectBackground);
+
+		// 创建生产面板
+		objectPanel = new ObjectPanel(objectBackground);
 		objectPanel.setVisible(false);
-		frontPanel.add(objectPanel,0);
+		frontPanel.add(objectPanel, 0);
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
 
@@ -195,7 +196,6 @@ public class GameWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 
-				
 				labelTitle.setVisible(false);
 				for (ImageButton im : bottombottons) {
 					im.setVisible(true);
@@ -232,8 +232,9 @@ public class GameWindow extends JFrame {
 		bottombottons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int i[] = {Sci.chemistry.point,Sci.biology.point,Sci.physics.point,
-						Sci.math.point,Sci.computer.point,Sci.art.point};
+				int i[] = { Sci.chemistry.point, Sci.biology.point,
+						Sci.physics.point, Sci.math.point, Sci.computer.point,
+						Sci.art.point };
 				sciPanel.setpoints(i);
 				sciPanel.pointsavailable.setText("可分配学科点：" + Begin.HP);
 				sciPanel.setVisible(true);
@@ -244,13 +245,16 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Theory.judgeSumA();
-				tecPanel.pointsfield.setText("化学:"+Sci.physics.point+ " 生物:"+Sci.biology.point+ " 物理:" +Sci.physics.point+ " 数学:"+Sci.math.point +" 计算机:"+Sci.computer.point+ " 艺术:"+Sci.art.point);
+				tecPanel.pointsfield.setText("化学:" + Sci.physics.point + " 生物:"
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				tecPanel.Refresh();
 				tecPanel.setVisible(true);
 			}
 		});
 		bottombottons[2].addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -277,18 +281,17 @@ public class GameWindow extends JFrame {
 				repaint();
 			}
 		});
-		
-		
+
 		roundButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Next next = new Next();
 				next.goNext();
-				topPanel.topLabel.setText("星球属性："+Begin.EV);
+				topPanel.topLabel.setText("星球属性：" + Begin.EV);
 			}
-		});		
+		});
 
 		// 设置鼠标
 		String url = "image/cursor.gif"; // 储存鼠标图片的位置
@@ -296,22 +299,21 @@ public class GameWindow extends JFrame {
 		Image image = new ImageIcon(url).getImage();
 		Cursor cursor = tk.createCustomCursor(image, new Point(0, 0), "invisi");
 		setCursor(cursor); // panel 也可以是其他组件
-		
-		//获取鼠标坐标
+
+		// 获取鼠标坐标
 		addMouseMotionListener(new MouseMotionListener() {
-			
+
 			@Override
 			public void mouseMoved(MouseEvent e) {
 				// TODO 自动生成的方法存根
 				x = e.getX();
 				y = e.getY();
 			}
-			
+
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				
-				
+
 			}
 		});
 
@@ -321,49 +323,573 @@ public class GameWindow extends JFrame {
 		this.setUndecorated(true);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);
-		
-		//设置信息面板
+
+		// 设置信息面板
 		messageLabel = new MessageLabel();
 		messageLabel.setVisible(false);
-		frontPanel.add(messageLabel,0);
-		for(final ImageButton im : tecPanel.tecButton) {
-			im.addMouseListener(new MouseListener() {
-				
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO 自动生成的方法存根
-					
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO 自动生成的方法存根
-					
-				}
-				
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO 自动生成的方法存根
-					messageLabel.setVisible(false);
-				}
-				
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO 自动生成的方法存根
+		frontPanel.add(messageLabel, 0);
+		// 科技按钮的信息内容（很长。。。。）
+		tecPanel.tecButton[0].addMouseListener(new MouseListener() {
 
-					messageLabel.setLocation(GameWindow.x, GameWindow.y);
-					messageLabel.setVisible(true);
-				}
-				
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO 自动生成的方法存根
-					
-				}
-			});
-		}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
 
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(TecPanel.textTitle[0]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		tecPanel.tecButton[1].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(TecPanel.textTitle[1]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		tecPanel.tecButton[2].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(TecPanel.textTitle[2]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		tecPanel.tecButton[3].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(TecPanel.textTitle[3]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		tecPanel.tecButton[4].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(TecPanel.textTitle[4]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		tecPanel.tecButton[5].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(TecPanel.textTitle[5]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		tecPanel.tecButton[6].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(TecPanel.textTitle[6]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		tecPanel.tecButton[7].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(TecPanel.textTitle[7]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		tecPanel.tecButton[8].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(TecPanel.textTitle[8]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		tecPanel.tecButton[9].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(TecPanel.textTitle[9]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		// 学科按钮的信息内容（也很长。。。。）
+		sciPanel.cheButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(SciPanel.iconTitle[0]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		sciPanel.bioButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(SciPanel.iconTitle[1]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		sciPanel.phyButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(SciPanel.iconTitle[2]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		sciPanel.mathButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(SciPanel.iconTitle[3]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		sciPanel.comButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x, GameWindow.y);
+				MessageLabel.setTitle(SciPanel.iconTitle[4]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		sciPanel.artButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x+50, GameWindow.y+50);
+				MessageLabel.setTitle(SciPanel.iconTitle[5]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
 	}
 
 }
-

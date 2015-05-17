@@ -32,7 +32,8 @@ public class TecPanel extends JLabel {
 	static ImageIcon[] lineImageIcons = new ImageIcon[6];
 	static JLabel[] lineLabels = new JLabel[6];
 	ImageButton confirmButton = new ImageButton(start1, start2, start3, false);
-
+	static String[] textTitle = {"微积分","几何","微观物质结构","生态学","计算机科学","机械与力学","有机化学","人工智能","核理论","生物工程"};
+	static String[] textContains =  {"","","","","","","","","",""};
 	public TecPanel(ImageIcon i) {
 		super(i);
 		setBounds(232, 48, i.getIconWidth(), i.getIconHeight());

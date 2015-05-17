@@ -30,12 +30,13 @@ public class SciPanel extends JLabel {
 	ImageButton artButton = new ImageButton(icon1, icon2, icon3, false);
 	ImageButton bioButton = new ImageButton(icon1, icon2, icon3, false);
 	JTextField pointsavailable = new JTextField();
-	ArrayList<ImageButton> sciIcon = new ArrayList<ImageButton>();
+	static ArrayList<ImageButton> sciIcon = new ArrayList<ImageButton>();
 	JTextField[] iconData = { new JTextField(), new JTextField(),
 			new JTextField(), new JTextField(), new JTextField(),
 			new JTextField() };
 	int i1 = 0;
-	
+	public static String[] iconTitle = {"化学","生物","物理","数学","计算机","艺术"};
+	public static String[] iconContains = {"","","","","",""};
 
 
 	public SciPanel(ImageIcon i) {
