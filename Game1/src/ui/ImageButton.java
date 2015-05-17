@@ -7,6 +7,7 @@ import javax.swing.JButton;
 @SuppressWarnings("serial")
 class ImageButton extends JButton {
 	ImageIcon disable;
+	boolean ispressed = false;
 	public ImageButton(ImageIcon normalImage, ImageIcon mouseOverImage,
 			ImageIcon mouseDownImage, boolean isdisabled) {
 		super();
