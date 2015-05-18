@@ -35,8 +35,8 @@ public class GameWindow extends JFrame {
 	TecPanel tecPanel;
 	ObjectPanel objectPanel;
 	private ImageIcon backgroundTitle;
-	ImageIcon backgroundMain;
-	JPanel mainPanel;
+	ImageIcon planet;
+	JPanel lightPanel;
 	JLabel labelTitle;
 	JLabel bottomLabel;
 	ImageButton pauseButton;
@@ -49,6 +49,9 @@ public class GameWindow extends JFrame {
 	public static int y;
 	final MessageLabel messageLabel;
 	int tec;
+	static JLabel light1;
+	static JLabel light2;
+	static JLabel light3;
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -116,18 +119,32 @@ public class GameWindow extends JFrame {
 		pauseButton.setVisible(false);
 
 		// 创建星球图片
-		backgroundMain = new ImageIcon("image/planet.png");
-		backgroundMain.setImage(backgroundMain.getImage().getScaledInstance(
+		planet = new ImageIcon("image/planet.png");
+		planet.setImage(planet.getImage().getScaledInstance(
 				600, 600, Image.SCALE_DEFAULT));
-		mainPanel = new JPanel();
-		JLabel labelBackground = new JLabel(backgroundMain);// 把背景图片显示在一个标签里面
-		labelBackground.setBounds(0, 0, backgroundMain.getIconWidth(),
-				backgroundMain.getIconHeight());
-		mainPanel.setOpaque(false);
-		mainPanel.setBounds(360, 30, backgroundMain.getIconWidth(),
-				backgroundMain.getIconHeight());
-		mainPanel.add(labelBackground);
-		imagePanel.add(mainPanel);
+		lightPanel = new JPanel();
+		JLabel planetLabel = new JLabel(planet);// 把背景图片显示在一个标签里面
+		light1 = new JLabel(new ImageIcon("image/light1.png"));
+		light1.setBounds(0, 0, light1.getIcon().getIconWidth(), light1.getIcon().getIconHeight());
+		light1.setVisible(false);
+		light2 = new JLabel(new ImageIcon("image/light2.png"));
+		light2.setBounds(0, 0, light1.getIcon().getIconWidth(), light1.getIcon().getIconHeight());
+		light2.setVisible(false);
+		light3 = new JLabel(new ImageIcon("image/light3.png"));
+		light3.setBounds(0, 0, light1.getIcon().getIconWidth(), light1.getIcon().getIconHeight());
+		light3.setVisible(false);
+		planetLabel.setBounds(360, 30, planet.getIconWidth(),
+				planet.getIconHeight());
+		planetLabel.setOpaque(false);
+		lightPanel.setOpaque(false);
+		lightPanel.setBounds(360, 30, planet.getIconWidth(),
+				planet.getIconHeight());
+		lightPanel.add(light1);
+		lightPanel.add(light2);
+		lightPanel.add(light3);
+//		lightPanel.add(planetLabel);
+		imagePanel.add(lightPanel);
+		imagePanel.add(planetLabel);
 
 		// 创建顶部面板
 		topPanel = new TopPanel();
@@ -283,7 +300,7 @@ public class GameWindow extends JFrame {
 					im.setVisible(false);
 				}
 				labelTitle.setVisible(true);
-				repaint();
+//				repaint();
 			}
 		});
 
@@ -304,6 +321,7 @@ public class GameWindow extends JFrame {
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Image image = new ImageIcon(url).getImage();
 		Cursor cursor = tk.createCustomCursor(image, new Point(0, 0), "invisi");
+		
 		setCursor(cursor); // panel 也可以是其他组件
 
 		// 获取鼠标坐标

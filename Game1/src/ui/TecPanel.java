@@ -124,6 +124,7 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				GameWindow.light1.setVisible(true);
 				tecButton[1].ispressed = true;
 				tecButton[1].setavalible(false);
 				lineLabels[1].setVisible(true);
@@ -186,6 +187,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				GameWindow.light1.setVisible(false);
+				GameWindow.light2.setVisible(true);
 				tecButton[4].ispressed = true;
 				tecButton[4].setavalible(false);
 				lineLabels[4].setVisible(true);
@@ -292,6 +295,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				GameWindow.light2.setVisible(false);
+				GameWindow.light3.setVisible(true);
 				tecButton[9].ispressed = true;
 				tecButton[9].setavalible(false);
 				Sci.chemistry.point -= 5;
