@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
@@ -52,6 +53,8 @@ public class GameWindow extends JFrame {
 	static JLabel light1;
 	static JLabel light2;
 	static JLabel light3;
+	int time = 1020;
+	JTextField timeField;
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -109,6 +112,14 @@ public class GameWindow extends JFrame {
 		timeLabel = new JLabel(message);
 		timeLabel.setBounds(1060, 20, message.getIconWidth(),
 				message.getIconHeight());
+		timeField = new JTextField();
+		timeField.setBounds(10, 5, 100, 40);
+		timeField.setBorder(null);
+		timeField.setEditable(false);
+		timeField.setOpaque(false);
+		timeField.setFont(new Font("微软雅黑", Font.BOLD, 20));
+		timeField.setText("AC "+time);
+		timeLabel.add(timeField);
 		frontPanel.add(timeLabel);
 		timeLabel.setVisible(false);
 
@@ -312,6 +323,8 @@ public class GameWindow extends JFrame {
 				Next next = new Next();
 				next.goNext();
 				topPanel.topLabel.setText("经济值"+Begin.EV+" "+"幸福值"+Begin.HV+" "+"环境值"+Begin.EMV);
+				time++;
+				timeField.setText("AC "+time);
 				 
 			}
 		});
