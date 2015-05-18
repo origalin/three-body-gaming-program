@@ -18,6 +18,7 @@ import javax.swing.Timer;
 import el.Sci;
 
 public class TecPanel extends JLabel {
+	public static boolean judge[] = {false,false,false,false,false,false,false,false,false,false};
 	JTextField pointsfield;
 	ImageIcon start1 = new ImageIcon("image/button1.png");
 	ImageIcon start2 = new ImageIcon("image/button2.png");
@@ -131,6 +132,7 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
+				judge[0] = true;
 				Refresh();
 			}
 		});
@@ -152,6 +154,7 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
+				judge[1] = true;
 				Refresh();
 			}
 		});
@@ -173,6 +176,7 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
+				judge[2] = true;
 				Refresh();
 			}
 		});
@@ -195,6 +199,7 @@ public class TecPanel extends JLabel {
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
 				Refresh();
+				judge[3] = true;
 			}
 		});
 		tecButton[4].setLocation(305, 35);
@@ -217,6 +222,7 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
+				judge[4] = true;
 				Refresh();
 			}
 		});
@@ -240,6 +246,7 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
+				judge[5] = true;
 				Refresh();
 			}
 		});
@@ -263,6 +270,7 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
+				judge[6] = true;
 				Refresh();
 			}
 		});
@@ -282,6 +290,7 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
+				judge[7] = true;
 				Refresh();
 			}
 		});
@@ -302,6 +311,7 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
+				judge[8] = true;
 				Refresh();
 			}
 		});
@@ -325,6 +335,7 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
+				judge[9] = true;
 				Refresh();
 			}
 		});
