@@ -326,11 +326,11 @@ public class GameWindow extends JFrame {
 		});
 
 		imagePanel.add(label);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(background.getIconWidth(), background.getIconHeight());
-		this.setUndecorated(true);
-		this.setVisible(true);
-		this.setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(background.getIconWidth(), background.getIconHeight());
+		setUndecorated(true);
+		//setVisible(true);
+		setLocationRelativeTo(null);
 
 		// 设置信息面板
 		messageLabel = new MessageLabel();
