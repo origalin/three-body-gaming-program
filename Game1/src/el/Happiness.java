@@ -3,7 +3,7 @@ package el;
 import ui.SciPanel;
 
 public class Happiness {
-	double HI = 0;
+	static double HI = 0;
 	int n  = 0;
 	public void happiness(){
 		if(Begin.EV>500){

@@ -3,7 +3,7 @@ package el;
 import ui.SciPanel;
 
 public class Environment {
-	double EMI = 0;
+	static double EMI = 0;
 	int n  = 0;
 	
 	public void environment(){
