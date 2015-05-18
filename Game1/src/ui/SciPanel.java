@@ -222,16 +222,31 @@ public class SciPanel extends JLabel {
 		if (Begin.HP < 5) {
 			mathButton.setavalible(false);
 		}
+		else {
+			mathButton.setavalible(true);
+		}
 		if (Begin.HP < 4) {
 			phyButton.setavalible(false);
 			cheButton.setavalible(false);
 		}
+		else {
+			phyButton.setavalible(true);
+			cheButton.setavalible(true);
+		}
+		
 		if (Begin.HP < 3) {
 			bioButton.setavalible(false);
 			artButton.setavalible(false);
 		}
+		else {
+			bioButton.setavalible(true);
+			artButton.setavalible(true);
+		}
 		if (Begin.HP < 2) {
 			comButton.setavalible(false);
+		}
+		else {
+			comButton.setavalible(true);
 		}
 
 	}
