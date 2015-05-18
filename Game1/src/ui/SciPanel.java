@@ -1,15 +1,18 @@
 package ui;
 
 import el.*;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 
 @SuppressWarnings("serial")
@@ -61,7 +64,19 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				setVisible(false);
+				final Timer t = new Timer(10,new ActionListener() {
+					int i = 0;					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO 自动生成的方法存根
+						i+=1;
+						
+						if (i<=5) {
+							setLocation(getLocation().x, 48+((720-48)/5*i));
+						}
+					}
+				});
+				t.start();
 			}
 		});
 		add(confirmButton);

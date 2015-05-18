@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
@@ -271,7 +272,21 @@ public class GameWindow extends JFrame {
 					SciPanel.iconData[4].setText(Sci.computer.point+"");
 					SciPanel.iconData[5].setText(Sci.art.point+"");
 					SciPanel.iconData[1].setText(Sci.biology.point+"");
-				sciPanel.setVisible(true);
+					sciPanel.setLocation(232, 720);
+					sciPanel.setVisible(true);
+					final Timer t = new Timer(10,new ActionListener() {
+						int i = 0;
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO 自动生成的方法存根
+							i+=1;							
+							if (i<=5) {
+								sciPanel.setLocation(sciPanel.getLocation().x, 720-((720-48)/5*i));
+							}
+						}
+					});
+					t.start();
 			}
 		});
 		bottombottons[1].addActionListener(new ActionListener() {
@@ -283,7 +298,21 @@ public class GameWindow extends JFrame {
 						+ " 数学:" + Sci.math.point + " 计算机:"
 						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				tecPanel.Refresh();
+				tecPanel.setLocation(232, 720);
 				tecPanel.setVisible(true);
+				final Timer t = new Timer(10,new ActionListener() {
+					int i = 0;					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO 自动生成的方法存根
+						i+=1;
+						
+						if (i<=5) {
+							tecPanel.setLocation(tecPanel.getLocation().x, 720-((720-48)/5*i));
+						}
+					}
+				});
+				t.start();
 			}
 		});
 		bottombottons[2].addActionListener(new ActionListener() {
@@ -291,7 +320,21 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				objectPanel.setLocation(232, 720);
 				objectPanel.setVisible(true);
+				final Timer t = new Timer(10,new ActionListener() {
+					int i = 0;					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO 自动生成的方法存根
+						i+=1;
+						
+						if (i<=5) {
+							objectPanel.setLocation(objectPanel.getLocation().x, 720-((720-48)/5*i));
+						}
+					}
+				});
+				t.start();
 			}
 		});
 		pauseButton.addActionListener(new ActionListener() {
