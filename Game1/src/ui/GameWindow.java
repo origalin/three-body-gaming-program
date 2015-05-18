@@ -21,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
@@ -45,6 +46,7 @@ public class GameWindow extends JFrame {
 	ImageButton pauseButton;
 	JLabel timeLabel;
 	JLabel accidentLabel;
+	JTextArea accidenTextArea;
 	ImageButton[] bottombottons = new ImageButton[3];
 	ImageButton roundButton;
 	ImageButton accidentButton;
@@ -247,6 +249,12 @@ public class GameWindow extends JFrame {
 		});
 		accidentLabel.add(accidentButton);
 		frontPanel.add(accidentLabel,0);
+		accidenTextArea = new JTextArea();
+		accidenTextArea.setOpaque(false);
+		accidenTextArea.setBorder(null);
+		accidenTextArea.setBounds(24, 20, 430, 150);
+		accidenTextArea.setFont(new Font("ËÎÌו", Font.BOLD, 17));
+		accidentLabel.add(accidenTextArea);
 		
 		
 		
