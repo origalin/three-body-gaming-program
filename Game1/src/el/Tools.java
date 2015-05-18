@@ -27,11 +27,11 @@ public class Tools {
 		time = t;
 		money = m;
 		
-		n = m/10;
+		n = m/25;
 		for(i=0;i<=(n-1);i++){
 			k = k + 0.001;
 		}
-		emvDamage = (int) (0.3*(0.09*physics + 0.135*biology + 0.18*chemistry + 0.09*computer - k));
+		emvDamage = (int) (0.045*(0.09*physics + 0.0675*biology + 0.09*chemistry + 0.045*computer - k));
 	}
 
 	public void judgeC(Tools tool){
@@ -44,5 +44,15 @@ public class Tools {
 			tool.emvDamage=0;
 	}
 
-	public static Tools plane = new Tools(1,2,3,4,5,6,7,8);
+	public static Tools computer = new Tools(0,0,1,4,4,2,1,15);
+	public static Tools media = new Tools(0,0,1,4,4,2,1,20);
+	public static Tools hitectool = new Tools(0,0,4,3,3,2,1,17);
+	public static Tools plastic = new Tools(5,4,1,4,3,1,1,20);
+	public static Tools ai = new Tools(0,0,6,7,7,3,2,30);
+	public static Tools nuclear = new Tools(4,0,7,7,6,2,2,35);
+	public static Tools medicine = new Tools(5,7,2,4,4,2,2,40);
+	public static Tools supercreature = new Tools(9,7,9,11,10,4,3,70);
+	public static Tools spaceship = new Tools(4,0,13,14,13,5,3,65);
+	public static Tools mixcreature = new Tools(5,7,8,11,11,5,3,75);
+	
 }

@@ -24,7 +24,7 @@ public class Point{
 			b = 0;
 		if(c<=0)
 			c = 0;
-		GP = (int)(0.5*getBasic()*1+0.3*getBasic()*(a+b+c));
+		GP = (int)(getBasic()*(0.5*1+0.35*(a+b+c)));
 		if(GP>33)
 			GP = 33;
 		if(GP<=5)
