@@ -5,12 +5,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 import el.Sci;
 
@@ -55,7 +58,20 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				setVisible(false);
+				final Timer t = new Timer(10,new ActionListener() {
+					int i = 0;					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO 自动生成的方法存根
+						i+=1;
+						
+						if (i<=5) {
+							setLocation(getLocation().x, 48+((720-48)/5*i));
+						}
+					}
+				});
+				t.start();
+				
 			}
 		});
 		add(confirmButton);
@@ -124,6 +140,7 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				GameWindow.light1.setVisible(true);
 				tecButton[1].ispressed = true;
 				tecButton[1].setavalible(false);
 				lineLabels[1].setVisible(true);
@@ -186,6 +203,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				GameWindow.light1.setVisible(false);
+				GameWindow.light2.setVisible(true);
 				tecButton[4].ispressed = true;
 				tecButton[4].setavalible(false);
 				lineLabels[4].setVisible(true);
@@ -292,6 +311,8 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+				GameWindow.light2.setVisible(false);
+				GameWindow.light3.setVisible(true);
 				tecButton[9].ispressed = true;
 				tecButton[9].setavalible(false);
 				Sci.chemistry.point -= 5;

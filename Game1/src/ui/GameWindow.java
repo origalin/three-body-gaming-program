@@ -2,6 +2,7 @@ package ui;
 
 import el.*;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GraphicsConfiguration;
@@ -20,6 +21,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
@@ -35,8 +38,8 @@ public class GameWindow extends JFrame {
 	TecPanel tecPanel;
 	ObjectPanel objectPanel;
 	private ImageIcon backgroundTitle;
-	ImageIcon backgroundMain;
-	JPanel mainPanel;
+	ImageIcon planet;
+	JPanel lightPanel;
 	JLabel labelTitle;
 	JLabel bottomLabel;
 	ImageButton pauseButton;
@@ -49,6 +52,14 @@ public class GameWindow extends JFrame {
 	public static int y;
 	final MessageLabel messageLabel;
 	int tec;
+	static JLabel light1;
+	static JLabel light2;
+	static JLabel light3;
+	int time = 1020;
+	JTextField timeField;
+	Timer objtimer;
+	Timer sciTimer;
+	Timer tecTimer;
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -106,6 +117,14 @@ public class GameWindow extends JFrame {
 		timeLabel = new JLabel(message);
 		timeLabel.setBounds(1060, 20, message.getIconWidth(),
 				message.getIconHeight());
+		timeField = new JTextField();
+		timeField.setBounds(10, 5, 100, 40);
+		timeField.setBorder(null);
+		timeField.setEditable(false);
+		timeField.setOpaque(false);
+		timeField.setFont(new Font("微软雅黑", Font.BOLD, 20));
+		timeField.setText("AC "+time);
+		timeLabel.add(timeField);
 		frontPanel.add(timeLabel);
 		timeLabel.setVisible(false);
 
@@ -116,18 +135,32 @@ public class GameWindow extends JFrame {
 		pauseButton.setVisible(false);
 
 		// 创建星球图片
-		backgroundMain = new ImageIcon("image/planet.png");
-		backgroundMain.setImage(backgroundMain.getImage().getScaledInstance(
+		planet = new ImageIcon("image/planet.png");
+		planet.setImage(planet.getImage().getScaledInstance(
 				600, 600, Image.SCALE_DEFAULT));
-		mainPanel = new JPanel();
-		JLabel labelBackground = new JLabel(backgroundMain);// 把背景图片显示在一个标签里面
-		labelBackground.setBounds(0, 0, backgroundMain.getIconWidth(),
-				backgroundMain.getIconHeight());
-		mainPanel.setOpaque(false);
-		mainPanel.setBounds(360, 30, backgroundMain.getIconWidth(),
-				backgroundMain.getIconHeight());
-		mainPanel.add(labelBackground);
-		imagePanel.add(mainPanel);
+		lightPanel = new JPanel();
+		JLabel planetLabel = new JLabel(planet);// 把背景图片显示在一个标签里面
+		light1 = new JLabel(new ImageIcon("image/light1.png"));
+		light1.setBounds(0, 0, light1.getIcon().getIconWidth(), light1.getIcon().getIconHeight());
+		light1.setVisible(false);
+		light2 = new JLabel(new ImageIcon("image/light2.png"));
+		light2.setBounds(0, 0, light1.getIcon().getIconWidth(), light1.getIcon().getIconHeight());
+		light2.setVisible(false);
+		light3 = new JLabel(new ImageIcon("image/light3.png"));
+		light3.setBounds(0, 0, light1.getIcon().getIconWidth(), light1.getIcon().getIconHeight());
+		light3.setVisible(false);
+		planetLabel.setBounds(360, 30, planet.getIconWidth(),
+				planet.getIconHeight());
+		planetLabel.setOpaque(false);
+		lightPanel.setOpaque(false);
+		lightPanel.setBounds(360, 30, planet.getIconWidth(),
+				planet.getIconHeight());
+		lightPanel.add(light1);
+		lightPanel.add(light2);
+		lightPanel.add(light3);
+//		lightPanel.add(planetLabel);
+		imagePanel.add(lightPanel);
+		imagePanel.add(planetLabel);
 
 		// 创建顶部面板
 		topPanel = new TopPanel();
@@ -196,13 +229,23 @@ public class GameWindow extends JFrame {
 				// TODO 自动生成的方法存根
 
 				labelTitle.setVisible(false);
-				for (ImageButton im : bottombottons) {
-					im.setVisible(true);
-				}
 				for (ImageButton ib : imageButton) {
 					ib.setVisible(false);
 				}
-
+				Timer t = new Timer(10, new ActionListener() {
+					int i = 0;
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO 自动生成的方法存根
+						i++;
+						if(i<=10) {
+							
+						}
+					}
+				});
+				for (ImageButton im : bottombottons) {
+					im.setVisible(true);
+				}
 				topPanel.setVisible(true);
 				bottomLabel.setVisible(true);
 				roundButton.setVisible(true);
@@ -243,19 +286,53 @@ public class GameWindow extends JFrame {
 					SciPanel.iconData[4].setText(Sci.computer.point+"");
 					SciPanel.iconData[5].setText(Sci.art.point+"");
 					SciPanel.iconData[1].setText(Sci.biology.point+"");
-				sciPanel.setVisible(true);
+					sciPanel.setLocation(232, 720);
+					sciPanel.setVisible(true);
+					sciTimer = new Timer(10,new ActionListener() {
+						int i = 0;
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO 自动生成的方法存根
+							i+=1;							
+							if (i<=5) {
+								sciPanel.setLocation(sciPanel.getLocation().x, 720-((720-48)/5*i));
+							}
+//							else {
+//								sciTimer.stop();
+//							}
+						}
+					});
+					sciTimer.start();
 			}
 		});
 		bottombottons[1].addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				tecPanel.pointsfield.setText("化学:" + Sci.physics.point + " 生物:"
+				tecPanel.pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 						+ Sci.biology.point + " 物理:" + Sci.physics.point
 						+ " 数学:" + Sci.math.point + " 计算机:"
 						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				tecPanel.Refresh();
+				tecPanel.setLocation(232, 720);
 				tecPanel.setVisible(true);
+				tecTimer = new Timer(10,new ActionListener() {
+					int i = 0;					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO 自动生成的方法存根
+						i+=1;
+						
+						if (i<=5) {
+							tecPanel.setLocation(tecPanel.getLocation().x, 720-((720-48)/5*i));
+						}
+//						else {
+//							tecTimer.stop();
+//						}
+					}
+				});
+				tecTimer.start();
 			}
 		});
 		bottombottons[2].addActionListener(new ActionListener() {
@@ -263,7 +340,24 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				objectPanel.setLocation(232, 720);
 				objectPanel.setVisible(true);
+				objtimer = new Timer(10,new ActionListener() {
+					int i = 0;					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO 自动生成的方法存根
+						i+=1;
+						
+						if (i<=5) {
+							objectPanel.setLocation(objectPanel.getLocation().x, 720-((720-48)/5*i));
+						}
+//						else {
+//							objtimer.stop();
+//						}
+					}
+				});
+				objtimer.start();
 			}
 		});
 		pauseButton.addActionListener(new ActionListener() {
@@ -283,7 +377,7 @@ public class GameWindow extends JFrame {
 					im.setVisible(false);
 				}
 				labelTitle.setVisible(true);
-				repaint();
+//				repaint();
 			}
 		});
 
@@ -295,6 +389,8 @@ public class GameWindow extends JFrame {
 				Next next = new Next();
 				next.goNext();
 				topPanel.topLabel.setText("经济值"+Begin.EV+" "+"幸福值"+Begin.HV+" "+"环境值"+Begin.EMV);
+				time++;
+				timeField.setText("AC "+time);
 				 
 			}
 		});
@@ -304,6 +400,7 @@ public class GameWindow extends JFrame {
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Image image = new ImageIcon(url).getImage();
 		Cursor cursor = tk.createCustomCursor(image, new Point(0, 0), "invisi");
+		
 		setCursor(cursor); // panel 也可以是其他组件
 
 		// 获取鼠标坐标
