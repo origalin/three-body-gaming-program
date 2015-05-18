@@ -278,7 +278,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				tecPanel.pointsfield.setText("化学:" + Sci.physics.point + " 生物:"
+				tecPanel.pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 						+ Sci.biology.point + " 物理:" + Sci.physics.point
 						+ " 数学:" + Sci.math.point + " 计算机:"
 						+ Sci.computer.point + " 艺术:" + Sci.art.point);
