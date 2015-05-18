@@ -44,8 +44,10 @@ public class GameWindow extends JFrame {
 	JLabel bottomLabel;
 	ImageButton pauseButton;
 	JLabel timeLabel;
+	JLabel accidentLabel;
 	ImageButton[] bottombottons = new ImageButton[3];
 	ImageButton roundButton;
+	ImageButton accidentButton;
 	TopPanel topPanel;
 	ImageIcon objectBackground;
 	public static int x;
@@ -80,6 +82,9 @@ public class GameWindow extends JFrame {
 		ImageIcon pause1 = new ImageIcon("image/messagel.png");
 		ImageIcon pause2 = new ImageIcon("image/messagel2.png");
 		ImageIcon pause3 = new ImageIcon("image/messagel3.png");
+		ImageIcon accident1 = new ImageIcon("image/accidentbutton1.png");
+		ImageIcon accident2 = new ImageIcon("image/accidentbutton2.png");
+		ImageIcon accident3 = new ImageIcon("image/accidentbutton3.png");
 		// 背景图
 		JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面
 		label.setBounds(0, 0, background.getIconWidth(),
@@ -221,6 +226,30 @@ public class GameWindow extends JFrame {
 		objectPanel = new ObjectPanel(objectBackground);
 		objectPanel.setVisible(false);
 		frontPanel.add(objectPanel, 0);
+		
+		
+		//创建事件面板
+		accidentLabel = new JLabel(new ImageIcon("image/accidentpanel.png"));
+		accidentLabel.setBounds(400,250,accidentLabel.getIcon().getIconWidth(),accidentLabel.getIcon().getIconHeight());
+		accidentButton = new ImageButton(accident1, accident2, accident3, false);
+		accidentButton.setLocation(140, 180);
+		accidentButton.setText("确认");
+		accidentButton.setHorizontalTextPosition(JButton.CENTER);
+		accidentButton.setVerticalTextPosition(JButton.CENTER);
+		accidentButton.setFont(new Font("微软雅黑", Font.BOLD, 20));
+		accidentButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO 自动生成的方法存根
+				accidentLabel.setVisible(false);
+			}
+		});
+		accidentLabel.add(accidentButton);
+		frontPanel.add(accidentLabel,0);
+		
+		
+		
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
 
