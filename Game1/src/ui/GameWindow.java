@@ -286,6 +286,7 @@ public class GameWindow extends JFrame {
 					SciPanel.iconData[4].setText(Sci.computer.point+"");
 					SciPanel.iconData[5].setText(Sci.art.point+"");
 					SciPanel.iconData[1].setText(Sci.biology.point+"");
+					sciPanel.refresh();
 					sciPanel.setLocation(232, 720);
 					sciPanel.setVisible(true);
 					sciTimer = new Timer(10,new ActionListener() {

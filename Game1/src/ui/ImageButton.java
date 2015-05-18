@@ -50,6 +50,16 @@ class ImageButton extends JButton {
 						AudioPlayer.player.start(as);
 					} catch (Exception e1) {
 					}
+					
+				}
+				else {
+					try {
+						FileInputStream fileau = new FileInputStream(
+								"sound/error.wav");
+						AudioStream as = new AudioStream(fileau);
+						AudioPlayer.player.start(as);
+					} catch (Exception e1) {
+					}
 				}
 			}
 
@@ -71,6 +81,7 @@ class ImageButton extends JButton {
 					} catch (Exception e1) {
 					}
 				}
+				
 			}
 
 			@Override
