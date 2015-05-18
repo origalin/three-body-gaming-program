@@ -2,6 +2,7 @@ package ui;
 
 import el.*;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GraphicsConfiguration;
@@ -228,13 +229,23 @@ public class GameWindow extends JFrame {
 				// TODO 自动生成的方法存根
 
 				labelTitle.setVisible(false);
-				for (ImageButton im : bottombottons) {
-					im.setVisible(true);
-				}
 				for (ImageButton ib : imageButton) {
 					ib.setVisible(false);
 				}
-
+				Timer t = new Timer(10, new ActionListener() {
+					int i = 0;
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO 自动生成的方法存根
+						i++;
+						if(i<=10) {
+							
+						}
+					}
+				});
+				for (ImageButton im : bottombottons) {
+					im.setVisible(true);
+				}
 				topPanel.setVisible(true);
 				bottomLabel.setVisible(true);
 				roundButton.setVisible(true);
