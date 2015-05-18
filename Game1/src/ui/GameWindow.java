@@ -56,6 +56,9 @@ public class GameWindow extends JFrame {
 	static JLabel light3;
 	int time = 1020;
 	JTextField timeField;
+	Timer objtimer;
+	Timer sciTimer;
+	Timer tecTimer;
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -274,7 +277,7 @@ public class GameWindow extends JFrame {
 					SciPanel.iconData[1].setText(Sci.biology.point+"");
 					sciPanel.setLocation(232, 720);
 					sciPanel.setVisible(true);
-					final Timer t = new Timer(10,new ActionListener() {
+					sciTimer = new Timer(10,new ActionListener() {
 						int i = 0;
 						
 						@Override
@@ -284,9 +287,12 @@ public class GameWindow extends JFrame {
 							if (i<=5) {
 								sciPanel.setLocation(sciPanel.getLocation().x, 720-((720-48)/5*i));
 							}
+							else {
+								sciTimer.stop();
+							}
 						}
 					});
-					t.start();
+					sciTimer.start();
 			}
 		});
 		bottombottons[1].addActionListener(new ActionListener() {
@@ -300,7 +306,7 @@ public class GameWindow extends JFrame {
 				tecPanel.Refresh();
 				tecPanel.setLocation(232, 720);
 				tecPanel.setVisible(true);
-				final Timer t = new Timer(10,new ActionListener() {
+				tecTimer = new Timer(10,new ActionListener() {
 					int i = 0;					
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -310,9 +316,12 @@ public class GameWindow extends JFrame {
 						if (i<=5) {
 							tecPanel.setLocation(tecPanel.getLocation().x, 720-((720-48)/5*i));
 						}
+//						else {
+//							tecTimer.stop();
+//						}
 					}
 				});
-				t.start();
+				tecTimer.start();
 			}
 		});
 		bottombottons[2].addActionListener(new ActionListener() {
@@ -322,7 +331,7 @@ public class GameWindow extends JFrame {
 				// TODO Auto-generated method stub
 				objectPanel.setLocation(232, 720);
 				objectPanel.setVisible(true);
-				final Timer t = new Timer(10,new ActionListener() {
+				objtimer = new Timer(10,new ActionListener() {
 					int i = 0;					
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -332,9 +341,12 @@ public class GameWindow extends JFrame {
 						if (i<=5) {
 							objectPanel.setLocation(objectPanel.getLocation().x, 720-((720-48)/5*i));
 						}
+//						else {
+//							objtimer.stop();
+//						}
 					}
 				});
-				t.start();
+				objtimer.start();
 			}
 		});
 		pauseButton.addActionListener(new ActionListener() {
