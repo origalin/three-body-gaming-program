@@ -287,9 +287,9 @@ public class GameWindow extends JFrame {
 							if (i<=5) {
 								sciPanel.setLocation(sciPanel.getLocation().x, 720-((720-48)/5*i));
 							}
-							else {
-								sciTimer.stop();
-							}
+//							else {
+//								sciTimer.stop();
+//							}
 						}
 					});
 					sciTimer.start();
