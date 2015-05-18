@@ -73,6 +73,7 @@ public class SciPanel extends JLabel {
 						
 						if (i<=5) {
 							setLocation(getLocation().x, 48+((720-48)/5*i));
+							
 						}
 					}
 				});
