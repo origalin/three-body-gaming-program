@@ -18,7 +18,6 @@ import javax.swing.Timer;
 import el.Sci;
 
 public class TecPanel extends JLabel {
-	public static boolean judge[] = {false,false,false,false,false,false,false,false,false,false};
 	JTextField pointsfield;
 	ImageIcon start1 = new ImageIcon("image/button1.png");
 	ImageIcon start2 = new ImageIcon("image/button2.png");
@@ -35,6 +34,7 @@ public class TecPanel extends JLabel {
 	static ImageIcon[] lineImageIcons = new ImageIcon[6];
 	static JLabel[] lineLabels = new JLabel[6];
 	ImageButton confirmButton = new ImageButton(start1, start2, start3, false);
+	Timer t;
 	static String[] textTitle = { "微积分", "几何", "微观物质结构", "生态学", "计算机科学",
 			"机械与力学", "有机化学", "人工智能", "核理论", "生物工程" };
 	static String[] textContains = { "高等数学的一部分，科学体系的根基\n学科需求：数 4", "研究空间区域关系的数学分支\n学科需求：物 1 数 2 艺 2",
@@ -59,15 +59,18 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				final Timer t = new Timer(10,new ActionListener() {
+				t = new Timer(10,new ActionListener() {
 					int i = 0;					
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO 自动生成的方法存根
 						i+=1;
 						
-						if (i<=5) {
-							setLocation(getLocation().x, 48+((720-48)/5*i));
+						if (i<=10) {
+							setLocation(getLocation().x, 48+((720-48)/10*i));
+						}
+						else {
+							t.stop();
 						}
 					}
 				});
@@ -132,7 +135,6 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
-				judge[0] = true;
 				Refresh();
 			}
 		});
@@ -154,7 +156,6 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
-				judge[1] = true;
 				Refresh();
 			}
 		});
@@ -176,7 +177,6 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
-				judge[2] = true;
 				Refresh();
 			}
 		});
@@ -199,7 +199,6 @@ public class TecPanel extends JLabel {
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
 				Refresh();
-				judge[3] = true;
 			}
 		});
 		tecButton[4].setLocation(305, 35);
@@ -222,7 +221,6 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
-				judge[4] = true;
 				Refresh();
 			}
 		});
@@ -246,7 +244,6 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
-				judge[5] = true;
 				Refresh();
 			}
 		});
@@ -270,7 +267,6 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
-				judge[6] = true;
 				Refresh();
 			}
 		});
@@ -290,7 +286,6 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
-				judge[7] = true;
 				Refresh();
 			}
 		});
@@ -311,7 +306,6 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
-				judge[8] = true;
 				Refresh();
 			}
 		});
@@ -335,7 +329,6 @@ public class TecPanel extends JLabel {
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 						+ Sci.art.point);
-				judge[9] = true;
 				Refresh();
 			}
 		});

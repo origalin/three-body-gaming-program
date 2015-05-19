@@ -333,12 +333,12 @@ public class GameWindow extends JFrame {
 						public void actionPerformed(ActionEvent e) {
 							// TODO 自动生成的方法存根
 							i+=1;							
-							if (i<=5) {
-								sciPanel.setLocation(sciPanel.getLocation().x, 720-((720-48)/5*i));
+							if (i<=10) {
+								sciPanel.setLocation(sciPanel.getLocation().x, 720-((720-48)/10*i));
 							}
-//							else {
-//								sciTimer.stop();
-//							}
+							else {
+								sciTimer.stop();
+							}
 						}
 					});
 					sciTimer.start();
@@ -362,12 +362,12 @@ public class GameWindow extends JFrame {
 						// TODO 自动生成的方法存根
 						i+=1;
 						
-						if (i<=5) {
-							tecPanel.setLocation(tecPanel.getLocation().x, 720-((720-48)/5*i));
+						if (i<=10) {
+							tecPanel.setLocation(tecPanel.getLocation().x, 720-((720-48)/10*i));
 						}
-//						else {
-//							tecTimer.stop();
-//						}
+						else {
+							tecTimer.stop();
+						}
 					}
 				});
 				tecTimer.start();
@@ -387,12 +387,12 @@ public class GameWindow extends JFrame {
 						// TODO 自动生成的方法存根
 						i+=1;
 						
-						if (i<=5) {
-							objectPanel.setLocation(objectPanel.getLocation().x, 720-((720-48)/5*i));
+						if (i<=10) {
+							objectPanel.setLocation(objectPanel.getLocation().x, 720-((720-48)/10*i));
 						}
-//						else {
-//							objtimer.stop();
-//						}
+						else {
+							objtimer.stop();
+						}
 					}
 				});
 				objtimer.start();

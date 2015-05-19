@@ -43,6 +43,7 @@ public class SciPanel extends JLabel {
 			new JTextField(), new JTextField(), new JTextField(),
 			new JTextField() };
 	int i1 = 0;
+	Timer t;
 	public static String[] iconTitle = { "化学", "生物", "物理", "数学", "计算机", "艺术" };
 	public static String[] iconContains = { "需要4科技点\n工业生产的核心,不过会对环境造成一定破坏哦",
 			"需要2科技点\nFrankenstein！对环境有一定影响", "需要4科技点\n科技进步，经济增长，物理是破解奥秘的钥匙",
@@ -62,7 +63,7 @@ public class SciPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				final Timer t = new Timer(10, new ActionListener() {
+				t = new Timer(10, new ActionListener() {
 					int i = 0;
 
 					@Override
@@ -70,10 +71,13 @@ public class SciPanel extends JLabel {
 						// TODO 自动生成的方法存根
 						i += 1;
 
-						if (i <= 5) {
+						if (i <= 10) {
 							setLocation(getLocation().x,
-									48 + ((720 - 48) / 5 * i));
+									48 + ((720 - 48) / 10 * i));
 
+						}
+						else {
+							t.stop();
 						}
 					}
 				});
