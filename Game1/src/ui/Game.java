@@ -3,6 +3,8 @@ package ui;
 import java.awt.DisplayMode;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.KeyEventPostProcessor;
+import java.awt.KeyboardFocusManager;
 import java.io.FileInputStream;
 
 import javax.swing.ImageIcon;
@@ -64,6 +66,9 @@ public class Game {
 
 		} catch (Exception e) {
 		}
-	}
-
+		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+		//然后得到当前键盘事件的管理器
+		manager.addKeyEventPostProcessor((KeyEventPostProcessor)tbc.getMyKeyEventHandler());
+		//然后为管理器添加一个新的键盘事件监听者。
+		}
 }

@@ -7,13 +7,19 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GraphicsConfiguration;
 import java.awt.Image;
+import java.awt.KeyEventPostProcessor;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -67,6 +73,7 @@ public class GameWindow extends JFrame {
 	Timer sciTimer;
 	Timer tecTimer;
 	Timer blackTimer;
+	Timer mouseTimer;
 	ImageButton[] imageButton = new ImageButton[3];
 
 	public GameWindow(GraphicsConfiguration gc) {
@@ -107,9 +114,8 @@ public class GameWindow extends JFrame {
 		frontPanel.add(label2, new Integer(-1));
 
 		// 屏蔽图片
-		blockLabel = new JLabel();
+		blockLabel = new JLabel(new ImageIcon("image/block.png"));
 		blockLabel.setBounds(0, 0, 1280, 720);
-		blockLabel.setBackground(new Color(255, 255, 255));
 		blockLabel.setOpaque(true);
 		blockLabel.setVisible(false);
 		frontPanel.add(blockLabel, new Integer(-7));
@@ -409,6 +415,43 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				mouseTimer = new Timer(100, new ActionListener() {
+					int i = 0;
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO 自动生成的方法存根
+						if (i == 0) {
+							Toolkit tk = Toolkit.getDefaultToolkit();
+							Image image = new ImageIcon("image/cursor2.gif")
+									.getImage();
+							Cursor cursor = tk.createCustomCursor(image,
+									new Point(0, 0), "invisi");
+							setCursor(cursor);
+							getGlassPane().setVisible(true);
+							getGlassPane().addMouseListener(new MouseAdapter() {
+							});
+							getGlassPane().addMouseMotionListener(
+									new MouseMotionAdapter() {
+									});
+						} else if (i <= 10) {
+
+						} else {
+							getGlassPane().setVisible(false);
+							Toolkit tk = Toolkit.getDefaultToolkit();
+							Image image = new ImageIcon("image/cursor.gif")
+									.getImage();
+							Cursor cursor = tk.createCustomCursor(image,
+									new Point(0, 0), "invisi");
+							setCursor(cursor);
+							mouseTimer.stop();
+
+						}
+						i++;
+					}
+				});
+
+				mouseTimer.start();
 				Next next = new Next();
 				next.goNext();
 				topPanel.topLabel.setText("经济值" + Begin.EV + " " + "幸福值"
@@ -1034,6 +1077,23 @@ public class GameWindow extends JFrame {
 
 			}
 		});
+	}
+
+	public KeyEventPostProcessor getMyKeyEventHandler() {
+		return new KeyEventPostProcessor() {  // 返回一个实现KeyEventPostProcessor接口的匿名内部类。
+			public boolean postProcessKeyEvent(KeyEvent e) {  // 实现postProcessKeyEvent方法
+
+				if (e.getKeyCode() == KeyEvent.VK_E) {  // 根据你的需要监听相应的动作。
+					System.out.println("aaa");
+					for (ImageButton im : TecPanel.tecButton) {
+						im.setavalible(true);
+						im.setVisible(true);
+					}
+				}
+				return rootPaneCheckingEnabled;
+
+			}
+		};
 	}
 
 	private void blackanime() {

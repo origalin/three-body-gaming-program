@@ -26,7 +26,7 @@ public class TecPanel extends JLabel {
 	ImageIcon icon2 = new ImageIcon("image/iconblue2.png");
 	ImageIcon icon3 = new ImageIcon("image/iconblue3.png");
 	ImageIcon treebackground = new ImageIcon("image/treebackground.png");
-	ImageButton[] tecButton = new ImageButton[10];// 微积分 几何 微观物质结构 生态学 计算机科学
+	static ImageButton[] tecButton = new ImageButton[10];// 微积分 几何 微观物质结构 生态学 计算机科学
 													// 机械与力学 有机化学 人工智能 核理论 生物工程
 	static ImageIcon[] buttonIcons1 = new ImageIcon[10];
 	static ImageIcon[] buttonIcons2 = new ImageIcon[10];
@@ -361,6 +361,7 @@ public class TecPanel extends JLabel {
 			treeLabel1.add(im);
 			im.setVisible(false);
 		}
+		
 
 	}
 
