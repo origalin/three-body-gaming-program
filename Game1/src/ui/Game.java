@@ -22,20 +22,20 @@ public class Game {
 		hello.setSize(500, 500);
 		JPanel thePanel = (JPanel) hello.getContentPane();
 		thePanel.setOpaque(false);
-		thePanel.add(new JLabel(new ImageIcon("image/beforepanel.png")));
+		thePanel.add(new JLabel(new ImageIcon("image/beforepanel1.png")));
 		thePanel.setVisible(true);
 		hello.setUndecorated(true);
 		AWTUtilities.setWindowOpaque(hello, false);
 		hello.setLocationRelativeTo(null);
 		hello.setVisible(true);
-		for(int i = 0;i<=10;i++) {
+		for (int i = 0; i <= 10; i++) {
 			Thread.sleep(10);
-			AWTUtilities.setWindowOpacity(hello, (float) (0.1*i));
+			AWTUtilities.setWindowOpacity(hello, (float) (0.1 * i));
 		}
 		Thread.sleep(2000);
-		for(int i = 10;i>=0;i--) {
+		for (int i = 10; i >= 0; i--) {
 			Thread.sleep(10);
-			AWTUtilities.setWindowOpacity(hello, (float) (0.1*i));
+			AWTUtilities.setWindowOpacity(hello, (float) (0.1 * i));
 		}
 		hello.dispose();
 
@@ -61,6 +61,7 @@ public class Game {
 			FileInputStream fileau = new FileInputStream("sound/background.wav");
 			AudioStream as = new AudioStream(fileau);
 			AudioPlayer.player.start(as);
+
 		} catch (Exception e) {
 		}
 	}

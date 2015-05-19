@@ -14,8 +14,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.Enumeration;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,8 +23,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
-import javax.swing.UIManager;
-import javax.swing.plaf.FontUIResource;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
