@@ -50,7 +50,8 @@ public class GameWindow extends JFrame {
 	JLabel timeLabel;
 	JLabel accidentLabel;
 	JLabel blackLabel;
-	JLabel blockLabel;
+	static JLabel blockLabel;
+	JLabel label2;
 	JTextArea accidenTextArea;
 	ImageButton[] bottombottons = new ImageButton[3];
 	ImageButton roundButton;
@@ -70,7 +71,6 @@ public class GameWindow extends JFrame {
 	Timer sciTimer;
 	Timer tecTimer;
 	Timer blackTimer;
-	JLabel label2;
 	ImageButton[] imageButton = new ImageButton[3];
 
 	public GameWindow(GraphicsConfiguration gc) {
@@ -115,6 +115,7 @@ public class GameWindow extends JFrame {
 		blockLabel = new JLabel();
 		blockLabel.setBounds(0, 0, 1280, 720);
 		blockLabel.setBackground(new Color(255, 255, 255));
+		blockLabel.setOpaque(true);
 		blockLabel.setVisible(false);
 		frontPanel.add(blockLabel, new Integer(-7));
 
@@ -305,6 +306,7 @@ public class GameWindow extends JFrame {
 		bottombottons[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				blockLabel.setVisible(true);
 				int i[] = { Sci.chemistry.point, Sci.biology.point,
 						Sci.physics.point, Sci.math.point, Sci.computer.point,
 						Sci.art.point };
@@ -341,6 +343,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				blockLabel.setVisible(true);
 				tecPanel.pointsfield.setText("化学:" + Sci.chemistry.point
 						+ " 生物:" + Sci.biology.point + " 物理:"
 						+ Sci.physics.point + " 数学:" + Sci.math.point + " 计算机:"
@@ -372,6 +375,7 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				blockLabel.setVisible(true);
 				objectPanel.setLocation(232, 720);
 				objectPanel.setVisible(true);
 				objtimer = new Timer(10, new ActionListener() {

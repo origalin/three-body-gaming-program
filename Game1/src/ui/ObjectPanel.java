@@ -76,6 +76,7 @@ public class ObjectPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
+				GameWindow.blockLabel.setVisible(false);
 				t = new Timer(10,new ActionListener() {
 					int i = 0;					
 					@Override
