@@ -30,7 +30,7 @@ public  class MessageLabel extends JLabel{
 		contains.setOpaque(false);
 		contains.setBorder(null);
 		contains.setLineWrap(true);
-		contains.setFont(new Font("ËÎÌו", Font.BOLD, 15));
+		contains.setFont(new Font("ËÎÌו", Font.PLAIN, 15));
 		add(title);
 		add(contains);
 		

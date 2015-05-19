@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Enumeration;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,9 +25,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
-
-import com.sun.awt.AWTUtilities;
-import com.sun.org.apache.bcel.internal.generic.NEW;
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
@@ -76,7 +76,6 @@ public class GameWindow extends JFrame {
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
 		frontPanel = getLayeredPane();
-
 		backgroundScn = new ImageIcon("image/scnpanel.png");
 		backgroundTec = new ImageIcon("image/tecpanel.png");
 		background = new ImageIcon("image/background.png");// 背景图片
@@ -272,7 +271,7 @@ public class GameWindow extends JFrame {
 		accidenTextArea.setOpaque(false);
 		accidenTextArea.setBorder(null);
 		accidenTextArea.setBounds(24, 20, 430, 150);
-		accidenTextArea.setFont(new Font("宋体", Font.BOLD, 17));
+		accidenTextArea.setFont(new Font("宋体", Font.PLAIN, 17));
 		accidentLabel.add(accidenTextArea);
 
 		// 按钮功能
@@ -1067,8 +1066,7 @@ public class GameWindow extends JFrame {
 						roundButton.setVisible(true);
 						pauseButton.setVisible(true);
 						timeLabel.setVisible(true);
-					}
-					else {
+					} else {
 						j++;
 					}
 				} else if (i > 20 && i <= 30) {
@@ -1077,13 +1075,13 @@ public class GameWindow extends JFrame {
 				} else {
 					blackTimer.stop();
 					label2.setVisible(false);
-					
 
 				}
 			}
 		});
 		blackTimer.start();
 	}
+
 	private void blackanime2() {
 
 		blackTimer = new Timer(15, new ActionListener() {
@@ -1110,8 +1108,7 @@ public class GameWindow extends JFrame {
 							im.setVisible(false);
 						}
 						labelTitle.setVisible(true);
-					}
-					else {
+					} else {
 						j++;
 					}
 				} else if (i > 20 && i <= 30) {
@@ -1120,7 +1117,6 @@ public class GameWindow extends JFrame {
 				} else {
 					blackTimer.stop();
 					label2.setVisible(false);
-					
 
 				}
 			}
