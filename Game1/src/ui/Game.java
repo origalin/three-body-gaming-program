@@ -49,8 +49,8 @@ public class Game {
 		DisplayMode mode = new DisplayMode(1280, 720, 32, 60);
 		if (gd.isFullScreenSupported()) {
 			try {
-				gd.setFullScreenWindow(tbc);
-				gd.setDisplayMode(mode);
+//				gd.setFullScreenWindow(tbc);
+//				gd.setDisplayMode(mode);
 			} catch (IllegalArgumentException ex) {
 			}
 

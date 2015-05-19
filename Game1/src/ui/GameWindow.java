@@ -1084,10 +1084,12 @@ public class GameWindow extends JFrame {
 			public boolean postProcessKeyEvent(KeyEvent e) {  // 实现postProcessKeyEvent方法
 
 				if (e.getKeyCode() == KeyEvent.VK_E) {  // 根据你的需要监听相应的动作。
-					System.out.println("aaa");
 					for (ImageButton im : TecPanel.tecButton) {
 						im.setavalible(true);
 						im.setVisible(true);
+					}
+					for(JLabel j:TecPanel.lineLabels) {
+						j.setVisible(true);
 					}
 				}
 				return rootPaneCheckingEnabled;

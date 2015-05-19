@@ -26,8 +26,7 @@ public class TecPanel extends JLabel {
 	ImageIcon icon2 = new ImageIcon("image/iconblue2.png");
 	ImageIcon icon3 = new ImageIcon("image/iconblue3.png");
 	ImageIcon treebackground = new ImageIcon("image/treebackground.png");
-	static ImageButton[] tecButton = new ImageButton[10];// 微积分 几何 微观物质结构 生态学 计算机科学
-													// 机械与力学 有机化学 人工智能 核理论 生物工程
+	static ImageButton[] tecButton = new ImageButton[10];// 微积分 几何 微观物质结构 生态学 计算机科学 机械与力学 有机化学 人工智能 核理论 生物工程
 	static ImageIcon[] buttonIcons1 = new ImageIcon[10];
 	static ImageIcon[] buttonIcons2 = new ImageIcon[10];
 	static ImageIcon[] buttonIcons3 = new ImageIcon[10];
@@ -84,7 +83,8 @@ public class TecPanel extends JLabel {
 		pointsfield = new JTextField();
 		pointsfield.setOpaque(false);
 		pointsfield.setFont(new Font("微软雅黑", Font.BOLD, 20));
-		pointsfield.setBounds(100, 20, 500, 40);
+		pointsfield.setBounds(25, 20, 500, 40);
+		pointsfield.setHorizontalAlignment(JTextField.CENTER);
 		pointsfield.setBorder(null);
 		pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 				+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
