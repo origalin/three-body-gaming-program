@@ -293,6 +293,7 @@ public class GameWindow extends JFrame {
 		accidenTextArea.setEditable(false);
 		accidenTextArea.setBounds(24, 20, 430, 150);
 		accidenTextArea.setFont(new Font("宋体", Font.PLAIN, 17));
+		accidenTextArea.setForeground(new Color(117,16,0));
 		accidentLabel.add(accidenTextArea);
 
 		// 按钮功能
