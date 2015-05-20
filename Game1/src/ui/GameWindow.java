@@ -52,6 +52,8 @@ public class GameWindow extends JFrame {
 	JLabel timeLabel;
 	JLabel accidentLabel;
 	JLabel blackLabel;
+	JLabel starLabel1;
+	JLabel starLabel2;
 	static JLabel blockLabel;
 	JLabel label2;
 	JTextArea accidenTextArea;
@@ -74,7 +76,9 @@ public class GameWindow extends JFrame {
 	Timer tecTimer;
 	Timer blackTimer;
 	Timer mouseTimer;
+	Timer starTimer;
 	ImageButton[] imageButton = new ImageButton[3];
+	int v = 1;
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -120,6 +124,15 @@ public class GameWindow extends JFrame {
 		blockLabel.setOpaque(true);
 		blockLabel.setVisible(false);
 		frontPanel.add(blockLabel, new Integer(-7));
+		//星空图片
+		starLabel1 = new JLabel(new ImageIcon("image/back1.png"));
+		starLabel1.setBounds(0, 0, 2560, 720);
+		frontPanel.add(starLabel1, new Integer(-40));
+		starLabel2 = new JLabel(new ImageIcon("image/back2.png"));
+		starLabel2.setBounds(2560, 0, 2560, 720);
+		frontPanel.add(starLabel2, new Integer(-41));
+		staranim();
+		
 
 		// 标题文字
 		labelTitle = new JLabel(backgroundTitle);
@@ -131,7 +144,7 @@ public class GameWindow extends JFrame {
 		imagePanel.setSize(background.getIconWidth(),
 				background.getIconHeight());
 		imagePanel.setLocation(200, 0);
-		imagePanel.add(labelTitle);
+		frontPanel.add(labelTitle,new Integer(-17));
 
 		// 创建开始界面按钮
 		for (int i = 0; i <= 2; i++) {
@@ -142,7 +155,7 @@ public class GameWindow extends JFrame {
 			imageButton[i].setVerticalTextPosition(JButton.CENTER);
 			imageButton[i].setFont(new Font("微软雅黑", Font.BOLD, 20));
 			imageButton[i].setForeground(new Color(0,89,130));
-			imagePanel.add(imageButton[i]);
+			frontPanel.add(imageButton[i],new Integer(-18));
 		}
 		imageButton[0].setText("开始游戏");
 
@@ -160,6 +173,7 @@ public class GameWindow extends JFrame {
 		timeField.setEditable(false);
 		timeField.setOpaque(false);
 		timeField.setFont(new Font("微软雅黑", Font.BOLD, 20));
+		timeField.setForeground(new Color(42,96,128));
 		timeField.setText("AC " + time);
 		timeLabel.add(timeField);
 		frontPanel.add(timeLabel, new Integer(-16));
@@ -198,8 +212,8 @@ public class GameWindow extends JFrame {
 		lightPanel.add(light1);
 		lightPanel.add(light2);
 		lightPanel.add(light3);
-		imagePanel.add(lightPanel);
-		imagePanel.add(planetLabel);
+		frontPanel.add(lightPanel,new Integer(-30));
+		frontPanel.add(planetLabel,new Integer(-31));
 
 		// 创建顶部面板
 		topPanel = new TopPanel();
@@ -273,8 +287,9 @@ public class GameWindow extends JFrame {
 		accidentLabel.add(accidentButton);
 		frontPanel.add(accidentLabel, 0);
 		accidenTextArea = new JTextArea();
-		accidenTextArea.setOpaque(false);
+		accidenTextArea.setOpaque(true);
 		accidenTextArea.setBorder(null);
+		accidenTextArea.setEditable(false);
 		accidenTextArea.setBounds(24, 20, 430, 150);
 		accidenTextArea.setFont(new Font("宋体", Font.PLAIN, 17));
 		accidentLabel.add(accidenTextArea);
@@ -437,6 +452,7 @@ public class GameWindow extends JFrame {
 							getGlassPane().addMouseMotionListener(
 									new MouseMotionAdapter() {
 									});
+							starTimer.setDelay(7);
 						} else if (i <= 10) {
 
 						} else {
@@ -448,7 +464,11 @@ public class GameWindow extends JFrame {
 									new Point(0, 0), "invisi");
 							setCursor(cursor);
 							mouseTimer.stop();
+							starTimer.setDelay(100);
+							topPanel.topLabel.setText("经济值" + Begin.EV + "  " + "幸福值"
+									+ Begin.HV + "  " + "环境值" + Begin.EMV);
 
+							timeField.setText("AC " + time);
 						}
 						i++;
 					}
@@ -457,10 +477,9 @@ public class GameWindow extends JFrame {
 				mouseTimer.start();
 				Next next = new Next();
 				next.goNext();
-				topPanel.topLabel.setText("经济值" + Begin.EV + " " + "幸福值"
-						+ Begin.HV + " " + "环境值" + Begin.EMV);
 				time++;
-				timeField.setText("AC " + time);
+				
+				
 
 			}
 		});
@@ -1127,6 +1146,7 @@ public class GameWindow extends JFrame {
 						roundButton.setVisible(true);
 						pauseButton.setVisible(true);
 						timeLabel.setVisible(true);
+						starTimer.stop();
 					} else {
 						j++;
 					}
@@ -1135,6 +1155,7 @@ public class GameWindow extends JFrame {
 							255 / 10 * (30 - i)));
 				} else {
 					blackTimer.stop();
+					starTimer.start();
 					label2.setVisible(false);
 
 				}
@@ -1169,6 +1190,7 @@ public class GameWindow extends JFrame {
 							im.setVisible(false);
 						}
 						labelTitle.setVisible(true);
+						starTimer.stop();
 					} else {
 						j++;
 					}
@@ -1178,11 +1200,31 @@ public class GameWindow extends JFrame {
 				} else {
 					blackTimer.stop();
 					label2.setVisible(false);
+					starTimer.start();
 
 				}
 			}
 		});
 		blackTimer.start();
+	}
+	void staranim(){
+		starTimer = new Timer(100, new ActionListener() {
+			int i = 0;
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO 自动生成的方法存根
+				if(i<=2560) {
+					starLabel1.setLocation(0-i, 0);
+					starLabel2.setLocation(2560-i, 0);
+				}
+				else {
+					i=-1;
+				}
+				i++;
+				
+			}
+		});
+		starTimer.start();
 	}
 
 }

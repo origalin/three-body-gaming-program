@@ -25,10 +25,10 @@ public class TopPanel extends JPanel {
 		topLabel.setOpaque(false);
 		add(topLabel);
 
-		topLabel.setText("经济值"+Begin.EV+" "+"幸福值"+Begin.HV+" "+"环境值"+Begin.EMV);
+		topLabel.setText("◎经济值"+Begin.EV+"  "+"◎幸福值"+Begin.HV+"  "+"◎环境值"+Begin.EMV);
 		
 		topLabel.setFont(new Font("微软雅黑 ", Font.BOLD, 28));
-		topLabel.setForeground(new Color(255,255,255));
+		topLabel.setForeground(new Color(42,96,128));
 		topLabel.setHorizontalTextPosition(JLabel.CENTER);
 
 	}
