@@ -59,6 +59,7 @@ public class SciPanel extends JLabel {
 		confirmButton.setHorizontalTextPosition(JButton.CENTER);
 		confirmButton.setVerticalTextPosition(JButton.CENTER);
 		confirmButton.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.BOLD, 20));
+		confirmButton.setForeground(new Color(25,112,29));
 		confirmButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -195,9 +196,9 @@ public class SciPanel extends JLabel {
 		pointsavailable.setEditable(false);
 		pointsavailable.setText("ø…∑÷≈‰—ßø∆µ„£∫" + availablepoints);
 		pointsavailable.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.BOLD, 20));
-		pointsavailable.setForeground(new Color(0, 0, 0));
+		pointsavailable.setForeground(new Color(25,112,29));
 		pointsavailable.setOpaque(false);
-		pointsavailable.setBounds(300, 55, 240, 45);
+		pointsavailable.setBounds(300, 52, 240, 45);
 		pointsavailable.setBorder(null);
 		add(confirmButton);
 		add(comButton);
@@ -215,6 +216,7 @@ public class SciPanel extends JLabel {
 			iconData[sciIcon.indexOf(b)].setBorder(null);
 			iconData[sciIcon.indexOf(b)]
 					.setFont(new Font("Œ¢»Ì—≈∫⁄", Font.BOLD, 20));
+			iconData[sciIcon.indexOf(b)].setForeground(new Color(25,112,29));
 			iconData[sciIcon.indexOf(b)]
 					.setHorizontalAlignment(JTextField.CENTER);
 			i1++;

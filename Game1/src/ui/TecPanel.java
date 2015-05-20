@@ -53,6 +53,7 @@ public class TecPanel extends JLabel {
 		confirmButton.setHorizontalTextPosition(JButton.CENTER);
 		confirmButton.setVerticalTextPosition(JButton.CENTER);
 		confirmButton.setFont(new Font("微软雅黑", Font.BOLD, 20));
+		confirmButton.setForeground(new Color(53,76,107));
 		confirmButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -85,12 +86,12 @@ public class TecPanel extends JLabel {
 		pointsfield.setFont(new Font("微软雅黑", Font.BOLD, 20));
 		pointsfield.setBounds(25, 20, 500, 40);
 		pointsfield.setHorizontalAlignment(JTextField.CENTER);
+		pointsfield.setForeground(new Color(49,77,114));
 		pointsfield.setBorder(null);
 		pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 				+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 				+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 				+ Sci.art.point);
-		pointsfield.setForeground(new Color(255,255,255));
 		pointsfield.setEditable(false);
 		add(pointsfield);
 

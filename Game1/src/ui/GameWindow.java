@@ -84,6 +84,7 @@ public class GameWindow extends JFrame {
 		background = new ImageIcon("image/background.png");// 背景图片
 		backgroundTitle = new ImageIcon("image/title.png");
 		objectBackground = new ImageIcon("image/prdpanel.png");
+		ImageIcon startst1 = new ImageIcon("image/buttonstart1.png");
 		final ImageIcon start1 = new ImageIcon("image/button1.png");
 		ImageIcon start2 = new ImageIcon("image/button2.png");
 		ImageIcon start3 = new ImageIcon("image/button3.png");
@@ -134,12 +135,13 @@ public class GameWindow extends JFrame {
 
 		// 创建开始界面按钮
 		for (int i = 0; i <= 2; i++) {
-			imageButton[i] = new ImageButton(start1, start2, start3, false);
+			imageButton[i] = new ImageButton(startst1, start2, start3, false);
 			imageButton[i].setLocation(530, 290 + (i) * 120);
 			imageButton[i].setVisible(true);
 			imageButton[i].setHorizontalTextPosition(JButton.CENTER);
 			imageButton[i].setVerticalTextPosition(JButton.CENTER);
 			imageButton[i].setFont(new Font("微软雅黑", Font.BOLD, 20));
+			imageButton[i].setForeground(new Color(0,89,130));
 			imagePanel.add(imageButton[i]);
 		}
 		imageButton[0].setText("开始游戏");
@@ -214,6 +216,7 @@ public class GameWindow extends JFrame {
 		for (int i = 0; i <= 2; i++) {
 			bottombottons[i] = new ImageButton(start1, start2, start3, false);
 			bottombottons[i].setLocation(40 + 250 * i, 70);
+			bottombottons[i].setForeground(new Color(53,76,107));
 			bottombottons[i].setHorizontalTextPosition(JButton.CENTER);
 			bottombottons[i].setVerticalTextPosition(JButton.CENTER);
 			bottombottons[i].setFont(new Font("微软雅黑", Font.BOLD, 20));
