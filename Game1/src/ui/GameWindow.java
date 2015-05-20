@@ -1134,6 +1134,7 @@ public class GameWindow extends JFrame {
 				i++;
 				if (i <= 10) {
 					blackLabel.setBackground(new Color(0, 0, 0, 255 / 10 * i));
+					starTimer.stop();
 				} else if (i > 10 && i <= 20) {
 					if (j == 0) {
 						for (ImageButton im : bottombottons) {
@@ -1148,7 +1149,7 @@ public class GameWindow extends JFrame {
 						roundButton.setVisible(true);
 						pauseButton.setVisible(true);
 						timeLabel.setVisible(true);
-						starTimer.stop();
+						
 					} else {
 						j++;
 					}
@@ -1178,6 +1179,7 @@ public class GameWindow extends JFrame {
 				i++;
 				if (i <= 10) {
 					blackLabel.setBackground(new Color(0, 0, 0, 255 / 10 * i));
+					starTimer.stop();
 				} else if (i > 10 && i <= 20) {
 					if (j == 0) {
 						pauseButton.setVisible(false);
@@ -1192,7 +1194,7 @@ public class GameWindow extends JFrame {
 							im.setVisible(false);
 						}
 						labelTitle.setVisible(true);
-						starTimer.stop();
+						
 					} else {
 						j++;
 					}
