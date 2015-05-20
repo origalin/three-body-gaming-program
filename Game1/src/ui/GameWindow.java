@@ -276,6 +276,7 @@ public class GameWindow extends JFrame {
 		accidentButton.setHorizontalTextPosition(JButton.CENTER);
 		accidentButton.setVerticalTextPosition(JButton.CENTER);
 		accidentButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 20));
+		accidentButton.setForeground(new Color(117,16,0));
 		accidentButton.addActionListener(new ActionListener() {
 
 			@Override
