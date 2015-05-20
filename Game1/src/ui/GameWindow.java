@@ -72,7 +72,7 @@ public class GameWindow extends JFrame {
 	static JLabel light1;
 	static JLabel light2;
 	static JLabel light3;
-	int time = 1020;
+	public static int time = 1020;
 	JTextField timeField;
 	Timer objtimer;
 	Timer sciTimer;

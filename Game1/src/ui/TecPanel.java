@@ -36,11 +36,17 @@ public class TecPanel extends JLabel {
 	Timer t;
 	static String[] textTitle = { "微积分", "几何", "微观物质结构", "生态学", "计算机科学",
 			"机械与力学", "有机化学", "人工智能", "核理论", "生物工程" };
-	static String[] textContains = { "高等数学的一部分，科学体系的根基\n学科需求：数 4", "研究空间区域关系的数学分支\n学科需求：物 1 数 2 艺 2",
-		"在分子、原子层次上研究物质的组成、性质、结构与变化规律\n学科需求：化 2 物 2 数 3 艺 3", "行星生态体系的研究，是掌握生命钥匙的开始\n学科需求：化 2 生 3 数 2 计 1",
-		"信息技术的飞跃，具有无限可能\n学科需求：物 1 数 4 计 4 艺 2\n解锁：电子管计算机 多媒体设备", "工程技术投入应用，用钢铁代替血肉\n学科需求：物 4 数 3 计 2 艺 2\n解锁：载具 高精度工具",
-		"有机化合物及有机物质的结构、性质、反应的发现\n学科需求：化 5 生 4 物 1 数 4 计 3 艺 1\n解锁：塑料", "从绝对理性到感性的突破，社会伦理将因此改变\n学科需求：物6 数 7 计 7 艺 3\n解锁：智能机械",
-		"掌握物质深处的巨大能量\n学科需求：化 4  物 7 数 7 计 6 艺 2\n解锁：核武器", "这个种族已然主宰生命的一部分\n学科需求：化 5 生 7 物 2 数 4 计 4 艺 2\n解锁：生物制药"  };
+	static String[] textContains = {
+	"高等数学的一部分，科学体系的根基\n学科需求：数 3", 
+	"研究空间区域关系的数学分支\n学科需求：物 1 数 2 艺 1",
+		"在分子、原子层次上研究物质的组成、性质、结构与变化规律\n学科需求：化 3 物 2 数 3 艺 2",
+		"行星生态体系的研究，是掌握生命钥匙的开始\n学科需求：化 2 生 5 数 1",
+		"信息技术的飞跃，具有无限可能\n学科需求：物 1 数 3 计 3 艺 1\n解锁：电子管计算机 多媒体设备",
+		"工程技术投入应用，用钢铁代替血肉\n学科需求：化 2 物 4 数 3 计 3 艺 2\n解锁：载具 高精度工具",
+		"有机化合物及有机物质的结构、性质、反应的发现\n学科需求：化 6 生 4 物 1 数 3 计 3 艺 1\n解锁：塑料", 
+		"从绝对理性到感性的突破，社会伦理将因此改变\n学科需求：生 2 物 6 数 6 计 6 艺 2\n解锁：智能机械",
+		"掌握物质深处的巨大能量\n学科需求：化 4  生 2 物 7 数 6 计 6 艺 2\n解锁：核武器",
+"这个种族已然主宰生命的一部分\n学科需求：化 5 生 7 物 2 数 4 计 4 艺 2\n解锁：生物制药"  };
 	public static int[] tecStats = new int[10];
 
 	public TecPanel(ImageIcon i) {
@@ -132,7 +138,7 @@ public class TecPanel extends JLabel {
 				tecButton[0].setavalible(false);
 				lineLabels[0].setVisible(true);
 				tecButton[4].setVisible(true);
-				Sci.math.point -= 4;
+				Sci.math.point -= 3;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
@@ -153,7 +159,7 @@ public class TecPanel extends JLabel {
 				tecButton[5].setVisible(true);
 				Sci.physics.point -= 1;
 				Sci.math.point -= 2;
-				Sci.art.point -= 2;
+				Sci.art.point -= 1;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
@@ -171,10 +177,10 @@ public class TecPanel extends JLabel {
 				tecButton[2].setavalible(false);
 				lineLabels[2].setVisible(true);
 				tecButton[8].setVisible(true);
-				Sci.chemistry.point -= 2;
+				Sci.chemistry.point -= 3;
 				Sci.physics.point -= 2;
 				Sci.math.point -= 3;
-				Sci.art.point -= 3;
+				Sci.art.point -= 2;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
@@ -193,9 +199,8 @@ public class TecPanel extends JLabel {
 				lineLabels[3].setVisible(true);
 				tecButton[6].setVisible(true);
 				Sci.chemistry.point -= 2;
-				Sci.biology.point -= 3;
-				Sci.math.point -= 2;
-				Sci.computer.point -= 1;
+				Sci.biology.point -= 5;
+				Sci.math.point -= 1;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
@@ -216,9 +221,9 @@ public class TecPanel extends JLabel {
 				lineLabels[4].setVisible(true);
 				tecButton[7].setVisible(true);
 				Sci.physics.point -= 1;
-				Sci.math.point -= 4;
-				Sci.computer.point -= 4;
-				Sci.art.point -= 2;
+				Sci.math.point -= 3;
+				Sci.computer.point -= 3;
+				Sci.art.point -= 1;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
@@ -238,6 +243,7 @@ public class TecPanel extends JLabel {
 				tecButton[7].setVisible(true);
 				lineLabels[2].setVisible(true);
 				tecButton[8].setVisible(true);
+				Sci.chemistry.point -= 2;
 				Sci.physics.point -= 4;
 				Sci.math.point -= 3;
 				Sci.computer.point -= 3;
@@ -259,10 +265,10 @@ public class TecPanel extends JLabel {
 				tecButton[6].setavalible(false);
 				lineLabels[5].setVisible(true);
 				tecButton[9].setVisible(true);
-				Sci.chemistry.point -= 5;
+				Sci.chemistry.point -= 6;
 				Sci.biology.point -= 4;
 				Sci.physics.point -= 1;
-				Sci.math.point -= 4;
+				Sci.math.point -= 3;
 				Sci.computer.point -= 3;
 				Sci.art.point -= 1;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
@@ -280,10 +286,11 @@ public class TecPanel extends JLabel {
 				// TODO 自动生成的方法存根
 				tecButton[7].ispressed = true;
 				tecButton[7].setavalible(false);
+				Sci.biology.point -= 2;
 				Sci.physics.point -= 6;
-				Sci.math.point -= 7;
-				Sci.computer.point -= 7;
-				Sci.art.point -= 3;
+				Sci.math.point -= 6;
+				Sci.computer.point -= 6;
+				Sci.art.point -= 2;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
@@ -300,8 +307,9 @@ public class TecPanel extends JLabel {
 				tecButton[8].ispressed = true;
 				tecButton[8].setavalible(false);
 				Sci.chemistry.point -= 4;
+				Sci.biology.point -= 2;
 				Sci.physics.point -= 7;
-				Sci.math.point -= 7;
+				Sci.math.point -= 6;
 				Sci.computer.point -= 6;
 				Sci.art.point -= 2;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
@@ -370,11 +378,16 @@ public class TecPanel extends JLabel {
 		int[] points = { Sci.chemistry.point, Sci.biology.point,
 				Sci.physics.point, Sci.math.point, Sci.computer.point,
 				Sci.art.point };
-		int[][] pointsneed = { { 0, 0, 0, 4, 0, 0 }, { 0, 0, 1, 2, 0, 2 },
-				{ 2, 0, 2, 3, 0, 3 }, { 2, 3, 0, 2, 1, 0 },
-				{ 0, 0, 1, 4, 4, 2 }, { 0, 0, 4, 3, 3, 2 },
-				{ 5, 4, 1, 4, 3, 1 }, { 0, 0, 6, 7, 7, 3 },
-				{ 4, 0, 7, 7, 6, 2 }, { 5, 7, 2, 4, 4, 2 } };
+		int[][] pointsneed = {{ 0, 0, 0, 3, 0, 0 },
+				{ 0, 0, 1, 2, 0, 1 },
+				{ 3, 0, 2, 3, 0, 2 },
+				{ 2, 5, 0, 1, 0, 0 },
+				{ 0, 0, 1, 3, 3, 1 },
+				{ 2, 0, 4, 3, 3, 2 },
+				{ 6, 4, 1, 3, 3, 1 },
+				{ 0, 2, 6, 6, 6, 2 },
+				{ 4, 2, 7, 6, 6, 2 },
+				{ 5, 7, 2, 4, 4, 2 } };
 		for (int i = 0; i <= 9; i++) {
 			boolean isproable = true;
 			for (int j = 0; j <= 5; j++) {
