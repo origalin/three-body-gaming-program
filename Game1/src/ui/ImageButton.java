@@ -12,7 +12,7 @@ import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
 @SuppressWarnings("serial")
-class ImageButton extends JButton {
+public class ImageButton extends JButton {
 	ImageIcon disable;
 	boolean ispressed = false;
 	boolean isDisabled;

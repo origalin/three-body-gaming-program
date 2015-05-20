@@ -1,8 +1,8 @@
 package el;
 
-public class Point{
+public class SciPoint{
 	int GP = 0;
-		
+	
 	private static double getBasic(){
 		int n = 0;
 		int i = 0;

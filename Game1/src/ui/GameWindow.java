@@ -34,6 +34,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
+
 	JLayeredPane frontPanel;
 	// JDialog sciDialog = new JDialog(this);
 	private ImageIcon backgroundScn;
@@ -482,11 +483,21 @@ public class GameWindow extends JFrame {
 				});
 
 				mouseTimer.start();
-				Next next = new Next();
-				next.goNext();
+				Economy eco = new Economy();
+				Environment env = new Environment();
+				Happiness hap = new Happiness();
+				SciPoint poi = new SciPoint();
+				Bomb bom = new Bomb();
+				String s = bom.bomb();
+				eco.economy();
+				env.environment();
+				hap.happiness();
+				poi.point();
+				if(s!=""){
+					accidenTextArea.setText(s);
+					accidentLabel.setVisible(true);
+				}
 				time++;
-				
-				
 
 			}
 		});
