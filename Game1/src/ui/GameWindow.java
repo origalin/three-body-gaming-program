@@ -287,7 +287,7 @@ public class GameWindow extends JFrame {
 		accidentLabel.add(accidentButton);
 		frontPanel.add(accidentLabel, 0);
 		accidenTextArea = new JTextArea();
-		accidenTextArea.setOpaque(true);
+		accidenTextArea.setOpaque(false);
 		accidenTextArea.setBorder(null);
 		accidenTextArea.setEditable(false);
 		accidenTextArea.setBounds(24, 20, 430, 150);
