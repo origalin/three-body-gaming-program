@@ -497,6 +497,9 @@ public class GameWindow extends JFrame {
 					accidenTextArea.setText(s);
 					accidentLabel.setVisible(true);
 				}
+				if(Begin.EV<=0||Begin.HV<=0||Begin.EMV<=0){
+					//lose!
+				}
 				time++;
 
 			}
