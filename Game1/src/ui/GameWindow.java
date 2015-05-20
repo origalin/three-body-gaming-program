@@ -212,7 +212,7 @@ public class GameWindow extends JFrame {
 				planet.getIconHeight());
 		planetLabel.setOpaque(false);
 		lightPanel.setOpaque(false);
-		lightPanel.setBounds(360, 30, planet.getIconWidth(),
+		lightPanel.setBounds(330, 30, planet.getIconWidth(),
 				planet.getIconHeight());
 		lightPanel.add(light1);
 		lightPanel.add(light2);
