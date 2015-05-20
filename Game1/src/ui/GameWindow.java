@@ -30,6 +30,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
 	JLayeredPane frontPanel;
@@ -56,6 +58,7 @@ public class GameWindow extends JFrame {
 	JLabel starLabel2;
 	static JLabel blockLabel;
 	JLabel label2;
+	JLabel planetLabel2;
 	JTextArea accidenTextArea;
 	ImageButton[] bottombottons = new ImageButton[3];
 	ImageButton roundButton;
@@ -85,7 +88,7 @@ public class GameWindow extends JFrame {
 		frontPanel = getLayeredPane();
 		backgroundScn = new ImageIcon("image/scnpanel.png");
 		backgroundTec = new ImageIcon("image/tecpanel.png");
-		background = new ImageIcon("image/background.png");// ±³¾°Í¼Æ¬
+		background = new ImageIcon("image/background.png");// èƒŒæ™¯å›¾ç‰‡
 		backgroundTitle = new ImageIcon("image/title.png");
 		objectBackground = new ImageIcon("image/prdpanel.png");
 		ImageIcon startst1 = new ImageIcon("image/buttonstart1.png");
@@ -102,12 +105,12 @@ public class GameWindow extends JFrame {
 		ImageIcon accident1 = new ImageIcon("image/accidentbutton1.png");
 		ImageIcon accident2 = new ImageIcon("image/accidentbutton2.png");
 		ImageIcon accident3 = new ImageIcon("image/accidentbutton3.png");
-		// ±³¾°Í¼
-		JLabel label = new JLabel(background);// °Ñ±³¾°Í¼Æ¬ÏÔÊ¾ÔÚÒ»¸ö±êÇ©ÀïÃæ
+		// èƒŒæ™¯å›¾
+		JLabel label = new JLabel(background);// æŠŠèƒŒæ™¯å›¾ç‰‡æ˜¾ç¤ºåœ¨ä¸€ä¸ªæ ‡ç­¾é‡Œé¢
 		label.setBounds(0, 0, background.getIconWidth(),
 				background.getIconHeight());
 
-		// ¹ı¶ÉÍ¼Æ¬
+		// è¿‡æ¸¡å›¾ç‰‡
 		blackLabel = new JLabel();
 		blackLabel.setBounds(0, 0, 1280, 720);
 		blackLabel.setBackground(new Color(0, 0, 0, 0));
@@ -118,13 +121,12 @@ public class GameWindow extends JFrame {
 		label2.setVisible(false);
 		frontPanel.add(label2, new Integer(-1));
 
-		// ÆÁ±ÎÍ¼Æ¬
+		// å±è”½å›¾ç‰‡
 		blockLabel = new JLabel(new ImageIcon("image/block.png"));
 		blockLabel.setBounds(0, 0, 1280, 720);
-		blockLabel.setOpaque(true);
 		blockLabel.setVisible(false);
 		frontPanel.add(blockLabel, new Integer(-7));
-		//ĞÇ¿ÕÍ¼Æ¬
+		//æ˜Ÿç©ºå›¾ç‰‡
 		starLabel1 = new JLabel(new ImageIcon("image/back1.png"));
 		starLabel1.setBounds(0, 0, 2560, 720);
 		frontPanel.add(starLabel1, new Integer(-40));
@@ -133,8 +135,13 @@ public class GameWindow extends JFrame {
 		frontPanel.add(starLabel2, new Integer(-41));
 		staranim();
 		
+		//å…‰æ™•å›¾ç‰‡
+		planetLabel2 = new JLabel(new ImageIcon("image/planet2.png"));
+		planetLabel2.setBounds(290, 50, planetLabel2.getIcon().getIconWidth(), planetLabel2.getIcon().getIconHeight());
+		frontPanel.add(planetLabel2,new Integer(-29));
+		
 
-		// ±êÌâÎÄ×Ö
+		// æ ‡é¢˜æ–‡å­—
 		labelTitle = new JLabel(backgroundTitle);
 		labelTitle.setLocation(430, 60);
 		labelTitle.setSize(backgroundTitle.getIconWidth(),
@@ -146,24 +153,24 @@ public class GameWindow extends JFrame {
 		imagePanel.setLocation(200, 0);
 		frontPanel.add(labelTitle,new Integer(-17));
 
-		// ´´½¨¿ªÊ¼½çÃæ°´Å¥
+		// åˆ›å»ºå¼€å§‹ç•Œé¢æŒ‰é’®
 		for (int i = 0; i <= 2; i++) {
 			imageButton[i] = new ImageButton(startst1, start2, start3, false);
 			imageButton[i].setLocation(530, 290 + (i) * 120);
 			imageButton[i].setVisible(true);
 			imageButton[i].setHorizontalTextPosition(JButton.CENTER);
 			imageButton[i].setVerticalTextPosition(JButton.CENTER);
-			imageButton[i].setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 20));
+			imageButton[i].setFont(new Font("å¾®è½¯é›…é»‘", Font.BOLD, 20));
 			imageButton[i].setForeground(new Color(0,89,130));
 			frontPanel.add(imageButton[i],new Integer(-18));
 		}
-		imageButton[0].setText("¿ªÊ¼ÓÎÏ·");
+		imageButton[0].setText("å¼€å§‹æ¸¸æˆ");
 
-		imageButton[1].setText("ÖÆ×÷ÈËÔ±");
+		imageButton[1].setText("åˆ¶ä½œäººå‘˜");
 
-		imageButton[2].setText("ÍË³öÓÎÏ·");
+		imageButton[2].setText("é€€å‡ºæ¸¸æˆ");
 
-		// ´´½¨Ê±¼ä±êÇ©
+		// åˆ›å»ºæ—¶é—´æ ‡ç­¾
 		timeLabel = new JLabel(message);
 		timeLabel.setBounds(1060, 20, message.getIconWidth(),
 				message.getIconHeight());
@@ -172,25 +179,23 @@ public class GameWindow extends JFrame {
 		timeField.setBorder(null);
 		timeField.setEditable(false);
 		timeField.setOpaque(false);
-		timeField.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 20));
+		timeField.setFont(new Font("å¾®è½¯é›…é»‘", Font.BOLD, 20));
 		timeField.setForeground(new Color(42,96,128));
 		timeField.setText("AC " + time);
 		timeLabel.add(timeField);
 		frontPanel.add(timeLabel, new Integer(-16));
 		timeLabel.setVisible(false);
 
-		// ´´½¨ÔİÍ£°´Å¥
+		// åˆ›å»ºæš‚åœæŒ‰é’®
 		pauseButton = new ImageButton(pause1, pause2, pause3, false);
 		pauseButton.setLocation(50, 20);
 		frontPanel.add(pauseButton, new Integer(-14));
 		pauseButton.setVisible(false);
 
-		// ´´½¨ĞÇÇòÍ¼Æ¬
+		// åˆ›å»ºæ˜Ÿçƒå›¾ç‰‡
 		planet = new ImageIcon("image/planet.png");
-		planet.setImage(planet.getImage().getScaledInstance(600, 600,
-				Image.SCALE_DEFAULT));
 		lightPanel = new JPanel();
-		JLabel planetLabel = new JLabel(planet);// °Ñ±³¾°Í¼Æ¬ÏÔÊ¾ÔÚÒ»¸ö±êÇ©ÀïÃæ
+		JLabel planetLabel = new JLabel(planet);// æŠŠèƒŒæ™¯å›¾ç‰‡æ˜¾ç¤ºåœ¨ä¸€ä¸ªæ ‡ç­¾é‡Œé¢
 		light1 = new JLabel(new ImageIcon("image/light1.png"));
 		light1.setBounds(0, 0, light1.getIcon().getIconWidth(), light1
 				.getIcon().getIconHeight());
@@ -203,7 +208,7 @@ public class GameWindow extends JFrame {
 		light3.setBounds(0, 0, light1.getIcon().getIconWidth(), light1
 				.getIcon().getIconHeight());
 		light3.setVisible(false);
-		planetLabel.setBounds(360, 30, planet.getIconWidth(),
+		planetLabel.setBounds(330, 30, planet.getIconWidth(),
 				planet.getIconHeight());
 		planetLabel.setOpaque(false);
 		lightPanel.setOpaque(false);
@@ -215,12 +220,12 @@ public class GameWindow extends JFrame {
 		frontPanel.add(lightPanel,new Integer(-30));
 		frontPanel.add(planetLabel,new Integer(-31));
 
-		// ´´½¨¶¥²¿Ãæ°å
+		// åˆ›å»ºé¡¶éƒ¨é¢æ¿
 		topPanel = new TopPanel();
 		topPanel.setVisible(false);
 		frontPanel.add(topPanel, new Integer(-15));
 
-		// ´´½¨µ×²¿Ãæ°å°´Å¥
+		// åˆ›å»ºåº•éƒ¨é¢æ¿æŒ‰é’®
 		ImageIcon bottomImage = new ImageIcon("image/bottompanel.png");
 		bottomLabel = new JLabel(bottomImage);
 		bottomLabel.setBounds(240, 597, bottomImage.getIconWidth(),
@@ -233,55 +238,55 @@ public class GameWindow extends JFrame {
 			bottombottons[i].setForeground(new Color(53,76,107));
 			bottombottons[i].setHorizontalTextPosition(JButton.CENTER);
 			bottombottons[i].setVerticalTextPosition(JButton.CENTER);
-			bottombottons[i].setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 20));
+			bottombottons[i].setFont(new Font("å¾®è½¯é›…é»‘", Font.BOLD, 20));
 		}
-		bottombottons[0].setText("Ñ§¿Æ");
+		bottombottons[0].setText("å­¦ç§‘");
 
-		bottombottons[1].setText("¿Æ¼¼");
+		bottombottons[1].setText("ç§‘æŠ€");
 
-		bottombottons[2].setText("½¨Ôì");
+		bottombottons[2].setText("å»ºé€ ");
 		for (ImageButton im : bottombottons) {
 			bottomLabel.add(im);
 			im.setVisible(false);
 		}
 
-		// ´´½¨»ØºÏ°´Å¥
+		// åˆ›å»ºå›åˆæŒ‰é’®
 		roundButton = new ImageButton(roundIcon1, roundIcon2, roundIcon3, false);
 		roundButton.setLocation(1100, 620);
 		frontPanel.add(roundButton, new Integer(-11));
 		roundButton.setVisible(false);
 
-		// ´´½¨Ñ§¿ÆÃæ°å
+		// åˆ›å»ºå­¦ç§‘é¢æ¿
 		sciPanel = new SciPanel(backgroundScn);
 		sciPanel.setVisible(false);
 		frontPanel.add(sciPanel, new Integer(-6));
 
-		// ´´½¨¿Æ¼¼Ãæ°å
+		// åˆ›å»ºç§‘æŠ€é¢æ¿
 		tecPanel = new TecPanel(backgroundTec);
 		tecPanel.setVisible(false);
 		frontPanel.add(tecPanel, new Integer(-5));
 
-		// ´´½¨Éú²úÃæ°å
+		// åˆ›å»ºç”Ÿäº§é¢æ¿
 		objectPanel = new ObjectPanel(objectBackground);
 		objectPanel.setVisible(false);
 		frontPanel.add(objectPanel, new Integer(-4));
 
-		// ´´½¨ÊÂ¼şÃæ°å
+		// åˆ›å»ºäº‹ä»¶é¢æ¿
 		accidentLabel = new JLabel(new ImageIcon("image/accidentpanel.png"));
 		accidentLabel.setBounds(400, 250, accidentLabel.getIcon()
 				.getIconWidth(), accidentLabel.getIcon().getIconHeight());
 		accidentButton = new ImageButton(accident1, accident2, accident3, false);
 		accidentButton.setLocation(140, 180);
-		accidentButton.setText("È·ÈÏ");
+		accidentButton.setText("ç¡®è®¤");
 		accidentButton.setHorizontalTextPosition(JButton.CENTER);
 		accidentButton.setVerticalTextPosition(JButton.CENTER);
-		accidentButton.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 20));
+		accidentButton.setFont(new Font("å¾®è½¯é›…é»‘", Font.BOLD, 20));
 		accidentButton.setForeground(new Color(117,16,0));
 		accidentButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				accidentLabel.setVisible(false);
 			}
 		});
@@ -292,16 +297,16 @@ public class GameWindow extends JFrame {
 		accidenTextArea.setBorder(null);
 		accidenTextArea.setEditable(false);
 		accidenTextArea.setBounds(24, 20, 430, 150);
-		accidenTextArea.setFont(new Font("ËÎÌå", Font.PLAIN, 17));
+		accidenTextArea.setFont(new Font("å®‹ä½“", Font.PLAIN, 17));
 		accidenTextArea.setForeground(new Color(117,16,0));
 		accidentLabel.add(accidenTextArea);
 
-		// °´Å¥¹¦ÄÜ
+		// æŒ‰é’®åŠŸèƒ½
 		imageButton[0].addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				label2.setVisible(true);
 				blackanime();
 
@@ -311,7 +316,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -319,7 +324,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				dispose();
 				System.exit(0);
 			}
@@ -332,7 +337,7 @@ public class GameWindow extends JFrame {
 						Sci.physics.point, Sci.math.point, Sci.computer.point,
 						Sci.art.point };
 				sciPanel.setpoints(i);
-				sciPanel.pointsavailable.setText("¿É·ÖÅäÑ§¿Æµã£º" + Begin.HP);
+				sciPanel.pointsavailable.setText("å¯åˆ†é…å­¦ç§‘ç‚¹ï¼š" + Begin.HP);
 				SciPanel.iconData[3].setText(Sci.math.point + "");
 				SciPanel.iconData[2].setText(Sci.physics.point + "");
 				SciPanel.iconData[0].setText(Sci.chemistry.point + "");
@@ -347,7 +352,7 @@ public class GameWindow extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+						// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 						i += 1;
 						if (i <= 10) {
 							sciPanel.setLocation(sciPanel.getLocation().x,
@@ -365,10 +370,10 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				blockLabel.setVisible(true);
-				tecPanel.pointsfield.setText("»¯Ñ§:" + Sci.chemistry.point
-						+ " ÉúÎï:" + Sci.biology.point + " ÎïÀí:"
-						+ Sci.physics.point + " ÊıÑ§:" + Sci.math.point + " ¼ÆËã»ú:"
-						+ Sci.computer.point + " ÒÕÊõ:" + Sci.art.point);
+				tecPanel.pointsfield.setText("åŒ–å­¦:" + Sci.chemistry.point
+						+ " ç”Ÿç‰©:" + Sci.biology.point + " ç‰©ç†:"
+						+ Sci.physics.point + " æ•°å­¦:" + Sci.math.point + " è®¡ç®—æœº:"
+						+ Sci.computer.point + " è‰ºæœ¯:" + Sci.art.point);
 				tecPanel.Refresh();
 				tecPanel.setLocation(232, 720);
 				tecPanel.setVisible(true);
@@ -377,7 +382,7 @@ public class GameWindow extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+						// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 						i += 1;
 
 						if (i <= 10) {
@@ -404,7 +409,7 @@ public class GameWindow extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+						// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 						i += 1;
 
 						if (i <= 10) {
@@ -423,7 +428,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				label2.setVisible(true);
 				blackanime2();
 				// repaint();
@@ -440,7 +445,7 @@ public class GameWindow extends JFrame {
 
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-						// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+						// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 						if (i == 0) {
 							Toolkit tk = Toolkit.getDefaultToolkit();
 							Image image = new ImageIcon("image/cursor2.gif")
@@ -467,8 +472,8 @@ public class GameWindow extends JFrame {
 							setCursor(cursor);
 							mouseTimer.stop();
 							starTimer.setDelay(100);
-							topPanel.topLabel.setText("¾­¼ÃÖµ" + Begin.EV + "  " + "ĞÒ¸£Öµ"
-									+ Begin.HV + "  " + "»·¾³Öµ" + Begin.EMV);
+							topPanel.topLabel.setText("ç»æµå€¼" + Begin.EV + "  " + "å¹¸ç¦å€¼"
+									+ Begin.HV + "  " + "ç¯å¢ƒå€¼" + Begin.EMV);
 
 							timeField.setText("AC " + time);
 						}
@@ -486,20 +491,20 @@ public class GameWindow extends JFrame {
 			}
 		});
 
-		// ÉèÖÃÊó±ê
-		String url = "image/cursor.gif"; // ´¢´æÊó±êÍ¼Æ¬µÄÎ»ÖÃ
+		// è®¾ç½®é¼ æ ‡
+		String url = "image/cursor.gif"; // å‚¨å­˜é¼ æ ‡å›¾ç‰‡çš„ä½ç½®
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		Image image = new ImageIcon(url).getImage();
 		Cursor cursor = tk.createCustomCursor(image, new Point(0, 0), "invisi");
 
-		setCursor(cursor); // panel Ò²¿ÉÒÔÊÇÆäËû×é¼ş
+		setCursor(cursor); // panel ä¹Ÿå¯ä»¥æ˜¯å…¶ä»–ç»„ä»¶
 
-		// »ñÈ¡Êó±ê×ø±ê
+		// è·å–é¼ æ ‡åæ ‡
 		addMouseMotionListener(new MouseMotionListener() {
 
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				x = e.getX();
 				y = e.getY();
 			}
@@ -507,7 +512,7 @@ public class GameWindow extends JFrame {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -519,34 +524,34 @@ public class GameWindow extends JFrame {
 		// setVisible(true);
 		setLocationRelativeTo(null);
 
-		// ÉèÖÃĞÅÏ¢Ãæ°å
+		// è®¾ç½®ä¿¡æ¯é¢æ¿
 		messageLabel = new MessageLabel();
 		messageLabel.setVisible(false);
 		frontPanel.add(messageLabel, 0);
-		// ¿Æ¼¼°´Å¥µÄĞÅÏ¢ÄÚÈİ£¨ºÜ³¤¡£¡£¡£¡££©
+		// ç§‘æŠ€æŒ‰é’®çš„ä¿¡æ¯å†…å®¹ï¼ˆå¾ˆé•¿ã€‚ã€‚ã€‚ã€‚ï¼‰
 		tecPanel.tecButton[0].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
 				MessageLabel.setTitle(TecPanel.textTitle[0]);
@@ -556,7 +561,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -564,25 +569,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
 				MessageLabel.setTitle(TecPanel.textTitle[1]);
@@ -592,7 +597,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -600,25 +605,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
 				MessageLabel.setTitle(TecPanel.textTitle[2]);
@@ -628,7 +633,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -636,25 +641,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
 				MessageLabel.setTitle(TecPanel.textTitle[3]);
@@ -664,7 +669,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -672,25 +677,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
 				MessageLabel.setTitle(TecPanel.textTitle[4]);
@@ -700,7 +705,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -708,25 +713,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
 				MessageLabel.setTitle(TecPanel.textTitle[5]);
@@ -736,7 +741,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -744,25 +749,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
 				MessageLabel.setTitle(TecPanel.textTitle[6]);
@@ -772,7 +777,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -780,25 +785,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
 				MessageLabel.setTitle(TecPanel.textTitle[7]);
@@ -808,7 +813,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -816,25 +821,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
 				MessageLabel.setTitle(TecPanel.textTitle[8]);
@@ -844,7 +849,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -852,25 +857,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
 				MessageLabel.setTitle(TecPanel.textTitle[9]);
@@ -880,34 +885,34 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
-		// Ñ§¿Æ°´Å¥µÄĞÅÏ¢ÄÚÈİ£¨Ò²ºÜ³¤¡£¡£¡£¡££©
+		// å­¦ç§‘æŒ‰é’®çš„ä¿¡æ¯å†…å®¹ï¼ˆä¹Ÿå¾ˆé•¿ã€‚ã€‚ã€‚ã€‚ï¼‰
 		sciPanel.cheButton.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 50, GameWindow.y + 50);
 				MessageLabel.setTitle(SciPanel.iconTitle[0]);
@@ -917,7 +922,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -925,25 +930,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 50, GameWindow.y + 50);
 				MessageLabel.setTitle(SciPanel.iconTitle[1]);
@@ -953,7 +958,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -961,25 +966,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 50, GameWindow.y + 50);
 				MessageLabel.setTitle(SciPanel.iconTitle[2]);
@@ -989,7 +994,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -997,25 +1002,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 50, GameWindow.y + 50);
 				MessageLabel.setTitle(SciPanel.iconTitle[3]);
@@ -1025,7 +1030,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -1033,25 +1038,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 50, GameWindow.y + 50);
 				MessageLabel.setTitle(SciPanel.iconTitle[4]);
@@ -1061,7 +1066,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
@@ -1069,25 +1074,25 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				messageLabel.setVisible(false);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 				messageLabel.setLocation(GameWindow.x + 50, GameWindow.y + 50);
 				MessageLabel.setTitle(SciPanel.iconTitle[5]);
@@ -1097,17 +1102,17 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 
 			}
 		});
 	}
 
 	public KeyEventPostProcessor getMyKeyEventHandler() {
-		return new KeyEventPostProcessor() {  // ·µ»ØÒ»¸öÊµÏÖKeyEventPostProcessor½Ó¿ÚµÄÄäÃûÄÚ²¿Àà¡£
-			public boolean postProcessKeyEvent(KeyEvent e) {  // ÊµÏÖpostProcessKeyEvent·½·¨
+		return new KeyEventPostProcessor() {  // è¿”å›ä¸€ä¸ªå®ç°KeyEventPostProcessoræ¥å£çš„åŒ¿åå†…éƒ¨ç±»ã€‚
+			public boolean postProcessKeyEvent(KeyEvent e) {  // å®ç°postProcessKeyEventæ–¹æ³•
 
-				if (e.getKeyCode() == KeyEvent.VK_E) {  // ¸ù¾İÄãµÄĞèÒª¼àÌıÏàÓ¦µÄ¶¯×÷¡£
+				if (e.getKeyCode() == KeyEvent.VK_E) {  // æ ¹æ®ä½ çš„éœ€è¦ç›‘å¬ç›¸åº”çš„åŠ¨ä½œã€‚
 					for (ImageButton im : TecPanel.tecButton) {
 						im.setavalible(true);
 						im.setVisible(true);
@@ -1130,7 +1135,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				i++;
 				if (i <= 10) {
 					blackLabel.setBackground(new Color(0, 0, 0, 255 / 10 * i));
@@ -1175,7 +1180,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				i++;
 				if (i <= 10) {
 					blackLabel.setBackground(new Color(0, 0, 0, 255 / 10 * i));
@@ -1216,7 +1221,7 @@ public class GameWindow extends JFrame {
 			int i = 0;
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				if(i<=2560) {
 					starLabel1.setLocation(0-i, 0);
 					starLabel2.setLocation(2560-i, 0);
