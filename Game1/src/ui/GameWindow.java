@@ -1257,7 +1257,9 @@ public class GameWindow extends JFrame {
 				i++;
 				if(j<=100) {
 					PlaneLabel.trance = j;
-					planetLabel2.repaint();
+					if(planetLabel2!=null) {
+						planetLabel2.repaint();
+					}
 				}
 				else if (j>100&&j<=200) {
 					PlaneLabel.trance = 200-j;
