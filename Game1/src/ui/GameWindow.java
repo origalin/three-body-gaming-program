@@ -93,9 +93,11 @@ public class GameWindow extends JFrame {
 	Timer blackTimer;
 	Timer mouseTimer;
 	Timer starTimer;
+	Timer accidTimer;
 	ImageButton[] imageButton = new ImageButton[3];
 	int v = 1;
 	Bomb bom;
+	SimpleAttributeSet bSet = new SimpleAttributeSet();  
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -280,7 +282,12 @@ public class GameWindow extends JFrame {
 		roundButton.setLocation(1100, 620);
 		frontPanel.add(roundButton, new Integer(-11));
 		roundButton.setVisible(false);
-
+		
+		// 设置信息面板
+		messageLabel = new MessageLabel();
+		messageLabel.setVisible(false);
+		frontPanel.add(messageLabel, 0);
+		
 		// 创建学科面板
 		sciPanel = new SciPanel(backgroundScn);
 		sciPanel.setVisible(false);
@@ -292,13 +299,13 @@ public class GameWindow extends JFrame {
 		frontPanel.add(tecPanel, new Integer(-5));
 
 		// 创建生产面板
-		objectPanel = new ObjectPanel(objectBackground);
+		objectPanel = new ObjectPanel(objectBackground,messageLabel);
 		objectPanel.setVisible(false);
 		frontPanel.add(objectPanel, new Integer(-4));
 
 		// 创建事件面板
 		accidentLabel = new JLabel(new ImageIcon("image/accidentpanel.png"));
-		accidentLabel.setBounds(400, 250, accidentLabel.getIcon()
+		accidentLabel.setBounds(400, 720, accidentLabel.getIcon()
 				.getIconWidth(), accidentLabel.getIcon().getIconHeight());
 		accidentLabel.setVisible(false);
 		accidentButton = new ImageButton(accident1, accident2, accident3, false);
@@ -313,8 +320,8 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				accidentLabel.setVisible(false);
-				blockLabel.setVisible(false);
+				//accidentLabel.setVisible(false);
+				 accidentanim2();
 			}
 		});
 		accidentLabel.add(accidentButton);
@@ -325,7 +332,6 @@ public class GameWindow extends JFrame {
 		accidenPane.setBounds(24, 80, 430, 150);
 		accidenPane.setEditable(false);
 		accidenPane.setFocusable(false);
-		final SimpleAttributeSet bSet = new SimpleAttributeSet();  
         StyleConstants.setAlignment(bSet, StyleConstants.ALIGN_CENTER);    
         StyleConstants.setFontFamily(bSet, "宋体 bold"); 
         StyleConstants.setForeground(bSet, new Color(117, 16, 0)); 
@@ -533,10 +539,8 @@ public class GameWindow extends JFrame {
 							String s = bom.bomb();
 							if (s != "") {
 								accidenPane.setText(s);
-								StyledDocument doc = accidenPane.getStyledDocument();  
-						         doc.setParagraphAttributes(0, 104, bSet, false); 
-						         blockLabel.setVisible(true);
-								accidentLabel.setVisible(true);
+								accidentanim();
+								
 							}
 							if (Begin.EV <= 0 || Begin.HV <= 0 || Begin.EMV <= 0) {
 								// lose!
@@ -596,10 +600,7 @@ public class GameWindow extends JFrame {
 		// setVisible(true);
 		setLocationRelativeTo(null);
 
-		// 设置信息面板
-		messageLabel = new MessageLabel();
-		messageLabel.setVisible(false);
-		frontPanel.add(messageLabel, 0);
+
 		// 科技按钮的信息内容（很长。。。。）
 		tecPanel.tecButton[0].addMouseListener(new MouseListener() {
 
@@ -1178,6 +1179,403 @@ public class GameWindow extends JFrame {
 
 			}
 		});
+		ObjectPanel.button[0].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[0]);
+				MessageLabel.setContains(ObjectPanel.textContains[0]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		ObjectPanel.button[1].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[1]);
+				MessageLabel.setContains(ObjectPanel.textContains[1]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		ObjectPanel.button[2].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[2]);
+				MessageLabel.setContains(ObjectPanel.textContains[2]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		ObjectPanel.button[3].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[3]);
+				MessageLabel.setContains(ObjectPanel.textContains[3]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		ObjectPanel.button[4].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[4]);
+				MessageLabel.setContains(ObjectPanel.textContains[4]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		ObjectPanel.button[5].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[5]);
+				MessageLabel.setContains(ObjectPanel.textContains[5]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		ObjectPanel.button[6].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[6]);
+				MessageLabel.setContains(ObjectPanel.textContains[6]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		ObjectPanel.button[7].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[7]);
+				MessageLabel.setContains(ObjectPanel.textContains[7]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		ObjectPanel.button[8].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[8]);
+				MessageLabel.setContains(ObjectPanel.textContains[8]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
+		ObjectPanel.button[9].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[9]);
+				MessageLabel.setContains(ObjectPanel.textContains[9]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+			
+		});
+		ObjectPanel.button[10].addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				messageLabel.setVisible(false);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+				messageLabel.setLocation(GameWindow.x + 35, GameWindow.y + 35);
+				MessageLabel.setTitle(ObjectPanel.textTitle[10]);
+				MessageLabel.setContains(ObjectPanel.textContains[10]);
+				messageLabel.setVisible(true);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+		});
 	}
 
 	public KeyEventPostProcessor getMyKeyEventHandler() {
@@ -1330,6 +1728,61 @@ public class GameWindow extends JFrame {
 			}
 		});
 		starTimer.start();
+	}
+	void accidentanim() {
+		StyledDocument doc = accidenPane.getStyledDocument();  
+        doc.setParagraphAttributes(0, 104, bSet, false); 
+        blockLabel.setVisible(true);
+        roundButton.setVisible(false);
+        for (ImageButton im : bottombottons) {
+				im.setVisible(false);
+			}
+        pauseButton.setVisible(false);
+		accidentLabel.setVisible(true);
+		accidTimer = new Timer(10, new ActionListener() {
+			int i = 0;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				i += 1;
+
+				if (i <= 10) {
+					accidentLabel.setLocation(
+							accidentLabel.getLocation().x,
+							720 - ((720 - 250) / 10 * i));
+				} else {
+					accidTimer.stop();
+				}
+			}
+		});
+		accidTimer.start();
+	}
+	void accidentanim2() {
+		roundButton.setVisible(true);
+		 for (ImageButton im : bottombottons) {
+				im.setVisible(true);
+			}
+		 pauseButton.setVisible(true);
+		blockLabel.setVisible(false);
+		accidTimer = new Timer(10, new ActionListener() {
+			int i = 0;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				i += 1;
+
+				if (i <= 10) {
+					accidentLabel.setLocation(
+							accidentLabel.getLocation().x,
+							250 + ((720 - 250) / 10 * i));
+				} else {
+					accidTimer.stop();
+				}
+			}
+		});
+		accidTimer.start();
 	}
 
 }

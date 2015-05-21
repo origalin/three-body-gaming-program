@@ -46,6 +46,7 @@ public class Game {
 		GraphicsDevice gd = ge.getDefaultScreenDevice();
 		GameWindow tbc = new GameWindow(gd.getDefaultConfiguration());
 
+
 		DisplayMode mode = new DisplayMode(1280, 720, 32, 60);
 		if (gd.isFullScreenSupported()) {
 			try {
