@@ -99,6 +99,9 @@ public class SciPanel extends JLabel {
 					}
 				});
 				t.start();
+				for (ImageButton im : GameWindow.bottombottons) {
+					im.setVisible(true);
+				}
 			}
 		});
 		add(confirmButton);
@@ -114,6 +117,7 @@ public class SciPanel extends JLabel {
 					Begin.HP -= 5;
 					iconData[3].setText(Sci.math.point + "");
 					pointsavailable.setText("可分配学科点：" + Begin.HP);
+					
 					refresh();
 				}
 			}
@@ -211,6 +215,7 @@ public class SciPanel extends JLabel {
 		pointsavailable.setEditable(false);
 		pointsavailable.setText("可分配学科点：" + availablepoints);
 		pointsavailable.setFont(new Font("微软雅黑", Font.BOLD, 20));
+		pointsavailable.setFocusable(false);
 		pointsavailable.setForeground(new Color(25,112,29));
 		pointsavailable.setOpaque(false);
 		pointsavailable.setBounds(300, 52, 240, 45);
@@ -231,6 +236,7 @@ public class SciPanel extends JLabel {
 			iconData[sciIcon.indexOf(b)].setBorder(null);
 			iconData[sciIcon.indexOf(b)]
 					.setFont(new Font("微软雅黑", Font.BOLD, 20));
+			iconData[sciIcon.indexOf(b)].setFocusable(false);
 			iconData[sciIcon.indexOf(b)].setForeground(new Color(25,112,29));
 			iconData[sciIcon.indexOf(b)]
 					.setHorizontalAlignment(JTextField.CENTER);

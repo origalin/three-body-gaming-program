@@ -91,6 +91,9 @@ public class ObjectPanel extends JLabel {
 					}
 				});
 				t.start();
+				for (ImageButton im : GameWindow.bottombottons) {
+					im.setVisible(true);
+				}
 			}
 		});
 		add(confirmButton);

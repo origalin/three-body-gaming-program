@@ -26,7 +26,9 @@ public class TecPanel extends JLabel {
 	ImageIcon icon2 = new ImageIcon("image/iconblue2.png");
 	ImageIcon icon3 = new ImageIcon("image/iconblue3.png");
 	ImageIcon treebackground = new ImageIcon("image/treebackground.png");
-	static ImageButton[] tecButton = new ImageButton[10];// 微积分 几何 微观物质结构 生态学 计算机科学 机械与力学 有机化学 人工智能 核理论 生物工程
+	static ImageButton[] tecButton = new ImageButton[10];// 微积分 几何 微观物质结构 生态学
+															// 计算机科学 机械与力学 有机化学
+															// 人工智能 核理论 生物工程
 	static ImageIcon[] buttonIcons1 = new ImageIcon[10];
 	static ImageIcon[] buttonIcons2 = new ImageIcon[10];
 	static ImageIcon[] buttonIcons3 = new ImageIcon[10];
@@ -36,17 +38,16 @@ public class TecPanel extends JLabel {
 	Timer t;
 	static String[] textTitle = { "微积分", "几何", "微观物质结构", "生态学", "集成电路",
 			"机械与力学", "有机化学", "人工智能", "核理论", "生物工程" };
-	static String[] textContains = {
-	"高等数学的一部分，科学体系的根基\n学科需求：数 3", 
-	"研究空间区域关系的数学分支\n学科需求：物 1 数 2 艺 1",
-		"在分子、原子层次上研究物质的组成、性质、结构与变化规律\n学科需求：化 3 物 2 数 3 艺 2",
-		"行星生态体系的研究，是掌握生命钥匙的开始\n学科需求：化 2 生 5 数 1",
-		"信息技术的飞跃，具有无限可能\n学科需求：物 1 数 3 计 3 艺 1\n解锁：晶体管计算机 多媒体设备",
-		"工程技术投入应用，用钢铁代替血肉\n学科需求：化 2 物 4 数 3 计 3 艺 2\n解锁：载具 高精度工具",
-		"有机化合物及有机物质的结构、性质、反应的发现\n学科需求：化 6 生 4 物 1 数 3 计 3 艺 1\n解锁：塑料",
-		"从绝对理性到感性的突破，社会伦理将因此改变\n学科需求：生 2 物 6 数 6 计 6 艺 2\n解锁：智能机械",
-		"掌握物质深处的巨大能量\n学科需求：化 4  生 2 物 7 数 6 计 6 艺 2\n解锁：核武器",
-"这个种族已然主宰生命的一部分\n学科需求：化 5 生 7 物 2 数 4 计 4 艺 2\n解锁：生物制药"  };
+	static String[] textContains = { "高等数学的一部分，科学体系的根基\n学科需求：数 3",
+			"研究空间区域关系的数学分支\n学科需求：物 1 数 2 艺 1",
+			"在分子、原子层次上研究物质的组成、性质、结构与变化规律\n学科需求：化 3 物 2 数 3 艺 2",
+			"行星生态体系的研究，是掌握生命钥匙的开始\n学科需求：化 2 生 5 数 1",
+			"信息技术的飞跃，具有无限可能\n学科需求：物 1 数 3 计 3 艺 1\n解锁：晶体管计算机 多媒体设备",
+			"工程技术投入应用，用钢铁代替血肉\n学科需求：化 2 物 4 数 3 计 3 艺 2\n解锁：载具 高精度工具",
+			"有机化合物及有机物质的结构、性质、反应的发现\n学科需求：化 6 生 4 物 1 数 3 计 3 艺 1\n解锁：塑料",
+			"从绝对理性到感性的突破，社会伦理将因此改变\n学科需求：生 2 物 6 数 6 计 6 艺 2\n解锁：智能机械",
+			"掌握物质深处的巨大能量\n学科需求：化 4  生 2 物 7 数 6 计 6 艺 2\n解锁：核武器",
+			"这个种族已然主宰生命的一部分\n学科需求：化 5 生 7 物 2 数 4 计 4 艺 2\n解锁：生物制药" };
 	public static int[] tecStats = new int[10];
 
 	public TecPanel(ImageIcon i) {
@@ -59,30 +60,33 @@ public class TecPanel extends JLabel {
 		confirmButton.setHorizontalTextPosition(JButton.CENTER);
 		confirmButton.setVerticalTextPosition(JButton.CENTER);
 		confirmButton.setFont(new Font("微软雅黑", Font.BOLD, 20));
-		confirmButton.setForeground(new Color(53,76,107));
+		confirmButton.setForeground(new Color(53, 76, 107));
 		confirmButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				GameWindow.blockLabel.setVisible(false);
-				t = new Timer(10,new ActionListener() {
-					int i = 0;					
+				t = new Timer(10, new ActionListener() {
+					int i = 0;
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO 自动生成的方法存根
-						i+=1;
-						
-						if (i<=10) {
-							setLocation(getLocation().x, 48+((720-48)/10*i));
-						}
-						else {
+						i += 1;
+
+						if (i <= 10) {
+							setLocation(getLocation().x,
+									48 + ((720 - 48) / 10 * i));
+						} else {
 							t.stop();
 						}
 					}
 				});
 				t.start();
-				
+				for (ImageButton im : GameWindow.bottombottons) {
+					im.setVisible(true);
+				}
 			}
 		});
 		add(confirmButton);
@@ -90,9 +94,10 @@ public class TecPanel extends JLabel {
 		pointsfield = new JTextField();
 		pointsfield.setOpaque(false);
 		pointsfield.setFont(new Font("微软雅黑", Font.BOLD, 20));
+		pointsfield.setFocusable(false);
 		pointsfield.setBounds(25, 20, 500, 40);
 		pointsfield.setHorizontalAlignment(JTextField.CENTER);
-		pointsfield.setForeground(new Color(49,77,114));
+		pointsfield.setForeground(new Color(49, 77, 114));
 		pointsfield.setBorder(null);
 		pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
 				+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
@@ -114,13 +119,13 @@ public class TecPanel extends JLabel {
 
 		// 科技树按钮
 		for (int i1 = 0; i1 <= 9; i1++) {
-			buttonIcons1[i1] = new ImageIcon("image/tec1"+(i1+1)+".png");
+			buttonIcons1[i1] = new ImageIcon("image/tec1" + (i1 + 1) + ".png");
 		}
 		for (int i1 = 0; i1 <= 9; i1++) {
-			buttonIcons2[i1] = new ImageIcon("image/tec2"+(i1+1)+".png");
+			buttonIcons2[i1] = new ImageIcon("image/tec2" + (i1 + 1) + ".png");
 		}
 		for (int i1 = 0; i1 <= 9; i1++) {
-			buttonIcons3[i1] = new ImageIcon("image/tec3"+(i1+1)+".png");
+			buttonIcons3[i1] = new ImageIcon("image/tec3" + (i1 + 1) + ".png");
 		} // 测试用
 
 		for (int i1 = 0; i1 <= 9; i1++) {
@@ -140,9 +145,9 @@ public class TecPanel extends JLabel {
 				tecButton[4].setVisible(true);
 				Sci.math.point -= 3;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
-						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
-						+ Sci.art.point);
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				Refresh();
 			}
 		});
@@ -161,9 +166,9 @@ public class TecPanel extends JLabel {
 				Sci.math.point -= 2;
 				Sci.art.point -= 1;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
-						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
-						+ Sci.art.point);
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				Refresh();
 			}
 		});
@@ -182,9 +187,9 @@ public class TecPanel extends JLabel {
 				Sci.math.point -= 3;
 				Sci.art.point -= 2;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
-						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
-						+ Sci.art.point);
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				Refresh();
 			}
 		});
@@ -202,9 +207,9 @@ public class TecPanel extends JLabel {
 				Sci.biology.point -= 5;
 				Sci.math.point -= 1;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
-						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
-						+ Sci.art.point);
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				Refresh();
 			}
 		});
@@ -225,9 +230,9 @@ public class TecPanel extends JLabel {
 				Sci.computer.point -= 3;
 				Sci.art.point -= 1;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
-						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
-						+ Sci.art.point);
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				Refresh();
 			}
 		});
@@ -249,9 +254,9 @@ public class TecPanel extends JLabel {
 				Sci.computer.point -= 3;
 				Sci.art.point -= 2;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
-						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
-						+ Sci.art.point);
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				Refresh();
 			}
 		});
@@ -272,9 +277,9 @@ public class TecPanel extends JLabel {
 				Sci.computer.point -= 3;
 				Sci.art.point -= 1;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
-						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
-						+ Sci.art.point);
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				Refresh();
 			}
 		});
@@ -292,9 +297,9 @@ public class TecPanel extends JLabel {
 				Sci.computer.point -= 6;
 				Sci.art.point -= 2;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
-						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
-						+ Sci.art.point);
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				Refresh();
 			}
 		});
@@ -313,9 +318,9 @@ public class TecPanel extends JLabel {
 				Sci.computer.point -= 6;
 				Sci.art.point -= 2;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
-						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
-						+ Sci.art.point);
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				Refresh();
 			}
 		});
@@ -336,9 +341,9 @@ public class TecPanel extends JLabel {
 				Sci.computer.point -= 4;
 				Sci.art.point -= 2;
 				pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-						+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
-						+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
-						+ Sci.art.point);
+						+ Sci.biology.point + " 物理:" + Sci.physics.point
+						+ " 数学:" + Sci.math.point + " 计算机:"
+						+ Sci.computer.point + " 艺术:" + Sci.art.point);
 				Refresh();
 			}
 		});
@@ -370,7 +375,6 @@ public class TecPanel extends JLabel {
 			treeLabel1.add(im);
 			im.setVisible(false);
 		}
-		
 
 	}
 
@@ -378,16 +382,11 @@ public class TecPanel extends JLabel {
 		int[] points = { Sci.chemistry.point, Sci.biology.point,
 				Sci.physics.point, Sci.math.point, Sci.computer.point,
 				Sci.art.point };
-		int[][] pointsneed = {{ 0, 0, 0, 3, 0, 0 },
-				{ 0, 0, 1, 2, 0, 1 },
-				{ 3, 0, 2, 3, 0, 2 },
-				{ 2, 5, 0, 1, 0, 0 },
-				{ 0, 0, 1, 3, 3, 1 },
-				{ 2, 0, 4, 3, 3, 2 },
-				{ 6, 4, 1, 3, 3, 1 },
-				{ 0, 2, 6, 6, 6, 2 },
-				{ 4, 2, 7, 6, 6, 2 },
-				{ 5, 7, 2, 4, 4, 2 } };
+		int[][] pointsneed = { { 0, 0, 0, 3, 0, 0 }, { 0, 0, 1, 2, 0, 1 },
+				{ 3, 0, 2, 3, 0, 2 }, { 2, 5, 0, 1, 0, 0 },
+				{ 0, 0, 1, 3, 3, 1 }, { 2, 0, 4, 3, 3, 2 },
+				{ 6, 4, 1, 3, 3, 1 }, { 0, 2, 6, 6, 6, 2 },
+				{ 4, 2, 7, 6, 6, 2 }, { 5, 7, 2, 4, 4, 2 } };
 		for (int i = 0; i <= 9; i++) {
 			boolean isproable = true;
 			for (int j = 0; j <= 5; j++) {
@@ -398,8 +397,7 @@ public class TecPanel extends JLabel {
 			if (isproable && !tecButton[i].ispressed) {
 
 				tecButton[i].setavalible(true);
-			}
-			else {
+			} else {
 				tecButton[i].setavalible(false);
 			}
 		}

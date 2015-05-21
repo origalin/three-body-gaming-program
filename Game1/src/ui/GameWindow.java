@@ -28,7 +28,12 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.Timer;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
@@ -61,8 +66,8 @@ public class GameWindow extends JFrame {
 	static JLabel blockLabel;
 	JLabel label2;
 	PlaneLabel planetLabel2;
-	JTextArea accidenTextArea;
-	ImageButton[] bottombottons = new ImageButton[3];
+	JTextPane accidenPane;
+	static ImageButton[] bottombottons = new ImageButton[3];
 	ImageButton roundButton;
 	ImageButton accidentButton;
 	TopPanel topPanel;
@@ -84,6 +89,7 @@ public class GameWindow extends JFrame {
 	Timer starTimer;
 	ImageButton[] imageButton = new ImageButton[3];
 	int v = 1;
+	Bomb bom;
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -128,7 +134,7 @@ public class GameWindow extends JFrame {
 		blockLabel.setBounds(0, 0, 1280, 720);
 		blockLabel.setVisible(false);
 		frontPanel.add(blockLabel, new Integer(-7));
-		//星空图片
+		// 星空图片
 		starLabel1 = new JLabel(new ImageIcon("image/back1.png"));
 		starLabel1.setBounds(0, 0, 2560, 720);
 		frontPanel.add(starLabel1, new Integer(-40));
@@ -136,18 +142,17 @@ public class GameWindow extends JFrame {
 		starLabel2.setBounds(2560, 0, 2560, 720);
 		frontPanel.add(starLabel2, new Integer(-41));
 		staranim();
-		
-		//光晕图片
+
+		// 光晕图片
 		planetLabel2 = new PlaneLabel(new ImageIcon("image/planet2.png"));
-		planetLabel2.setBounds(305, 50, planetLabel2.getIcon().getIconWidth(), planetLabel2.getIcon().getIconHeight());
-		
+		planetLabel2.setBounds(305, 50, planetLabel2.getIcon().getIconWidth(),
+				planetLabel2.getIcon().getIconHeight());
+
 		planetPanel = new JPanel();
 		planetPanel.setBounds(305, 40, 665, 605);
 		planetPanel.setOpaque(false);
 		planetPanel.add(planetLabel2);
-		frontPanel.add(planetPanel,new Integer(-29));
-		
-		
+		frontPanel.add(planetPanel, new Integer(-29));
 
 		// 标题文字
 		labelTitle = new JLabel(backgroundTitle);
@@ -159,7 +164,7 @@ public class GameWindow extends JFrame {
 		imagePanel.setSize(background.getIconWidth(),
 				background.getIconHeight());
 		imagePanel.setLocation(200, 0);
-		frontPanel.add(labelTitle,new Integer(-17));
+		frontPanel.add(labelTitle, new Integer(-17));
 
 		// 创建开始界面按钮
 		for (int i = 0; i <= 2; i++) {
@@ -169,8 +174,8 @@ public class GameWindow extends JFrame {
 			imageButton[i].setHorizontalTextPosition(JButton.CENTER);
 			imageButton[i].setVerticalTextPosition(JButton.CENTER);
 			imageButton[i].setFont(new Font("微软雅黑", Font.BOLD, 20));
-			imageButton[i].setForeground(new Color(0,89,130));
-			frontPanel.add(imageButton[i],new Integer(-18));
+			imageButton[i].setForeground(new Color(0, 89, 130));
+			frontPanel.add(imageButton[i], new Integer(-18));
 		}
 		imageButton[0].setText("开始游戏");
 
@@ -188,7 +193,7 @@ public class GameWindow extends JFrame {
 		timeField.setEditable(false);
 		timeField.setOpaque(false);
 		timeField.setFont(new Font("微软雅黑", Font.BOLD, 20));
-		timeField.setForeground(new Color(42,96,128));
+		timeField.setForeground(new Color(42, 96, 128));
 		timeField.setText("AC " + time);
 		timeLabel.add(timeField);
 		frontPanel.add(timeLabel, new Integer(-16));
@@ -225,8 +230,8 @@ public class GameWindow extends JFrame {
 		lightPanel.add(light1);
 		lightPanel.add(light2);
 		lightPanel.add(light3);
-		frontPanel.add(lightPanel,new Integer(-30));
-		frontPanel.add(planetLabel,new Integer(-31));
+		frontPanel.add(lightPanel, new Integer(-30));
+		frontPanel.add(planetLabel, new Integer(-31));
 
 		// 创建顶部面板
 		topPanel = new TopPanel();
@@ -243,7 +248,7 @@ public class GameWindow extends JFrame {
 		for (int i = 0; i <= 2; i++) {
 			bottombottons[i] = new ImageButton(start1, start2, start3, false);
 			bottombottons[i].setLocation(40 + 250 * i, 70);
-			bottombottons[i].setForeground(new Color(53,76,107));
+			bottombottons[i].setForeground(new Color(53, 76, 107));
 			bottombottons[i].setHorizontalTextPosition(JButton.CENTER);
 			bottombottons[i].setVerticalTextPosition(JButton.CENTER);
 			bottombottons[i].setFont(new Font("微软雅黑", Font.BOLD, 20));
@@ -283,31 +288,39 @@ public class GameWindow extends JFrame {
 		accidentLabel = new JLabel(new ImageIcon("image/accidentpanel.png"));
 		accidentLabel.setBounds(400, 250, accidentLabel.getIcon()
 				.getIconWidth(), accidentLabel.getIcon().getIconHeight());
+		accidentLabel.setVisible(false);
 		accidentButton = new ImageButton(accident1, accident2, accident3, false);
 		accidentButton.setLocation(140, 180);
 		accidentButton.setText("确认");
 		accidentButton.setHorizontalTextPosition(JButton.CENTER);
 		accidentButton.setVerticalTextPosition(JButton.CENTER);
 		accidentButton.setFont(new Font("微软雅黑", Font.BOLD, 20));
-		accidentButton.setForeground(new Color(117,16,0));
+		accidentButton.setForeground(new Color(117, 16, 0));
 		accidentButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
 				accidentLabel.setVisible(false);
+				blockLabel.setVisible(false);
 			}
 		});
 		accidentLabel.add(accidentButton);
 		frontPanel.add(accidentLabel, 0);
-		accidenTextArea = new JTextArea();
-		accidenTextArea.setOpaque(false);
-		accidenTextArea.setBorder(null);
-		accidenTextArea.setEditable(false);
-		accidenTextArea.setBounds(24, 20, 430, 150);
-		accidenTextArea.setFont(new Font("宋体", Font.PLAIN, 17));
-		accidenTextArea.setForeground(new Color(117,16,0));
-		accidentLabel.add(accidenTextArea);
+		accidenPane = new JTextPane();
+		accidenPane.setOpaque(false);
+		accidenPane.setBorder(null);
+		accidenPane.setBounds(24, 80, 430, 150);
+		accidenPane.setEditable(false);
+		accidenPane.setFocusable(false);
+		final SimpleAttributeSet bSet = new SimpleAttributeSet();  
+        StyleConstants.setAlignment(bSet, StyleConstants.ALIGN_CENTER);    
+        StyleConstants.setFontFamily(bSet, "宋体 bold"); 
+        StyleConstants.setForeground(bSet, new Color(117, 16, 0)); 
+        StyleConstants.setFontSize(bSet, 24);
+//		accidenPane.setFont(new Font("宋体", Font.BOLD, 23));
+//		accidenPane.setForeground(new Color(117, 16, 0));
+		accidentLabel.add(accidenPane);
 
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
@@ -371,6 +384,9 @@ public class GameWindow extends JFrame {
 					}
 				});
 				sciTimer.start();
+				for (ImageButton im : bottombottons) {
+					im.setVisible(false);
+				}
 			}
 		});
 		bottombottons[1].addActionListener(new ActionListener() {
@@ -402,6 +418,9 @@ public class GameWindow extends JFrame {
 					}
 				});
 				tecTimer.start();
+				for (ImageButton im : bottombottons) {
+					im.setVisible(false);
+				}
 			}
 		});
 		bottombottons[2].addActionListener(new ActionListener() {
@@ -430,6 +449,9 @@ public class GameWindow extends JFrame {
 					}
 				});
 				objtimer.start();
+				for (ImageButton im : bottombottons) {
+					im.setVisible(false);
+				}
 			}
 		});
 		pauseButton.addActionListener(new ActionListener() {
@@ -480,10 +502,21 @@ public class GameWindow extends JFrame {
 							setCursor(cursor);
 							mouseTimer.stop();
 							starTimer.setDelay(100);
-							topPanel.topLabel.setText("经济值" + Begin.EV + "  " + "幸福值"
-									+ Begin.HV + "  " + "环境值" + Begin.EMV);
+							topPanel.topLabel.setText("◎经济值"+Begin.EV+"  "+"◎幸福值"+Begin.HV+"  "+"◎环境值"+Begin.EMV);
 
 							timeField.setText("AC " + time);
+							
+							String s = bom.bomb();
+							if (s != "") {
+								accidenPane.setText(s);
+								StyledDocument doc = accidenPane.getStyledDocument();  
+						         doc.setParagraphAttributes(0, 104, bSet, false); 
+						         blockLabel.setVisible(true);
+								accidentLabel.setVisible(true);
+							}
+							if (Begin.EV <= 0 || Begin.HV <= 0 || Begin.EMV <= 0) {
+								// lose!
+							}
 						}
 						i++;
 					}
@@ -494,19 +527,13 @@ public class GameWindow extends JFrame {
 				Environment env = new Environment();
 				Happiness hap = new Happiness();
 				SciPoint poi = new SciPoint();
-				Bomb bom = new Bomb();
-				String s = bom.bomb();
+				bom = new Bomb();
+				
 				eco.economy();
 				env.environment();
 				hap.happiness();
 				poi.point();
-				if(s!=""){
-					accidenTextArea.setText(s);
-					accidentLabel.setVisible(true);
-				}
-				if(Begin.EV<=0||Begin.HV<=0||Begin.EMV<=0){
-					//lose!
-				}
+				
 				time++;
 
 			}
@@ -1130,15 +1157,15 @@ public class GameWindow extends JFrame {
 	}
 
 	public KeyEventPostProcessor getMyKeyEventHandler() {
-		return new KeyEventPostProcessor() {  // 返回一个实现KeyEventPostProcessor接口的匿名内部类。
-			public boolean postProcessKeyEvent(KeyEvent e) {  // 实现postProcessKeyEvent方法
+		return new KeyEventPostProcessor() { // 返回一个实现KeyEventPostProcessor接口的匿名内部类。
+			public boolean postProcessKeyEvent(KeyEvent e) { // 实现postProcessKeyEvent方法
 
-				if (e.getKeyCode() == KeyEvent.VK_E) {  // 根据你的需要监听相应的动作。
+				if (e.getKeyCode() == KeyEvent.VK_E) { // 根据你的需要监听相应的动作。
 					for (ImageButton im : TecPanel.tecButton) {
 						im.setavalible(true);
 						im.setVisible(true);
 					}
-					for(JLabel j:TecPanel.lineLabels) {
+					for (JLabel j : TecPanel.lineLabels) {
 						j.setVisible(true);
 					}
 				}
@@ -1175,7 +1202,7 @@ public class GameWindow extends JFrame {
 						roundButton.setVisible(true);
 						pauseButton.setVisible(true);
 						timeLabel.setVisible(true);
-						
+
 					} else {
 						j++;
 					}
@@ -1220,7 +1247,7 @@ public class GameWindow extends JFrame {
 							im.setVisible(false);
 						}
 						labelTitle.setVisible(true);
-						
+
 					} else {
 						j++;
 					}
@@ -1237,35 +1264,33 @@ public class GameWindow extends JFrame {
 		});
 		blackTimer.start();
 	}
-	void staranim(){
+
+	void staranim() {
 		starTimer = new Timer(100, new ActionListener() {
 			int i = 0;
-			int j  = 1;
-			
+			int j = 1;
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
 
-				if(i<=2560) {
-					starLabel1.setLocation(0-i, 0);
-					starLabel2.setLocation(2560-i, 0);
-					
-				}
-				else {
-					i=-1;
+				if (i <= 2560) {
+					starLabel1.setLocation(0 - i, 0);
+					starLabel2.setLocation(2560 - i, 0);
+
+				} else {
+					i = -1;
 				}
 				i++;
-				if(j<=100) {
+				if (j <= 100) {
 					PlaneLabel.trance = j;
-					if(planetLabel2!=null) {
+					if (planetLabel2 != null) {
 						planetLabel2.repaint();
 					}
-				}
-				else if (j>100&&j<=200) {
-					PlaneLabel.trance = 200-j;
-				}
-				else {
-					 j= -1;
+				} else if (j > 100 && j <= 200) {
+					PlaneLabel.trance = 200 - j;
+				} else {
+					j = -1;
 				}
 
 				j++;
