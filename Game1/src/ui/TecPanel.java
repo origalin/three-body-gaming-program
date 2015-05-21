@@ -36,6 +36,7 @@ public class TecPanel extends JLabel {
 	static JLabel[] lineLabels = new JLabel[6];
 	ImageButton confirmButton = new ImageButton(start1, start2, start3, false);
 	Timer t;
+	int ligntstate = 0;
 	static String[] textTitle = { "微积分", "几何", "微观物质结构", "生态学", "集成电路",
 			"机械与力学", "有机化学", "人工智能", "核理论", "生物工程" };
 	static String[] textContains = { "高等数学的一部分，科学体系的根基\n学科需求：数 3",
@@ -132,6 +133,10 @@ public class TecPanel extends JLabel {
 			tecButton[i1] = new ImageButton(buttonIcons1[i1], buttonIcons2[i1],
 					buttonIcons3[i1], false);
 		}
+		for (int i1 = 0; i1 <= 9; i1++) {
+			tecButton[i1].setspimage(new ImageIcon("image/tec" + (i1 + 1)
+					+ ".png"));
+		}
 
 		tecButton[0].setLocation(42, 35);
 		tecButton[0].addActionListener(new ActionListener() {
@@ -157,7 +162,10 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				GameWindow.light1.setVisible(true);
+				if (ligntstate <= 1) {
+					GameWindow.light1.setVisible(true);
+					ligntstate = 1;
+				}
 				tecButton[1].ispressed = true;
 				tecButton[1].setavalible(false);
 				lineLabels[1].setVisible(true);
@@ -219,8 +227,12 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				GameWindow.light1.setVisible(false);
-				GameWindow.light2.setVisible(true);
+				if (ligntstate <= 2) {
+					GameWindow.light1.setVisible(false);
+					GameWindow.light2.setVisible(true);
+					ligntstate = 2;
+				}
+
 				tecButton[4].ispressed = true;
 				tecButton[4].setavalible(false);
 				lineLabels[4].setVisible(true);
@@ -330,8 +342,12 @@ public class TecPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
-				GameWindow.light2.setVisible(false);
-				GameWindow.light3.setVisible(true);
+				if (ligntstate <= 3) {
+					GameWindow.light1.setVisible(false);
+					GameWindow.light2.setVisible(false);
+					GameWindow.light3.setVisible(true);
+				}
+
 				tecButton[9].ispressed = true;
 				tecButton[9].setavalible(false);
 				Sci.chemistry.point -= 5;

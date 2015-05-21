@@ -16,6 +16,7 @@ public class ImageButton extends JButton {
 	ImageIcon disable;
 	boolean ispressed = false;
 	boolean isDisabled;
+	ImageIcon spimage;
 
 	public ImageButton(ImageIcon normalImage, ImageIcon mouseOverImage,
 			ImageIcon mouseDownImage, boolean isdisabled) {
@@ -91,7 +92,9 @@ public class ImageButton extends JButton {
 			}
 		});
 	}
-
+	public void setspimage(ImageIcon i ) {
+		spimage = i;
+	}
 	public void setavalible(boolean b) {
 		if (b == true) {
 			isDisabled = false;
@@ -99,6 +102,10 @@ public class ImageButton extends JButton {
 		} else {
 			isDisabled = true;
 			setEnabled(false);
+			if(ispressed) {
+				setIcon(spimage);
+			}
+			
 		}
 	}
 }
