@@ -16,7 +16,7 @@ public class Bomb {
 	
 	public String bomb(){
 		String s = "";
-		if(Begin.EV<40+(GameWindow.time-1020)*1.1){
+		if(Begin.EV<40+(GameWindow.time-1020)*1.1&&(int)(Math.random()*3)==2){
 			//Economy will suffer
 			Economy.EIR -= 0.001+(int)(Math.random()*4)*0.0002;
 			Begin.EV -= 20+(int)(Math.random()*4)*3;
@@ -25,14 +25,14 @@ public class Bomb {
 				Begin.HP = 0;
 			s += economy[(int)(Math.random()*4)] + "\n";
 		}
-		if(Begin.HV<60){
+		if(Begin.HV<60&&(int)(Math.random()*3)==2){
 			Begin.HV -= 10+(int)(Math.random()*4)*2;
 			Begin.HP -= 5*(int)(Math.random()*4);
 			if(Begin.HP<=0)
 				Begin.HP = 0;
 			s += happiness[(int)(Math.random()*4)] + "\n";
 		}
-		if(Begin.EMV<60){
+		if(Begin.EMV<60&&(int)(Math.random()*3)==2){
 			//Environment will suffer
 			Environment.EMI -= 10+(int)(Math.random()*4)*2;
 			Begin.HP -= 5*(int)(Math.random()*4);
