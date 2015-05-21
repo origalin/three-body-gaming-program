@@ -49,6 +49,7 @@ public class GameWindow extends JFrame {
 	private ImageIcon backgroundTitle;
 	ImageIcon planet;
 	JPanel lightPanel;
+	JPanel planetPanel;
 	JLabel labelTitle;
 	JLabel bottomLabel;
 	ImageButton pauseButton;
@@ -59,7 +60,7 @@ public class GameWindow extends JFrame {
 	JLabel starLabel2;
 	static JLabel blockLabel;
 	JLabel label2;
-	JLabel planetLabel2;
+	PlaneLabel planetLabel2;
 	JTextArea accidenTextArea;
 	ImageButton[] bottombottons = new ImageButton[3];
 	ImageButton roundButton;
@@ -137,9 +138,15 @@ public class GameWindow extends JFrame {
 		staranim();
 		
 		//光晕图片
-		planetLabel2 = new JLabel(new ImageIcon("image/planet2.png"));
-		planetLabel2.setBounds(290, 50, planetLabel2.getIcon().getIconWidth(), planetLabel2.getIcon().getIconHeight());
-		frontPanel.add(planetLabel2,new Integer(-29));
+		planetLabel2 = new PlaneLabel(new ImageIcon("image/planet2.png"));
+		planetLabel2.setBounds(305, 50, planetLabel2.getIcon().getIconWidth(), planetLabel2.getIcon().getIconHeight());
+		
+		planetPanel = new JPanel();
+		planetPanel.setBounds(305, 40, 665, 605);
+		planetPanel.setOpaque(false);
+		planetPanel.add(planetLabel2);
+		frontPanel.add(planetPanel,new Integer(-29));
+		
 		
 
 		// 标题文字
@@ -209,7 +216,7 @@ public class GameWindow extends JFrame {
 		light3.setBounds(0, 0, light1.getIcon().getIconWidth(), light1
 				.getIcon().getIconHeight());
 		light3.setVisible(false);
-		planetLabel.setBounds(330, 30, planet.getIconWidth(),
+		planetLabel.setBounds(345, 30, planet.getIconWidth(),
 				planet.getIconHeight());
 		planetLabel.setOpaque(false);
 		lightPanel.setOpaque(false);
@@ -1233,18 +1240,33 @@ public class GameWindow extends JFrame {
 	void staranim(){
 		starTimer = new Timer(100, new ActionListener() {
 			int i = 0;
+			int j  = 1;
+			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
+
 				if(i<=2560) {
 					starLabel1.setLocation(0-i, 0);
 					starLabel2.setLocation(2560-i, 0);
+					
 				}
 				else {
 					i=-1;
 				}
 				i++;
-				
+				if(j<=100) {
+					PlaneLabel.trance = j;
+					planetLabel2.repaint();
+				}
+				else if (j>100&&j<=200) {
+					PlaneLabel.trance = 200-j;
+				}
+				else {
+					 j= -1;
+				}
+
+				j++;
 			}
 		});
 		starTimer.start();
