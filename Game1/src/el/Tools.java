@@ -1,6 +1,8 @@
 package el;
 
 public class Tools {
+	public static int[] Time= {1,1,1,1,1,2,2,2,3,3,3};
+	public int[] Money= {15,20,18,17,20,30,35,40,65,75,70};
 	
 	int mathPoint = 0;
 	int physicsPoint = 0;

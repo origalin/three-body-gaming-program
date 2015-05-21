@@ -24,12 +24,14 @@ public  class MessageLabel extends JLabel{
 		title.setBounds(5,5,240,40);
 		title.setOpaque(false);
 		title.setBorder(null);
+		title.setFocusable(false);
 		title.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 19));
 		contains.setEditable(false);
 		contains.setBounds(5,50,240,100);
 		contains.setOpaque(false);
 		contains.setBorder(null);
 		contains.setLineWrap(true);
+		contains.setFocusable(false);
 		contains.setFont(new Font("ËÎÌå", Font.PLAIN, 15));
 		add(title);
 		add(contains);

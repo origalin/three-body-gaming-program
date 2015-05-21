@@ -19,6 +19,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
+import java.io.FileInputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -34,6 +35,9 @@ import javax.swing.Timer;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
@@ -63,6 +67,8 @@ public class GameWindow extends JFrame {
 	JLabel blackLabel;
 	JLabel starLabel1;
 	JLabel starLabel2;
+	JLabel starLabel3;
+	JLabel starLabel4;
 	static JLabel blockLabel;
 	JLabel label2;
 	PlaneLabel planetLabel2;
@@ -141,6 +147,12 @@ public class GameWindow extends JFrame {
 		starLabel2 = new JLabel(new ImageIcon("image/back2.png"));
 		starLabel2.setBounds(2560, 0, 2560, 720);
 		frontPanel.add(starLabel2, new Integer(-41));
+		starLabel3 = new JLabel(new ImageIcon("image/back3.png"));
+		starLabel3.setBounds(0, 0, 1280, 720);
+		frontPanel.add(starLabel3, new Integer(-42));
+		starLabel4 = new JLabel(new ImageIcon("image/back4.png"));
+		starLabel4.setBounds(1280, 0, 1280, 720);
+		frontPanel.add(starLabel4, new Integer(-43));
 		staranim();
 
 		// 光晕图片
@@ -430,6 +442,7 @@ public class GameWindow extends JFrame {
 				// TODO Auto-generated method stub
 				blockLabel.setVisible(true);
 				objectPanel.setLocation(232, 720);
+				objectPanel.refresh();
 				objectPanel.setVisible(true);
 				objtimer = new Timer(10, new ActionListener() {
 					int i = 0;
@@ -490,6 +503,17 @@ public class GameWindow extends JFrame {
 									new MouseMotionAdapter() {
 									});
 							starTimer.setDelay(7);
+							
+							
+							try {
+								FileInputStream fileau = new FileInputStream("sound/fly.wav");
+								AudioStream as = new AudioStream(fileau);
+								AudioPlayer.player.start(as);
+
+							} catch (Exception e) {
+							}
+							
+							
 						} else if (i <= 10) {
 
 						} else {
@@ -1185,10 +1209,10 @@ public class GameWindow extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
 				i++;
-				if (i <= 10) {
-					blackLabel.setBackground(new Color(0, 0, 0, 255 / 10 * i));
+				if (i <= 20) {
+					blackLabel.setBackground(new Color(0, 0, 0, 255 / 20 * i));
 					starTimer.stop();
-				} else if (i > 10 && i <= 20) {
+				} else if (i > 20 && i <= 30) {
 					if (j == 0) {
 						for (ImageButton im : bottombottons) {
 							im.setVisible(true);
@@ -1202,13 +1226,13 @@ public class GameWindow extends JFrame {
 						roundButton.setVisible(true);
 						pauseButton.setVisible(true);
 						timeLabel.setVisible(true);
+						j++;
 
 					} else {
-						j++;
+						
 					}
-				} else if (i > 20 && i <= 30) {
-					blackLabel.setBackground(new Color(0, 0, 0,
-							255 / 10 * (30 - i)));
+				} else if (i > 30 && i <= 50) {
+					blackLabel.setBackground(new Color(0, 0, 0,255/20*(50-i)));
 				} else {
 					blackTimer.stop();
 					starTimer.start();
@@ -1268,7 +1292,8 @@ public class GameWindow extends JFrame {
 	void staranim() {
 		starTimer = new Timer(100, new ActionListener() {
 			int i = 0;
-			int j = 1;
+			int j = 0;
+			int k = 0;
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -1294,6 +1319,14 @@ public class GameWindow extends JFrame {
 				}
 
 				j++;
+				if (k <= 1280) {
+					starLabel3.setLocation((int) ((0 - k)*0.5), 0);
+					starLabel4.setLocation((int) ((1280 - k)*0.5), 0);
+
+				} else {
+					k = -1;
+				}
+				k++;
 			}
 		});
 		starTimer.start();
