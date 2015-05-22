@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
+import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
+
 import sun.management.snmp.util.MibLogger;
 import el.Begin;
 import el.Tools;
@@ -182,6 +184,7 @@ public class ObjectPanel extends JLabel {
 					moneyRefresh();
 					repaint();
 				}
+				isAvailable();
 			}
 		});
 		button[2].addActionListener(new ActionListener() {
@@ -203,6 +206,7 @@ public class ObjectPanel extends JLabel {
 					moneyRefresh();
 					repaint();
 				}
+				isAvailable();
 			}
 		});
 		button[3].addActionListener(new ActionListener() {
@@ -224,6 +228,7 @@ public class ObjectPanel extends JLabel {
 					moneyRefresh();
 					repaint();
 				}
+				isAvailable();
 			}
 		});
 		button[4].addActionListener(new ActionListener() {
@@ -245,6 +250,7 @@ public class ObjectPanel extends JLabel {
 					moneyRefresh();
 					repaint();
 				}
+				isAvailable();
 			}
 		});
 		button[5].addActionListener(new ActionListener() {
@@ -266,6 +272,7 @@ public class ObjectPanel extends JLabel {
 					moneyRefresh();
 					repaint();
 				}
+				isAvailable();
 			}
 		});
 		button[6].addActionListener(new ActionListener() {
@@ -287,6 +294,7 @@ public class ObjectPanel extends JLabel {
 					moneyRefresh();
 					repaint();
 				}
+				isAvailable();
 			}
 		});
 		button[7].addActionListener(new ActionListener() {
@@ -308,6 +316,7 @@ public class ObjectPanel extends JLabel {
 					moneyRefresh();
 					repaint();
 				}
+				isAvailable();
 			}
 		});
 		button[8].addActionListener(new ActionListener() {
@@ -329,6 +338,7 @@ public class ObjectPanel extends JLabel {
 					moneyRefresh();
 					repaint();
 				}
+				isAvailable();
 			}
 		});
 		button[9].addActionListener(new ActionListener() {
@@ -350,6 +360,7 @@ public class ObjectPanel extends JLabel {
 					moneyRefresh();
 					repaint();
 				}
+				isAvailable();
 			}
 		});
 		button[10].addActionListener(new ActionListener() {
@@ -371,6 +382,7 @@ public class ObjectPanel extends JLabel {
 					moneyRefresh();
 					repaint();
 				}
+				isAvailable();
 			}
 		});
 		money = new JTextField();
@@ -384,7 +396,6 @@ public class ObjectPanel extends JLabel {
 		money.setBorder(null);
 		money.setText("可用资金：" + Begin.EV);
 		add(money);
-
 	}
 
 	// 添加可解锁的按钮
@@ -487,6 +498,7 @@ public class ObjectPanel extends JLabel {
 				this.addDoneSet(button[i]);
 			}
 		}
+		isAvailable();
 		repaint();
 	}
 	public void recover(){
@@ -501,6 +513,23 @@ public class ObjectPanel extends JLabel {
 				break;
 			default:
 					break;
+			}
+		}
+	}
+	public void isAvailable(){
+		for(int j=0;j<11;j++){
+			if(button[j].location==0){
+				if(Begin.EV<Tools.Money[j]){
+					button[j].setavalible(false);
+				}else {
+					button[j].setavalible(true);
+				}
+			}
+			if(button[j].location==1){
+				button[j].setavalible(true);
+			}
+			if(button[j].location==2){
+				button[j].setavalible(false);
 			}
 		}
 	}
