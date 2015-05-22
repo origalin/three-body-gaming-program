@@ -25,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -541,6 +542,7 @@ public class GameWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				// TODO Auto-generated method stub
 				mouseTimer = new Timer(100, new ActionListener() {
 					int i = 0;
@@ -627,7 +629,13 @@ public class GameWindow extends JFrame {
 				Happiness hap = new Happiness();
 				SciPoint poi = new SciPoint();
 				bom = new Bomb();
-
+				
+				for(int i=0;i<Tools.al.size();i++){
+					if(objectPanel.button[i].location==2){
+						ToolFunction.add(Tools.al.get(i));
+						Tools.al.remove(i);
+					}
+				}
 				eco.economy();
 				env.environment();
 				hap.happiness();

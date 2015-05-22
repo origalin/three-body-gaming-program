@@ -20,6 +20,7 @@ import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 
 import sun.management.snmp.util.MibLogger;
 import el.Begin;
+import el.ToolFunction;
 import el.Tools;
 
 public class ObjectPanel extends JLabel {
@@ -414,7 +415,7 @@ public class ObjectPanel extends JLabel {
 		}
 	}
 
-	public void deleteToSet(ObjectImageButton object) {
+	public void deleteFromSet(ObjectImageButton object) {
 		if (object.location == 0) {
 			toSetGrid.remove(object);
 			validate();
@@ -435,6 +436,7 @@ public class ObjectPanel extends JLabel {
 			settingGrid.remove(object);
 			object.newTime = 0;
 			validate();
+
 		}
 	}
 
@@ -443,13 +445,15 @@ public class ObjectPanel extends JLabel {
 			doneSetGrid.add(object);
 			object.location = 2;
 			validate();
+			if(button[0].location==2){
+				
+			}
 		}
-
 	}
 
 	public void toSetToSetting(ObjectImageButton object, int i) {
 		if (Begin.EV - Tools.Money[i] >= 0) {
-			this.deleteToSet(object);
+			this.deleteFromSet(object);
 			this.addSetting(object);
 			Begin.EV -= Tools.Money[i];
 			top1.refresh();

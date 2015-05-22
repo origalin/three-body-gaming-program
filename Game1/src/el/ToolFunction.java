@@ -15,15 +15,13 @@ public class ToolFunction {
 	static double OEMIR  = 0;
 	
 	public static void add(Tools tool){
-		if(tool.isClicked = true){
-			mathPointSum = mathPointSum +  tool.mathPoint;
-			physicsPointSum = physicsPointSum +  tool.physicsPoint;
-			biologyPointSum = biologyPointSum +  tool.biologyPoint;
-			chemistryPointSum = chemistryPointSum +  tool.chemistryPoint;
-			artPointSum = artPointSum +  tool.artPoint;
-			computerPointSum = computerPointSum +  tool.computerPoint;
-			moneySum = moneySum + tool.money;
-		}
+		mathPointSum = mathPointSum +  tool.mathPoint;
+		physicsPointSum = physicsPointSum +  tool.physicsPoint;
+		biologyPointSum = biologyPointSum +  tool.biologyPoint;
+		chemistryPointSum = chemistryPointSum +  tool.chemistryPoint;
+		artPointSum = artPointSum +  tool.artPoint;
+		computerPointSum = computerPointSum +  tool.computerPoint;
+		moneySum = moneySum + tool.money;
 	}
 	
 	public static double getToolIR(){
