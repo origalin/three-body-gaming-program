@@ -36,7 +36,7 @@ public class TecPanel extends JLabel {
 	static JLabel[] lineLabels = new JLabel[6];
 	ImageButton confirmButton = new ImageButton(start1, start2, start3, false);
 	Timer t;
-	static int  ligntstate = 0;
+	static int ligntstate = 0;
 	static String[] textTitle = { "微积分", "几何", "微观物质结构", "生态学", "集成电路",
 			"机械与力学", "有机化学", "人工智能", "核理论", "生物工程" };
 	static String[] textContains = { "高等数学的一部分，科学体系的根基\n学科需求：数 3",
@@ -48,8 +48,7 @@ public class TecPanel extends JLabel {
 			"有机化合物及有机物质的结构、性质、反应的发现\n学科需求：化 6 生 4 物 1 数 3 计 3 艺 1\n解锁：塑料",
 			"从绝对理性到感性的突破，社会伦理将因此改变\n学科需求：生 2 物 6 数 6 计 6 艺 2\n解锁：智能机械",
 			"掌握物质深处的巨大能量\n学科需求：化 4  生 2 物 7 数 6 计 6 艺 2\n解锁：核武器",
-			"这个种族已然主宰生命的一部分\n学科需求：化 5 生 7 物 2 数 4 计 4 艺 2\n解锁：生物制药"
-			};
+			"这个种族已然主宰生命的一部分\n学科需求：化 5 生 7 物 2 数 4 计 4 艺 2\n解锁：生物制药" };
 	public static int[] tecStats = new int[10];
 
 	public TecPanel(ImageIcon i) {
@@ -436,6 +435,12 @@ public class TecPanel extends JLabel {
 	}
 
 	public void load() {
+		for (int i1 = 0; i1 <= 9; i1++) {
+			if(!tecButton[i1].ispressed) {
+				tecButton[i1].setIcon(buttonIcons1[i1]);
+			}
+			
+		}
 		if (tecButton[1].ispressed) {
 			lineLabels[1].setVisible(true);
 			tecButton[5].setVisible(true);
@@ -466,13 +471,11 @@ public class TecPanel extends JLabel {
 			lineLabels[5].setVisible(true);
 			tecButton[9].setVisible(true);
 		}
-		if(ligntstate ==1) {
+		if (ligntstate == 1) {
 			GameWindow.light1.setVisible(true);
-		}
-		else if(ligntstate ==2) {
+		} else if (ligntstate == 2) {
 			GameWindow.light2.setVisible(true);
-		}
-		else if(ligntstate ==3) {
+		} else if (ligntstate == 3) {
 			GameWindow.light3.setVisible(true);
 		}
 	}
