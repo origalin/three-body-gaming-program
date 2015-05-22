@@ -34,5 +34,7 @@ public class Economy{
 				HVEIR + EMVEIR + ToolFunction.OEIRF() - 0.001;
 
 		Begin.EV = (int) (Begin.EV * (EIR+1));
+		if(Begin.EV<=0)
+			Begin.EV = 0;
 	}
 }

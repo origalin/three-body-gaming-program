@@ -306,7 +306,8 @@ public class GameWindow extends JFrame {
 		frontPanel.add(tecPanel, new Integer(-5));
 
 		// 创建生产面板
-		objectPanel = new ObjectPanel(objectBackground, messageLabel);
+
+		objectPanel = new ObjectPanel(objectBackground,messageLabel,topPanel);
 		objectPanel.setVisible(false);
 		frontPanel.add(objectPanel, new Integer(-4));
 
