@@ -16,12 +16,12 @@ public class Bomb {
 	static String[]economy2={"1","2","3","4"};
 	static String[]happiness2={"5","6","7","8"};
 	static String[]enviroment2={"9","10","11","12"};
-	
+
 	public String bomb(){
 		String s = "";
-		int ev = 15000/(5000-Begin.HV)+3;
-		int hv = 300/(100-Begin.HV);
-		int emv = 300/(100-Begin.EMV);
+		int ev = 7500/(2500-Begin.HV+1)+2;
+		int hv = 300/(100-Begin.HV+1);
+		int emv = 300/(100-Begin.EMV+1);
 		if(Begin.EV>=40+(GameWindow.time-1020)*1.1&&(int)(Math.random()*ev)==0){
 			Economy.EIR -= (0.001+(int)(Math.random()*4)*0.0002)/ev;
 			Begin.EV -= (20+(int)(Math.random()*4)*3)/ev;
