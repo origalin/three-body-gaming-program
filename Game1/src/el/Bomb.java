@@ -13,16 +13,16 @@ public class Bomb {
 	static String[]economy={"你的星球正在发生饥荒","首都发生地震，急缺赈灾基金","你的居民要求医疗保障，各地游行频发","地方政府已无力偿还债务"};
 	static String[]happiness={"各地正在发生暴乱","医疗中心显示抑郁症患者急剧增多","青少年自杀事故频发","各地犯罪行为不断，监狱人满为患"};
 	static String[]enviroment={"森林的覆盖面积正在迅速下降","草场正在急剧荒漠化","水资源陷入短缺","多地出现极端气候"};
-	static String[]economy2={"","","",""};
-	static String[]happiness2={"","","",""};
-	static String[]enviroment2={"","","",""};
+	static String[]economy2={"1","2","3","4"};
+	static String[]happiness2={"5","6","7","8"};
+	static String[]enviroment2={"9","10","11","12"};
 	
 	public String bomb(){
 		String s = "";
-		double ev = 15000/(5000-Begin.HV);
-		double hv = 300/(100-Begin.HV);
-		double emv = 300/(100-Begin.EMV);
-		if(Begin.EV>=40+(GameWindow.time-1020)*1.1&&(int)Math.random()*ev==0){
+		int ev = 15000/(5000-Begin.HV)+3;
+		int hv = 300/(100-Begin.HV);
+		int emv = 300/(100-Begin.EMV);
+		if(Begin.EV>=40+(GameWindow.time-1020)*1.1&&(int)(Math.random()*ev)==0){
 			Economy.EIR -= (0.001+(int)(Math.random()*4)*0.0002)/ev;
 			Begin.EV -= (20+(int)(Math.random()*4)*3)/ev;
 			Begin.HP -= 5*(int)(Math.random()*4)/ev;
@@ -30,7 +30,7 @@ public class Bomb {
 				Begin.HP = 0;
 			s += economy2[(int)(Math.random()*4)] + "\n";
 		}
-		else if(Begin.EV<40+(GameWindow.time-1020)*1.1&&(int)(Math.random()*3)==2){
+		if(Begin.EV<40+(GameWindow.time-1020)*1.1&&(int)(Math.random()*3)==2){
 			
 			Economy.EIR -= 0.001+(int)(Math.random()*4)*0.0002;
 			Begin.EV -= 20+(int)(Math.random()*4)*3;
@@ -40,14 +40,14 @@ public class Bomb {
 			s += economy[(int)(Math.random()*4)] + "\n";
 		}
 		
-		if(Begin.HV>=60&&(int)Math.random()*hv==0){
+		if(Begin.HV>=60&&(int)(Math.random()*hv)==0){
 			Begin.HV -= (10+(int)(Math.random()*4)*2)/hv;
 			Begin.HP -= 5*(int)(Math.random()*4)/hv;
 			if(Begin.HP<=0)
 				Begin.HP = 0;
 			s += happiness2[(int)(Math.random()*4)] + "\n";
 		}
-		else if(Begin.HV<60&&(int)(Math.random()*3)==2){
+		if(Begin.HV<60&&(int)(Math.random()*3)==2){
 			Begin.HV -= 10+(int)(Math.random()*4)*2;
 			Begin.HP -= 5*(int)(Math.random()*4);
 			if(Begin.HP<=0)
@@ -55,19 +55,19 @@ public class Bomb {
 			s += happiness[(int)(Math.random()*4)] + "\n";
 		}
 		
-		if(Begin.EMV>=60&&(int)Math.random()*emv==0){
+		if(Begin.EMV>=60&&(int)(Math.random()*emv)==0){
 			Begin.EMV -= (10+(int)(Math.random()*4)*2)/emv;
 			Begin.HP -= 5*(int)(Math.random()*4)/emv;
 			if(Begin.HP<=0)
 				Begin.HP = 0;
-			s += economy2[(int)(Math.random()*4)] + "\n";
+			s += enviroment2[(int)(Math.random()*4)] + "\n";
 		}
-		else if(Begin.EMV<60&&(int)(Math.random()*3)==2){
+		if(Begin.EMV<60&&(int)(Math.random()*3)==2){
 			Begin.EMV -= 10+(int)(Math.random()*4)*2;
 			Begin.HP -= 5*(int)(Math.random()*4);
 			if(Begin.HP<=0)
 				Begin.HP = 0;
-			s += enviroment2[(int)(Math.random()*4)] + "\n";
+			s += enviroment[(int)(Math.random()*4)] + "\n";
 		}
 		
 		return s;
