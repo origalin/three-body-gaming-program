@@ -64,6 +64,8 @@ public class Game {
 			FileInputStream fileau = new FileInputStream("sound/background.wav");
 			AudioStream as = new AudioStream(fileau);
 			AudioPlayer.player.start(as);
+			
+			
 
 		} catch (Exception e) {
 		}

@@ -1981,6 +1981,7 @@ public class GameWindow extends JFrame {
 				+ Sci.computer.point + " 艺术:" + Sci.art.point);
 		tecPanel.load();
 		tecPanel.Refresh();
+		objectPanel.recover();
 		
 	}
 
