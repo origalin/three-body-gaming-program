@@ -46,15 +46,15 @@ public class Tools {
 			tool.emvDamage=0;
 	}
 
-	public static Tools computer = new Tools(0,0,1,4,4,2,1,15);
-	public static Tools media = new Tools(0,0,1,4,4,2,1,20);
-	public static Tools hitectool = new Tools(0,0,4,3,3,2,1,17);
-	public static Tools plastic = new Tools(5,4,1,4,3,1,1,20);
-	public static Tools ai = new Tools(0,0,6,7,7,3,2,30);
-	public static Tools nuclear = new Tools(4,0,7,7,6,2,2,35);
-	public static Tools medicine = new Tools(5,7,2,4,4,2,2,40);
-	public static Tools supercreature = new Tools(9,7,9,11,10,4,3,70);
-	public static Tools spaceship = new Tools(4,0,13,14,13,5,3,65);
-	public static Tools mixcreature = new Tools(5,7,8,11,11,5,3,75);
+	public static Tools computer = new Tools(0,0,1,4,4,2,1,150);
+	public static Tools media = new Tools(0,0,1,4,4,2,1,180);
+	public static Tools hitectool = new Tools(0,0,4,3,3,2,1,170);
+	public static Tools plastic = new Tools(5,4,1,4,3,1,1,160);
+	public static Tools ai = new Tools(0,0,6,7,7,3,2,250);
+	public static Tools nuclear = new Tools(4,0,7,7,6,2,2,260);
+	public static Tools medicine = new Tools(5,7,2,4,4,2,2,240);
+	public static Tools supercreature = new Tools(9,7,9,11,10,4,3,415);
+	public static Tools spaceship = new Tools(4,0,13,14,13,5,3,410);
+	public static Tools mixcreature = new Tools(5,7,8,11,11,5,3,420);
 	
 }

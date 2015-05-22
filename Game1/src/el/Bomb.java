@@ -16,12 +16,14 @@ public class Bomb {
 	static String[]economy2={"星球饥饿人口比例上升","首都发生地震，急缺赈灾基金","你的居民要求医疗保障，各地游行频发","部分投机分子扰乱经济"};
 	static String[]happiness2={"医疗中心显示抑郁症患者增多","青少年自杀事故频发","节目《fxxk总统》热播","城市中谣言泛滥"};
 	static String[]enviroment2={"乱排放现象屡禁不止","生活垃圾处理不当，引发中毒事件","河流污染有加重趋势","环保税施行受挫"};
-	
+
 	public String bomb(){
 		String s = "";
-		int ev = 15000/(5000-Begin.HV)+3;
-		int hv = 300/(101-Begin.HV);
-		int emv = 300/(101-Begin.EMV);
+
+		int ev = 7500/(2500-Begin.HV+1)+2;
+		int hv = 300/(100-Begin.HV+1);
+		int emv = 300/(100-Begin.EMV+1);
+
 		if(Begin.EV>=40+(GameWindow.time-1020)*1.1&&(int)(Math.random()*ev)==0){
 			Economy.EIR -= (0.001+(int)(Math.random()*4)*0.0002)/ev;
 			Begin.EV -= (20+(int)(Math.random()*4)*3)/ev;

@@ -64,7 +64,7 @@ public class SciPanel extends JLabel {
 			"需要2科技点\nFrankenstein！对环境有一定影响", "需要4科技点\n科技进步，经济增长，物理是破解奥秘的钥匙",
 			"需要5科技点\n发展其他各个学科的基础", "需要3科技点\n科技进步离不开的尖端技术",
 			"需要3科技点\n陶冶情操，提高人民的幸福感" };
-
+	
 	public SciPanel(ImageIcon i) {
 		super(i);
 		setBounds(232, 48, i.getIconWidth(), i.getIconHeight());
