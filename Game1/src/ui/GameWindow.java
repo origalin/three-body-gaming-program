@@ -351,7 +351,7 @@ public class GameWindow extends JFrame {
 		accidenPane = new JTextPane();
 		accidenPane.setOpaque(false);
 		accidenPane.setBorder(null);
-		accidenPane.setBounds(24, 80, 430, 150);
+		accidenPane.setBounds(24, 60, 430, 150);
 		accidenPane.setEditable(false);
 		accidenPane.setFocusable(false);
 		StyleConstants.setAlignment(bSet, StyleConstants.ALIGN_CENTER);
@@ -2064,33 +2064,33 @@ public class GameWindow extends JFrame {
 	}
 
 	void shipwin() {
-		successPane.setText("");
+		successPane.setText("恭喜您！您带领您的同胞走到了现在，强大的宇宙飞船给了这个种族在宇宙远航的能力与信心。然而宇宙的危险也将更快展现在年轻的猎手面前。让我们拭目以待！");
 	}
 
 	void mixwin() {
-		successPane.setText("");
+		successPane.setText("将机械与生物同时研究到如此的高度，让这颗星球获得了在宇宙中安静地前行的能力。虽然没有强大的火力，但无论在本土还是在宇宙，混合生命都是最顽强的。");
 	}
 
 	void supwin() {
-		successPane.setText("");
+		successPane.setText("是什么样的技术，才能将生物的潜能发挥到如此地步！单凭生物本身，就能在无大气环境中自保。虽然不能随意穿梭宇宙，但若有外来客登陆，迎接他们的将是最可怕的噩梦。");
 	}
 
 	void fail1() {
-		accidenPane.setText("");
+		accidenPane.setText("经济大崩溃下，这个星球的成员已经陷入恐慌。政府无法有效集合资源，这颗星球在黑暗森林登场的日期被无限期延长。");
 		accidentanim();
 		fail = true;
 
 	}
 
 	void fail2() {
-		accidenPane.setText("");
+		accidenPane.setText("民众失去了对政府的信心，经过数年的暴乱游行与武装冲突后，统一联邦瓦解，技术进步的步伐在战火中停滞。");
 		accidentanim();
 		fail = true;
 
 	}
 
 	void fail3() {
-		accidenPane.setText("");
+		accidenPane.setText("环境恶化，生态系统崩溃，你的同胞在走向宇宙前就失去了赖以生存的家园，这颗星球又将回归原始。");
 		accidentanim();
 		fail = true;
 

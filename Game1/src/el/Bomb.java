@@ -10,12 +10,12 @@ public class Bomb {
 	static int COMP=Sci.computer.point;
 	static int AP=Sci.art.point;
 	static int SUM=MP+PP+CP+BP+COMP+AP;
-	static String[]economy={"你的星球正在发生饥荒","首都发生地震，急缺赈灾基金","你的居民要求医疗保障，各地游行频发","地方政府已无力偿还债务"};
-	static String[]happiness={"各地正在发生暴乱","医疗中心显示抑郁症患者急剧增多","青少年自杀事故频发","各地犯罪行为不断，监狱人满为患"};
+	static String[]economy={"你的星球正在发生饥荒","经济大幅动荡，市场萧条","劳动者比例失衡，经济运转困难","地方政府已无力偿还债务"};
+	static String[]happiness={"各地正在发生暴乱","地区冲突严重激化","反叛分子已形成相当势力","各地犯罪行为不断，监狱人满为患"};
 	static String[]enviroment={"森林的覆盖面积正在迅速下降","草场正在急剧荒漠化","水资源陷入短缺","多地出现极端气候"};
-	static String[]economy2={"1","2","3","4"};
-	static String[]happiness2={"5","6","7","8"};
-	static String[]enviroment2={"9","10","11","12"};
+	static String[]economy2={"星球饥饿人口比例上升","首都发生地震，急缺赈灾基金","你的居民要求医疗保障，各地游行频发","部分投机分子扰乱经济"};
+	static String[]happiness2={"医疗中心显示抑郁症患者增多","青少年自杀事故频发","节目《fxxk总统》热播","城市中谣言泛滥"};
+	static String[]enviroment2={"乱排放现象屡禁不止","生活垃圾处理不当，引发中毒事件","河流污染有加重趋势","环保税施行受挫"};
 	
 	public String bomb(){
 		String s = "";
