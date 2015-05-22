@@ -232,7 +232,7 @@ public class SciPanel extends JLabel {
 					b.getLocation().y + 110, 40, 20);
 			iconData[sciIcon.indexOf(b)].setEditable(false);
 			iconData[sciIcon.indexOf(b)].setOpaque(false);
-			iconData[sciIcon.indexOf(b)].setText(scipoints[i1] + "");
+			iconData[sciIcon.indexOf(b)].setText("0");
 			iconData[sciIcon.indexOf(b)].setBorder(null);
 			iconData[sciIcon.indexOf(b)]
 					.setFont(new Font("微软雅黑", Font.BOLD, 20));
@@ -279,8 +279,6 @@ public class SciPanel extends JLabel {
 
 	}
 
-	void setpoints(int[] i) {
-		scipoints = i;// 顺序：化学 生物 物理 数学 计算机 艺术
-	}
+
 
 }
