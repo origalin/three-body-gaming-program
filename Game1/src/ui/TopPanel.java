@@ -32,4 +32,8 @@ public class TopPanel extends JPanel {
 		topLabel.setHorizontalTextPosition(JLabel.CENTER);
 
 	}
+	public void refresh(){
+		topLabel.setText("◎经济值"+Begin.EV+"  "+"◎幸福值"+Begin.HV+"  "+"◎环境值"+Begin.EMV);
+		
+	}
 }
