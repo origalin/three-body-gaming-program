@@ -218,7 +218,7 @@ public class GameWindow extends JFrame {
 		timeLabel.setBounds(1060, 20, message.getIconWidth(),
 				message.getIconHeight());
 		timeField = new JTextField();
-		timeField.setBounds(10, 5, 100, 40);
+		timeField.setBounds(20, 5, 100, 40);
 		timeField.setBorder(null);
 		timeField.setEditable(false);
 		timeField.setOpaque(false);
