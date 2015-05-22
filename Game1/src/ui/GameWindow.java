@@ -70,6 +70,7 @@ public class GameWindow extends JFrame {
 	ImageButton pauseButton;
 	JLabel timeLabel;
 	JLabel accidentLabel;
+	JLabel successLabel;
 	JLabel blackLabel;
 	JLabel starLabel1;
 	JLabel starLabel2;
@@ -79,9 +80,11 @@ public class GameWindow extends JFrame {
 	JLabel label2;
 	PlaneLabel planetLabel2;
 	JTextPane accidenPane;
+	JTextPane successPane;
 	static ImageButton[] bottombottons = new ImageButton[3];
 	ImageButton roundButton;
 	ImageButton accidentButton;
+	ImageButton successButton;
 	TopPanel topPanel;
 	ImageIcon objectBackground;
 	public static int x;
@@ -104,6 +107,7 @@ public class GameWindow extends JFrame {
 	int v = 1;
 	Bomb bom;
 	SimpleAttributeSet bSet = new SimpleAttributeSet();
+	SimpleAttributeSet Set = new SimpleAttributeSet();
 	
 
 	public GameWindow(GraphicsConfiguration gc) {
@@ -347,6 +351,43 @@ public class GameWindow extends JFrame {
 		// accidenPane.setFont(new Font("宋体", Font.BOLD, 23));
 		// accidenPane.setForeground(new Color(117, 16, 0));
 		accidentLabel.add(accidenPane);
+		
+		
+		
+		//创建胜利面板
+		successLabel = new JLabel(new ImageIcon("image/successpanel.png"));
+		successLabel.setBounds(400, 720, accidentLabel.getIcon()
+				.getIconWidth(), accidentLabel.getIcon().getIconHeight());
+		successLabel.setVisible(false);
+		successButton = new ImageButton(accident1, accident2, accident3, false);
+		successButton.setLocation(140, 180);
+		successButton.setText("确认");
+		successButton.setHorizontalTextPosition(JButton.CENTER);
+		successButton.setVerticalTextPosition(JButton.CENTER);
+		successButton.setFont(new Font("微软雅黑", Font.BOLD, 20));
+		successButton.setForeground(new Color(117, 16, 0));
+		successButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO 自动生成的方法存根
+				// accidentLabel.setVisible(false);
+				successanim2();
+			}
+		});
+		successLabel.add(successButton);
+		frontPanel.add(successLabel, 0);
+		successPane = new JTextPane();
+		successPane.setOpaque(false);
+		successPane.setBorder(null);
+		successPane.setBounds(24, 80, 430, 150);
+		successPane.setEditable(false);
+		successPane.setFocusable(false);
+		StyleConstants.setAlignment(Set, StyleConstants.ALIGN_CENTER);
+		StyleConstants.setFontFamily(Set, "宋体 bold");
+		StyleConstants.setForeground(Set, new Color(117, 16, 0));
+		StyleConstants.setFontSize(Set, 17);
+		
 
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
@@ -1795,6 +1836,44 @@ public class GameWindow extends JFrame {
 			}
 		});
 		accidTimer.start();
+	}
+	void successanim() {
+		StyledDocument doc = successPane.getStyledDocument();
+		doc.setParagraphAttributes(0, 104, Set, false);
+		blockLabel.setVisible(true);
+		roundButton.setVisible(false);
+		for (ImageButton im : bottombottons) {
+			im.setVisible(false);
+		}
+		pauseButton.setVisible(false);
+		successLabel.setVisible(true);
+		accidTimer = new Timer(10, new ActionListener() {
+			int i = 0;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				i += 1;
+
+				if (i <= 10) {
+					successLabel.setLocation(accidentLabel.getLocation().x,
+							720 - ((720 - 250) / 10 * i));
+				} else {
+					accidTimer.stop();
+				}
+			}
+		});
+		accidTimer.start();
+	}
+	void successanim2() {
+		roundButton.setVisible(true);
+		for (ImageButton im : bottombottons) {
+			im.setVisible(true);
+		}
+		pauseButton.setVisible(true);
+		blockLabel.setVisible(false);
+		label2.setVisible(true);
+		blackanime2();
 	}
 
 	public void save() {
