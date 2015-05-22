@@ -107,7 +107,8 @@ public class GameWindow extends JFrame {
 	ImageButton[] imageButton = new ImageButton[3];
 	int v = 1;
 	Bomb bom;
-	boolean fail=false;
+	boolean fail = false;
+	static int win = 0;
 	SimpleAttributeSet bSet = new SimpleAttributeSet();
 	SimpleAttributeSet Set = new SimpleAttributeSet();
 
@@ -337,13 +338,12 @@ public class GameWindow extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
 				// accidentLabel.setVisible(false);
-				if(fail) {
+				if (fail) {
 					wipe();
-				}
-				else {
+				} else {
 					accidentanim2();
 				}
-				
+
 			}
 		});
 		accidentLabel.add(accidentButton);
@@ -591,21 +591,23 @@ public class GameWindow extends JFrame {
 							timeField.setText("AC " + time);
 
 							String s = bom.bomb();
-							if (s != "") {
-								accidenPane.setText(s);
-								accidentanim();
+							if (win) {
 
-							}
-							if(s == "") {
-								if (Begin.EV <= 0) {
-									fail1();
-								} else if (Begin.HV <= 0) {
-									fail2();
-								} else if (Begin.EMV <= 0) {
-									fail3();
+							} else {
+								if (s != "") {
+									accidenPane.setText(s);
+									accidentanim();
+
+								} else if (s == "") {
+									if (Begin.EV <= 0) {
+										fail1();
+									} else if (Begin.HV <= 0) {
+										fail2();
+									} else if (Begin.EMV <= 0) {
+										fail3();
+									}
 								}
 							}
-							
 						}
 						i++;
 					}
@@ -1693,7 +1695,7 @@ public class GameWindow extends JFrame {
 						timeLabel.setVisible(true);
 						j++;
 
-					} 
+					}
 				} else if (i > 30 && i <= 50) {
 					blackLabel.setBackground(new Color(0, 0, 0,
 							255 / 20 * (50 - i)));
@@ -1701,7 +1703,6 @@ public class GameWindow extends JFrame {
 					starTimer.start();
 					label2.setVisible(false);
 					blackTimer.stop();
-
 
 				}
 			}
@@ -1741,7 +1742,7 @@ public class GameWindow extends JFrame {
 						labelTitle.setVisible(true);
 						j++;
 
-					} 
+					}
 				} else if (i > 20 && i <= 30) {
 					blackLabel.setBackground(new Color(0, 0, 0,
 							255 / 10 * (30 - i)));
@@ -1749,7 +1750,6 @@ public class GameWindow extends JFrame {
 					label2.setVisible(false);
 					starTimer.start();
 					blackTimer2.stop();
-					
 
 				}
 			}
@@ -1848,7 +1848,7 @@ public class GameWindow extends JFrame {
 					accidentLabel.setLocation(accidentLabel.getLocation().x,
 							250 + ((720 - 250) / 10 * i));
 				} else {
-					
+
 					accidTimer.stop();
 					if (Begin.EV <= 0) {
 						fail1();
@@ -2002,7 +2002,7 @@ public class GameWindow extends JFrame {
 				+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 				+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 				+ Sci.art.point);
-		fail=false;
+		fail = false;
 		tecPanel.load();
 		tecPanel.Refresh();
 		objectPanel.recover();
@@ -2055,7 +2055,7 @@ public class GameWindow extends JFrame {
 				+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
 				+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
 				+ Sci.art.point);
-		fail=false;
+		fail = false;
 		tecPanel.load();
 		tecPanel.Refresh();
 		objectPanel.recover();
@@ -2075,6 +2075,7 @@ public class GameWindow extends JFrame {
 		blackanime2();
 		wipe();
 	}
+
 	void supwin() {
 		successPane.setText("");
 		label2.setVisible(true);
@@ -2085,24 +2086,22 @@ public class GameWindow extends JFrame {
 	void fail1() {
 		accidenPane.setText("");
 		accidentanim();
-		fail=true;
+		fail = true;
 
 	}
 
 	void fail2() {
 		accidenPane.setText("");
 		accidentanim();
-		fail=true;
+		fail = true;
 
 	}
 
 	void fail3() {
 		accidenPane.setText("");
 		accidentanim();
-		fail=true;
+		fail = true;
 
 	}
-
-
 
 }
