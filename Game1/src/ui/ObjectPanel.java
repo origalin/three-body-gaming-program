@@ -1,11 +1,8 @@
 package ui;
 
-import java.awt.Button;
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,11 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
-
-import sun.management.snmp.util.MibLogger;
 import el.Begin;
-import el.ToolFunction;
 import el.Tools;
 
 public class ObjectPanel extends JLabel {
@@ -44,7 +37,7 @@ public class ObjectPanel extends JLabel {
 			"这个种族已然主宰生命的一部分\n学科需求：化 5 生 7 物 2 数 4 计 4 艺 2\n解锁：生物制药",  };
 	static ObjectImageButton[] button = new ObjectImageButton[11];
 	JPanel toSetGrid;
-	JTextField money;
+	static JTextField money;
 	JPanel settingGrid;
 
 	JPanel doneSetGrid;
@@ -331,6 +324,7 @@ public class ObjectPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
 				m1.setVisible(false);
 				if (button[8].location == -1) {
 
@@ -353,6 +347,7 @@ public class ObjectPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
 				m1.setVisible(false);
 				if (button[9].location == -1) {
 
@@ -375,6 +370,7 @@ public class ObjectPanel extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
 				m1.setVisible(false);
 				if (button[10].location == -1) {
 
@@ -401,7 +397,7 @@ public class ObjectPanel extends JLabel {
 		money.setFont(new Font("微软雅黑", Font.BOLD, 20));
 		money.setForeground(new Color(134, 69, 0));
 		money.setBorder(null);
-		money.setText("可用资金：" + Begin.EV);
+
 		add(money);
 	}
 
@@ -461,7 +457,7 @@ public class ObjectPanel extends JLabel {
 		}
 	}
 
-	public void moneyRefresh() {
+	public static void moneyRefresh() {
 		money.setText("可用资金：" + Begin.EV);
 	}
 
@@ -541,6 +537,26 @@ public class ObjectPanel extends JLabel {
 			if(button[j].location==2){
 				button[j].setavalible(false);
 			}
+		}
+		judge();
+	}
+	public static void judge(){
+		if(button[10].location==1){
+			button[8].setavalible(false);
+			button[9].setavalible(false);
+		}
+		if(button[8].location==1){
+			button[10].setavalible(false);
+			button[9].setavalible(false);
+		}
+		if(button[9].location==1){
+			button[8].setavalible(false);
+			button[10].setavalible(false);
+		}
+		if(button[10].location==0&&button[8].location==0&&button[9].location==0){
+			button[10].setavalible(true);
+			button[8].setavalible(true);
+			button[9].setavalible(true);
 		}
 	}
 

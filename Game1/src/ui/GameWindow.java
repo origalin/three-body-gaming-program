@@ -500,13 +500,13 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				ObjectPanel.moneyRefresh();
 				blockLabel.setVisible(true);
 				objectPanel.setLocation(232, 720);
 				objectPanel.refresh();
-				objectPanel.setVisible(true);
+				objectPanel.setVisible(true);			
 				objtimer = new Timer(10, new ActionListener() {
-					int i = 0;
-
+					int i = 0;			
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO 自动生成的方法存根

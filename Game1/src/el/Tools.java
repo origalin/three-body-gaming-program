@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Tools {
 	public static int[] Time= {1,1,1,1,1,2,2,2,3,3,3};
-	public static int[] Money= {150,180,170,160,250,260,240,415,410,420};
+	public static int[] Money= {150,180,170,160,165,250,260,240,415,410,420};
 	
 	int mathPoint = 0;
 	int physicsPoint = 0;
@@ -30,6 +30,7 @@ public class Tools {
 	public static Tools media = new Tools(0,0,1,3,3,1,180);
 	public static Tools hitectool = new Tools(2,0,4,3,3,2,170);
 	public static Tools plastic = new Tools(6,4,1,3,3,1,160);
+	public static Tools bike = new Tools(2,0,4,3,3,2,165);
 	public static Tools ai = new Tools(0,2,6,6,6,2,250);
 	public static Tools nuclear = new Tools(4,2,7,6,6,2,260);
 	public static Tools medicine = new Tools(5,7,2,4,4,2,240);
