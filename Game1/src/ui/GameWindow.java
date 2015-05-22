@@ -591,8 +591,16 @@ public class GameWindow extends JFrame {
 							timeField.setText("AC " + time);
 
 							String s = bom.bomb();
-							if (win) {
-
+							if (win!=0) {
+								if(win==1) {
+									shipwin();
+								}
+								else if (win==2) {
+									mixwin();
+								}
+								else {
+									supwin();
+								}
 							} else {
 								if (s != "") {
 									accidenPane.setText(s);
@@ -1893,14 +1901,7 @@ public class GameWindow extends JFrame {
 	}
 
 	void successanim2() {
-		roundButton.setVisible(true);
-		for (ImageButton im : bottombottons) {
-			im.setVisible(true);
-		}
-		pauseButton.setVisible(true);
-		blockLabel.setVisible(false);
-		label2.setVisible(true);
-		blackanime2();
+		wipe();
 	}
 
 	public void save() {
@@ -2064,23 +2065,14 @@ public class GameWindow extends JFrame {
 
 	void shipwin() {
 		successPane.setText("");
-		label2.setVisible(true);
-		blackanime2();
-		wipe();
 	}
 
 	void mixwin() {
 		successPane.setText("");
-		label2.setVisible(true);
-		blackanime2();
-		wipe();
 	}
 
 	void supwin() {
 		successPane.setText("");
-		label2.setVisible(true);
-		blackanime2();
-		wipe();
 	}
 
 	void fail1() {
