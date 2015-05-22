@@ -103,12 +103,13 @@ public class GameWindow extends JFrame {
 	Timer mouseTimer;
 	Timer starTimer;
 	Timer accidTimer;
+	Timer blackTimer2;
 	ImageButton[] imageButton = new ImageButton[3];
 	int v = 1;
 	Bomb bom;
+	boolean fail=false;
 	SimpleAttributeSet bSet = new SimpleAttributeSet();
 	SimpleAttributeSet Set = new SimpleAttributeSet();
-	
 
 	public GameWindow(GraphicsConfiguration gc) {
 		super(gc);
@@ -314,7 +315,7 @@ public class GameWindow extends JFrame {
 
 		// 创建生产面板
 
-		objectPanel = new ObjectPanel(objectBackground,messageLabel,topPanel);
+		objectPanel = new ObjectPanel(objectBackground, messageLabel, topPanel);
 		objectPanel.setVisible(false);
 		frontPanel.add(objectPanel, new Integer(-4));
 
@@ -336,7 +337,13 @@ public class GameWindow extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO 自动生成的方法存根
 				// accidentLabel.setVisible(false);
-				accidentanim2();
+				if(fail) {
+					wipe();
+				}
+				else {
+					accidentanim2();
+				}
+				
 			}
 		});
 		accidentLabel.add(accidentButton);
@@ -354,13 +361,12 @@ public class GameWindow extends JFrame {
 		// accidenPane.setFont(new Font("宋体", Font.BOLD, 23));
 		// accidenPane.setForeground(new Color(117, 16, 0));
 		accidentLabel.add(accidenPane);
-		
-		
-		
-		//创建胜利面板
+
+		// 创建胜利面板
 		successLabel = new JLabel(new ImageIcon("image/successpanel.png"));
-		successLabel.setBounds(400, 720, accidentLabel.getIcon()
-				.getIconWidth(), accidentLabel.getIcon().getIconHeight());
+		successLabel.setBounds(400, 720,
+				accidentLabel.getIcon().getIconWidth(), accidentLabel.getIcon()
+						.getIconHeight());
 		successLabel.setVisible(false);
 		successButton = new ImageButton(success1, success2, success3, false);
 		successButton.setLocation(140, 180);
@@ -390,7 +396,6 @@ public class GameWindow extends JFrame {
 		StyleConstants.setFontFamily(Set, "宋体 bold");
 		StyleConstants.setForeground(Set, new Color(117, 16, 0));
 		StyleConstants.setFontSize(Set, 17);
-		
 
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
@@ -408,7 +413,7 @@ public class GameWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-
+				load();
 			}
 		});
 		imageButton[2].addActionListener(new ActionListener() {
@@ -591,10 +596,16 @@ public class GameWindow extends JFrame {
 								accidentanim();
 
 							}
-							if (Begin.EV <= 0 || Begin.HV <= 0
-									|| Begin.EMV <= 0) {
-								// lose!
+							if(s == "") {
+								if (Begin.EV <= 0) {
+									fail1();
+								} else if (Begin.HV <= 0) {
+									fail2();
+								} else if (Begin.EMV <= 0) {
+									fail3();
+								}
 							}
+							
 						}
 						i++;
 					}
@@ -1640,12 +1651,12 @@ public class GameWindow extends JFrame {
 						j.setVisible(true);
 					}
 				}
-				if(e.getKeyCode() == KeyEvent.VK_S) {
+				if (e.getKeyCode() == KeyEvent.VK_S) {
 					save();
 				}
-				if(e.getKeyCode() == KeyEvent.VK_L) {
+				if (e.getKeyCode() == KeyEvent.VK_L) {
 					load();
-					
+
 				}
 				return rootPaneCheckingEnabled;
 
@@ -1682,16 +1693,15 @@ public class GameWindow extends JFrame {
 						timeLabel.setVisible(true);
 						j++;
 
-					} else {
-
-					}
+					} 
 				} else if (i > 30 && i <= 50) {
 					blackLabel.setBackground(new Color(0, 0, 0,
 							255 / 20 * (50 - i)));
 				} else {
-					blackTimer.stop();
 					starTimer.start();
 					label2.setVisible(false);
+					blackTimer.stop();
+
 
 				}
 			}
@@ -1701,7 +1711,7 @@ public class GameWindow extends JFrame {
 
 	private void blackanime2() {
 
-		blackTimer = new Timer(15, new ActionListener() {
+		blackTimer2 = new Timer(15, new ActionListener() {
 			int i = 0;
 			int j = 0;
 
@@ -1714,6 +1724,9 @@ public class GameWindow extends JFrame {
 					starTimer.stop();
 				} else if (i > 10 && i <= 20) {
 					if (j == 0) {
+						blockLabel.setVisible(false);
+						accidentLabel.setVisible(false);
+						successLabel.setVisible(false);
 						pauseButton.setVisible(false);
 						bottomLabel.setVisible(false);
 						roundButton.setVisible(false);
@@ -1726,23 +1739,24 @@ public class GameWindow extends JFrame {
 							im.setVisible(false);
 						}
 						labelTitle.setVisible(true);
-
-					} else {
 						j++;
-					}
+
+					} 
 				} else if (i > 20 && i <= 30) {
 					blackLabel.setBackground(new Color(0, 0, 0,
 							255 / 10 * (30 - i)));
 				} else {
-					blackTimer.stop();
 					label2.setVisible(false);
 					starTimer.start();
+					blackTimer2.stop();
+					
 
 				}
 			}
 		});
-		blackTimer.start();
+		blackTimer2.start();
 	}
+
 	void staranim() {
 		starTimer = new Timer(100, new ActionListener() {
 			int i = 0;
@@ -1834,12 +1848,21 @@ public class GameWindow extends JFrame {
 					accidentLabel.setLocation(accidentLabel.getLocation().x,
 							250 + ((720 - 250) / 10 * i));
 				} else {
+					
 					accidTimer.stop();
+					if (Begin.EV <= 0) {
+						fail1();
+					} else if (Begin.HV <= 0) {
+						fail2();
+					} else if (Begin.EMV <= 0) {
+						fail3();
+					}
 				}
 			}
 		});
 		accidTimer.start();
 	}
+
 	void successanim() {
 		StyledDocument doc = successPane.getStyledDocument();
 		doc.setParagraphAttributes(0, 104, Set, false);
@@ -1868,6 +1891,7 @@ public class GameWindow extends JFrame {
 		});
 		accidTimer.start();
 	}
+
 	void successanim2() {
 		roundButton.setVisible(true);
 		for (ImageButton im : bottombottons) {
@@ -1880,7 +1904,7 @@ public class GameWindow extends JFrame {
 	}
 
 	public void save() {
-		int[] savedata = new int[38];
+		int[] savedata = new int[39];
 		savedata[0] = Begin.EV;
 		savedata[1] = Begin.EMV;
 		savedata[2] = Begin.HV;
@@ -1903,12 +1927,12 @@ public class GameWindow extends JFrame {
 		for (int i = 26; i <= 36; i++) {
 			savedata[i] = ObjectPanel.button[i - 26].location;
 		}
-		savedata[37]= TecPanel.ligntstate;
+		savedata[37] = TecPanel.ligntstate;
 		String s = "";
 		for (int i = 0; i <= 37; i++) {
 			s += savedata[i] + " ";
 		}
-		s = s.substring(0, s.length()-1);
+		s = s.substring(0, s.length() - 1);
 		try {
 			File f = new File("data/save.txt");
 			FileWriter writer = new FileWriter(f);
@@ -1931,8 +1955,8 @@ public class GameWindow extends JFrame {
 					"data/save.txt"));
 
 			for (int i = 0; i <= 37; i++) {
-				
-					i1[i] = loadScanner.nextInt();
+
+				i1[i] = loadScanner.nextInt();
 
 			}
 
@@ -1957,32 +1981,128 @@ public class GameWindow extends JFrame {
 		SciPanel.computerSum = i1[14];
 		SciPanel.artSum = i1[15];
 		for (int i = 16; i <= 25; i++) {
-			if(i1[i]==1) {
-				TecPanel.tecButton[i-16].ispressed=true;
+			if (i1[i] == 1) {
+				TecPanel.tecButton[i - 16].ispressed = true;
 			}
 		}
 		for (int i = 26; i <= 36; i++) {
-			ObjectPanel.button[i - 26].location = i1[i] ;
+			ObjectPanel.button[i - 26].location = i1[i];
 		}
 		TecPanel.ligntstate = i1[37];
-		topPanel.topLabel.setText("◎经济值" + Begin.EV + "  "
-				+ "◎幸福值" + Begin.HV + "  " + "◎环境值"
-				+ Begin.EMV);
+		topPanel.topLabel.setText("◎经济值" + Begin.EV + "  " + "◎幸福值" + Begin.HV
+				+ "  " + "◎环境值" + Begin.EMV);
 		sciPanel.pointsavailable.setText("可分配学科点：" + Begin.HP);
 		int scipoint[] = { Sci.chemistry.point, Sci.biology.point,
 				Sci.physics.point, Sci.math.point, Sci.computer.point,
 				Sci.art.point };
-		for(int i  = 0;i<=5;i++) {
-			SciPanel.iconData[i].setText(scipoint[i]+"");
+		for (int i = 0; i <= 5; i++) {
+			SciPanel.iconData[i].setText(scipoint[i] + "");
 		}
 		tecPanel.pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
-				+ Sci.biology.point + " 物理:" + Sci.physics.point
-				+ " 数学:" + Sci.math.point + " 计算机:"
-				+ Sci.computer.point + " 艺术:" + Sci.art.point);
+				+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+				+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+				+ Sci.art.point);
+		fail=false;
 		tecPanel.load();
 		tecPanel.Refresh();
 		objectPanel.recover();
-		
+
 	}
+
+	public void wipe() {
+		label2.setVisible(true);
+		blackanime2();
+
+		int[] i1 = { 100, 80, 80, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+				-1, 0 };
+
+		Begin.EV = i1[0];
+		Begin.EMV = i1[1];
+		Begin.HV = i1[2];
+		Begin.HP = i1[3];
+		Sci.math.point = i1[4];
+		Sci.physics.point = i1[5];
+		Sci.chemistry.point = i1[6];
+		Sci.biology.point = i1[7];
+		Sci.computer.point = i1[8];
+		Sci.art.point = i1[9];
+		SciPanel.mathSum = i1[10];
+		SciPanel.physicsSum = i1[11];
+		SciPanel.chemistrySum = i1[12];
+		SciPanel.biologySum = i1[13];
+		SciPanel.computerSum = i1[14];
+		SciPanel.artSum = i1[15];
+		for (int i = 16; i <= 25; i++) {
+			if (i1[i] == 1) {
+				TecPanel.tecButton[i - 16].ispressed = true;
+			}
+		}
+		for (int i = 26; i <= 36; i++) {
+			ObjectPanel.button[i - 26].location = i1[i];
+		}
+		TecPanel.ligntstate = i1[37];
+		topPanel.topLabel.setText("◎经济值" + Begin.EV + "  " + "◎幸福值" + Begin.HV
+				+ "  " + "◎环境值" + Begin.EMV);
+		sciPanel.pointsavailable.setText("可分配学科点：" + Begin.HP);
+		int scipoint[] = { Sci.chemistry.point, Sci.biology.point,
+				Sci.physics.point, Sci.math.point, Sci.computer.point,
+				Sci.art.point };
+		for (int i = 0; i <= 5; i++) {
+			SciPanel.iconData[i].setText(scipoint[i] + "");
+		}
+		tecPanel.pointsfield.setText("化学:" + Sci.chemistry.point + " 生物:"
+				+ Sci.biology.point + " 物理:" + Sci.physics.point + " 数学:"
+				+ Sci.math.point + " 计算机:" + Sci.computer.point + " 艺术:"
+				+ Sci.art.point);
+		fail=false;
+		tecPanel.load();
+		tecPanel.Refresh();
+		objectPanel.recover();
+
+	}
+
+	void shipwin() {
+		successPane.setText("");
+		label2.setVisible(true);
+		blackanime2();
+		wipe();
+	}
+
+	void mixwin() {
+		successPane.setText("");
+		label2.setVisible(true);
+		blackanime2();
+		wipe();
+	}
+	void supwin() {
+		successPane.setText("");
+		label2.setVisible(true);
+		blackanime2();
+		wipe();
+	}
+
+	void fail1() {
+		accidenPane.setText("");
+		accidentanim();
+		fail=true;
+
+	}
+
+	void fail2() {
+		accidenPane.setText("");
+		accidentanim();
+		fail=true;
+
+	}
+
+	void fail3() {
+		accidenPane.setText("");
+		accidentanim();
+		fail=true;
+
+	}
+
+
 
 }

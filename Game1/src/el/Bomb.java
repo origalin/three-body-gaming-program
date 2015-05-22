@@ -20,8 +20,8 @@ public class Bomb {
 	public String bomb(){
 		String s = "";
 		int ev = 15000/(5000-Begin.HV)+3;
-		int hv = 300/(100-Begin.HV);
-		int emv = 300/(100-Begin.EMV);
+		int hv = 300/(101-Begin.HV);
+		int emv = 300/(101-Begin.EMV);
 		if(Begin.EV>=40+(GameWindow.time-1020)*1.1&&(int)(Math.random()*ev)==0){
 			Economy.EIR -= (0.001+(int)(Math.random()*4)*0.0002)/ev;
 			Begin.EV -= (20+(int)(Math.random()*4)*3)/ev;
