@@ -358,24 +358,24 @@ public class GameWindow extends JFrame {
 		StyleConstants.setAlignment(bSet, StyleConstants.ALIGN_CENTER);
 		StyleConstants.setFontFamily(bSet, "宋体 bold");
 		StyleConstants.setForeground(bSet, new Color(117, 16, 0));
-		StyleConstants.setFontSize(bSet, 24);
+		StyleConstants.setFontSize(bSet, 20);
 		// accidenPane.setFont(new Font("宋体", Font.BOLD, 23));
 		// accidenPane.setForeground(new Color(117, 16, 0));
 		accidentLabel.add(accidenPane);
 
 		// 创建胜利面板
 		successLabel = new JLabel(new ImageIcon("image/successpanel.png"));
-		successLabel.setBounds(400, 720,
+		successLabel.setBounds(400, 120,
 				accidentLabel.getIcon().getIconWidth(), accidentLabel.getIcon()
 						.getIconHeight());
-		successLabel.setVisible(false);
+		successLabel.setVisible(true);
 		successButton = new ImageButton(success1, success2, success3, false);
 		successButton.setLocation(140, 180);
 		successButton.setText("确认");
 		successButton.setHorizontalTextPosition(JButton.CENTER);
 		successButton.setVerticalTextPosition(JButton.CENTER);
 		successButton.setFont(new Font("微软雅黑", Font.BOLD, 20));
-		successButton.setForeground(new Color(117, 16, 0));
+		successButton.setForeground(new Color(0,123,47));
 		successButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -395,8 +395,9 @@ public class GameWindow extends JFrame {
 		successPane.setFocusable(false);
 		StyleConstants.setAlignment(Set, StyleConstants.ALIGN_CENTER);
 		StyleConstants.setFontFamily(Set, "宋体 bold");
-		StyleConstants.setForeground(Set, new Color(117, 16, 0));
+		StyleConstants.setForeground(Set, new Color(0,123,47));
 		StyleConstants.setFontSize(Set, 17);
+		successLabel.add(successPane);
 
 		// 按钮功能
 		imageButton[0].addActionListener(new ActionListener() {
@@ -593,15 +594,32 @@ public class GameWindow extends JFrame {
 							timeField.setText("AC " + time);
 
 							String s = bom.bomb();
+							
+								if(ObjectPanel.button[8].location == 2 ) {
+									win = 1;
+									
+								}
+								if(ObjectPanel.button[9].location == 2 ) {
+									win = 2;
+									
+								}
+								if(ObjectPanel.button[10].location == 2 ) {
+									win = 3;
+									
+								}
+							
 							if (win!=0) {
 								if(win==1) {
 									shipwin();
+									win = 0;
 								}
 								else if (win==2) {
 									mixwin();
+									win = 0;
 								}
 								else {
 									supwin();
+									win = 0;
 								}
 							} else {
 								if (s != "") {
@@ -622,7 +640,8 @@ public class GameWindow extends JFrame {
 						i++;
 					}
 				});
-
+				objectPanel.refresh();
+				objectPanel.isAvailable();
 				mouseTimer.start();
 				Economy eco = new Economy();
 				Environment env = new Environment();
@@ -2046,6 +2065,9 @@ public class GameWindow extends JFrame {
 			if (i1[i] == 1) {
 				TecPanel.tecButton[i - 16].ispressed = true;
 			}
+			else {
+				TecPanel.tecButton[i - 16].ispressed = false;
+			}
 		}
 		for (int i = 26; i <= 36; i++) {
 			ObjectPanel.button[i - 26].location = i1[i];
@@ -2068,19 +2090,23 @@ public class GameWindow extends JFrame {
 		tecPanel.load();
 		tecPanel.Refresh();
 		objectPanel.recover();
+		
 
 	}
 
 	void shipwin() {
 		successPane.setText("恭喜您！您带领您的同胞走到了现在，强大的宇宙飞船给了这个种族在宇宙远航的能力与信心。然而宇宙的危险也将更快展现在年轻的猎手面前。让我们拭目以待！");
+		successanim();
 	}
 
 	void mixwin() {
 		successPane.setText("将机械与生物同时研究到如此的高度，让这颗星球获得了在宇宙中安静地前行的能力。虽然没有强大的火力，但无论在本土还是在宇宙，混合生命都是最顽强的。");
+		successanim();
 	}
 
 	void supwin() {
 		successPane.setText("是什么样的技术，才能将生物的潜能发挥到如此地步！单凭生物本身，就能在无大气环境中自保。虽然不能随意穿梭宇宙，但若有外来客登陆，迎接他们的将是最可怕的噩梦。");
+		successanim();
 	}
 
 	void fail1() {
