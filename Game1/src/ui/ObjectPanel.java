@@ -149,7 +149,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[0].location == 0) {
 					deleteToSet(button[0]);
-					addSetting(button[0]);
+					addSetting(button[0],0);
 					repaint();
 				} else if (button[0].location == 1) {
 					deleteSetting(button[0]);
@@ -169,7 +169,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[1].location == 0) {
 					deleteToSet(button[1]);
-					addSetting(button[1]);
+					addSetting(button[1],1);
 					repaint();
 				} else if (button[1].location == 1) {
 					deleteSetting(button[1]);
@@ -188,7 +188,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[2].location == 0) {
 					deleteToSet(button[2]);
-					addSetting(button[2]);
+					addSetting(button[2],2);
 					repaint();
 				} else if (button[2].location == 1) {
 					deleteSetting(button[2]);
@@ -207,7 +207,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[3].location == 0) {
 					deleteToSet(button[3]);
-					addSetting(button[3]);
+					addSetting(button[3],3);
 					repaint();
 				} else if (button[3].location == 1) {
 					deleteSetting(button[3]);
@@ -226,7 +226,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[4].location == 0) {
 					deleteToSet(button[4]);
-					addSetting(button[4]);
+					addSetting(button[4],4);
 					repaint();
 				} else if (button[4].location == 1) {
 					deleteSetting(button[4]);
@@ -245,7 +245,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[5].location == 0) {
 					deleteToSet(button[5]);
-					addSetting(button[5]);
+					addSetting(button[5],5);
 					repaint();
 				} else if (button[5].location == 1) {
 					deleteSetting(button[5]);
@@ -264,7 +264,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[6].location == 0) {
 					deleteToSet(button[6]);
-					addSetting(button[6]);
+					addSetting(button[6],6);
 					repaint();
 				} else if (button[6].location == 1) {
 					deleteSetting(button[6]);
@@ -283,7 +283,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[7].location == 0) {
 					deleteToSet(button[7]);
-					addSetting(button[7]);
+					addSetting(button[7],7);
 					repaint();
 				} else if (button[7].location == 1) {
 					deleteSetting(button[7]);
@@ -302,7 +302,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[8].location == 0) {
 					deleteToSet(button[8]);
-					addSetting(button[8]);
+					addSetting(button[8],8);
 					repaint();
 				} else if (button[8].location == 1) {
 					deleteSetting(button[8]);
@@ -321,7 +321,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[9].location == 0) {
 					deleteToSet(button[9]);
-					addSetting(button[9]);
+					addSetting(button[9],9);
 					repaint();
 				} else if (button[9].location == 1) {
 					deleteSetting(button[9]);
@@ -340,7 +340,7 @@ public class ObjectPanel extends JLabel {
 
 				} else if (button[10].location == 0) {
 					deleteToSet(button[10]);
-					addSetting(button[10]);
+					addSetting(button[10],10);
 					repaint();
 				} else if (button[10].location == 1) {
 					deleteSetting(button[10]);
@@ -380,10 +380,12 @@ public class ObjectPanel extends JLabel {
 		}
 	}
 
-	public void addSetting(ObjectImageButton object) {
+	public void addSetting(ObjectImageButton object,int i) {
 		if (object.location == 0) {
 			settingGrid.add(object);
 			object.location = 1;
+			Begin.EV -= Tools.Time[i];
+			object.newTime = GameWindow.time;
 			validate();
 		}
 	}
@@ -391,6 +393,7 @@ public class ObjectPanel extends JLabel {
 	public void deleteSetting(ObjectImageButton object) {
 		if (object.location == 1) {
 			settingGrid.remove(object);
+			object.newTime=0;
 			validate();
 		}
 	}
@@ -408,66 +411,55 @@ public class ObjectPanel extends JLabel {
 		if (TecPanel.tecStats[4] == 1 && button[0].location == -1
 				&& button[1].location == -1) {
 			this.addToSet(button[0]);
-			Begin.EV -= Tools.Time[0];
-			button[0].newTime = GameWindow.time;
+			
 			this.addToSet(button[1]);
-			Begin.EV -= Tools.Time[1];
-			button[1].newTime = GameWindow.time;
+			
 			repaint();
 		}
 		if (TecPanel.tecStats[5] == 1 && button[2].location == -1
 				&& button[3].location == -1) {
 			this.addToSet(button[2]);
-			Begin.EV -= Tools.Time[2];
-			button[2].newTime = GameWindow.time;
+			
 			this.addToSet(button[3]);
-			Begin.EV -= Tools.Time[3];
-			button[3].newTime = GameWindow.time;
+			
 			repaint();
 		}
 		if (TecPanel.tecStats[6] == 1 && button[4].location == -1) {
 			this.addToSet(button[4]);
-			Begin.EV -= Tools.Time[4];
-			button[4].newTime = GameWindow.time;
+			
 			repaint();
 		}
 		if (TecPanel.tecStats[7] == 1 && button[5].location == -1) {
 			this.addToSet(button[5]);
-			Begin.EV -= Tools.Time[5];
-			button[5].newTime = GameWindow.time;
+			
 			repaint();
 		}
 		if (TecPanel.tecStats[8] == 1 && button[6].location == -1) {
 			this.addToSet(button[6]);
-			Begin.EV -= Tools.Time[6];
-			button[6].newTime = GameWindow.time;
+			
 			repaint();
 		}
 		if (TecPanel.tecStats[9] == 1 && button[7].location == -1) {
 			this.addToSet(button[7]);
-			Begin.EV -= Tools.Time[7];
-			button[7].newTime = GameWindow.time;
+			
 			repaint();
 		}
 		if (TecPanel.tecStats[7] == 1 && TecPanel.tecStats[8] == 1
 				&& button[8].location == -1) {
 			this.addToSet(button[8]);
-			Begin.EV -= Tools.Time[8];
-			button[8].newTime = GameWindow.time;
+			
 			repaint();
 		}
 		if (TecPanel.tecStats[7] == 1 && TecPanel.tecStats[9] == 1
 				&& button[9].location == -1) {
 			this.addToSet(button[9]);
-			Begin.EV -= Tools.Time[9];
-			button[9].newTime = GameWindow.time;
+			
 			repaint();
 		}
 		if (TecPanel.tecStats[8] == 1 && TecPanel.tecStats[9] == 1
 				&& button[10].location == -1) {
 			this.addToSet(button[10]);
-			Begin.EV -= Tools.Time[10];
-			button[10].newTime = GameWindow.time;
+			
 			repaint();
 		}
 		for (int i = 0; i < 11; i++) {
