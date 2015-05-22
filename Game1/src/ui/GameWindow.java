@@ -132,6 +132,9 @@ public class GameWindow extends JFrame {
 		ImageIcon accident1 = new ImageIcon("image/accidentbutton1.png");
 		ImageIcon accident2 = new ImageIcon("image/accidentbutton2.png");
 		ImageIcon accident3 = new ImageIcon("image/accidentbutton3.png");
+		ImageIcon success1 = new ImageIcon("image/buttongreen1.png");
+		ImageIcon success2 = new ImageIcon("image/buttongreen2.png");
+		ImageIcon success3 = new ImageIcon("image/buttongreen3.png");
 		// 背景图
 		JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面
 		label.setBounds(0, 0, background.getIconWidth(),
@@ -359,7 +362,7 @@ public class GameWindow extends JFrame {
 		successLabel.setBounds(400, 720, accidentLabel.getIcon()
 				.getIconWidth(), accidentLabel.getIcon().getIconHeight());
 		successLabel.setVisible(false);
-		successButton = new ImageButton(accident1, accident2, accident3, false);
+		successButton = new ImageButton(success1, success2, success3, false);
 		successButton.setLocation(140, 180);
 		successButton.setText("确认");
 		successButton.setHorizontalTextPosition(JButton.CENTER);
@@ -1900,7 +1903,7 @@ public class GameWindow extends JFrame {
 		for (int i = 26; i <= 36; i++) {
 			savedata[i] = ObjectPanel.button[i - 26].location;
 		}
-		savedata[37]= tecPanel.ligntstate;
+		savedata[37]= TecPanel.ligntstate;
 		String s = "";
 		for (int i = 0; i <= 37; i++) {
 			s += savedata[i] + " ";
