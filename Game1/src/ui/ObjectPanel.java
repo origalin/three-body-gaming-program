@@ -504,6 +504,9 @@ public class ObjectPanel extends JLabel {
 		repaint();
 	}
 	public void recover(){
+		toSetGrid.removeAll();
+		settingGrid.removeAll();
+		doneSetGrid.removeAll();
 		for(int j=0;j<11;j++){
 			switch(button[j].location){
 			case -1:break;
@@ -519,6 +522,7 @@ public class ObjectPanel extends JLabel {
 		}
 	}
 	public void isAvailable(){
+
 		for(int j=0;j<11;j++){
 			if(button[j].location==0){
 				if(Begin.EV<Tools.Money[j]){
@@ -535,6 +539,7 @@ public class ObjectPanel extends JLabel {
 			}
 		}
 		judge();
+		
 	}
 	public static void judge(){
 		if(button[10].location==1){
@@ -550,9 +555,21 @@ public class ObjectPanel extends JLabel {
 			button[10].setavalible(false);
 		}
 		if(button[10].location==0&&button[8].location==0&&button[9].location==0){
-			button[10].setavalible(true);
-			button[8].setavalible(true);
-			button[9].setavalible(true);
+			if(Begin.EV<Tools.Money[10]){
+				button[10].setavalible(false);
+			}else {
+				button[10].setavalible(true);
+			}
+			if(Begin.EV<Tools.Money[9]){
+				button[9].setavalible(false);
+			}else {
+				button[9].setavalible(true);
+			}
+			if(Begin.EV<Tools.Money[8]){
+				button[8].setavalible(false);
+			}else {
+				button[8].setavalible(true);
+			}
 		}
 	}
 

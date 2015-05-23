@@ -437,9 +437,16 @@ public class TecPanel extends JLabel {
 	public void load() {
 		for (int i1 = 0; i1 <= 9; i1++) {
 			if(!tecButton[i1].ispressed) {
-				tecButton[i1].setIcon(buttonIcons1[i1]);
+				ImageIcon im =tecButton[i1].normal; 
+				tecButton[i1].setIcon(im);
 			}
-			
+		
+		}
+		for(JLabel j:lineLabels) {
+			j.setVisible(false);
+		}
+		for(int i = 4;i<=9;i++) {
+			tecButton[i].setVisible(false);
 		}
 		if (tecButton[1].ispressed) {
 			lineLabels[1].setVisible(true);

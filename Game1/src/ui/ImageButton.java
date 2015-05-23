@@ -13,7 +13,7 @@ import sun.audio.AudioStream;
 
 @SuppressWarnings("serial")
 public class ImageButton extends JButton {
-	ImageIcon disable;
+	ImageIcon normal;
 	boolean ispressed = false;
 	boolean isDisabled;
 	ImageIcon spimage;
@@ -22,7 +22,7 @@ public class ImageButton extends JButton {
 			ImageIcon mouseDownImage, boolean isdisabled) {
 		super();
 		setUI(new MyButtonUI());
-		disable = mouseOverImage;
+		normal = normalImage;
 		this.setSize(normalImage.getIconWidth(), normalImage.getIconHeight());
 		setMargin(new Insets(0, 0, 0, 0));// 设置边距
 		setContentAreaFilled(false);// 不绘制按钮区域

@@ -368,7 +368,7 @@ public class GameWindow extends JFrame {
 		successLabel.setBounds(400, 120,
 				accidentLabel.getIcon().getIconWidth(), accidentLabel.getIcon()
 						.getIconHeight());
-		successLabel.setVisible(true);
+		successLabel.setVisible(false);
 		successButton = new ImageButton(success1, success2, success3, false);
 		successButton.setLocation(140, 180);
 		successButton.setText("确认");
@@ -390,7 +390,7 @@ public class GameWindow extends JFrame {
 		successPane = new JTextPane();
 		successPane.setOpaque(false);
 		successPane.setBorder(null);
-		successPane.setBounds(24, 80, 430, 150);
+		successPane.setBounds(24, 60, 430, 150);
 		successPane.setEditable(false);
 		successPane.setFocusable(false);
 		StyleConstants.setAlignment(Set, StyleConstants.ALIGN_CENTER);
@@ -565,6 +565,8 @@ public class GameWindow extends JFrame {
 									new MouseMotionAdapter() {
 									});
 							starTimer.setDelay(7);
+							objectPanel.refresh();
+							objectPanel.isAvailable();
 
 							try {
 								FileInputStream fileau = new FileInputStream(
@@ -640,8 +642,7 @@ public class GameWindow extends JFrame {
 						i++;
 					}
 				});
-				objectPanel.refresh();
-				objectPanel.isAvailable();
+				
 				mouseTimer.start();
 				Economy eco = new Economy();
 				Environment env = new Environment();
@@ -2064,9 +2065,11 @@ public class GameWindow extends JFrame {
 		for (int i = 16; i <= 25; i++) {
 			if (i1[i] == 1) {
 				TecPanel.tecButton[i - 16].ispressed = true;
+				tecPanel.tecStats[i-16] = 1;
 			}
 			else {
 				TecPanel.tecButton[i - 16].ispressed = false;
+				tecPanel.tecStats[i-16] = 0;
 			}
 		}
 		for (int i = 26; i <= 36; i++) {
@@ -2095,17 +2098,17 @@ public class GameWindow extends JFrame {
 	}
 
 	void shipwin() {
-		successPane.setText("恭喜您！您带领您的同胞走到了现在，强大的宇宙飞船给了这个种族在宇宙远航的能力与信心。然而宇宙的危险也将更快展现在年轻的猎手面前。让我们拭目以待！");
+		successPane.setText("您完成了对 宇宙飞船 的建造\n恭喜您！您带领您的同胞走到了现在，强大的宇宙飞船给了这个种族在宇宙远航的能力与信心。然而宇宙的危险也将更快展现在年轻的猎手面前。让我们拭目以待！");
 		successanim();
 	}
 
 	void mixwin() {
-		successPane.setText("将机械与生物同时研究到如此的高度，让这颗星球获得了在宇宙中安静地前行的能力。虽然没有强大的火力，但无论在本土还是在宇宙，混合生命都是最顽强的。");
+		successPane.setText("您完成了对 混合生物 的建造\n将机械与生物同时研究到如此的高度，让这颗星球获得了在宇宙中安静地前行的能力。虽然没有强大的火力，但无论在本土还是在宇宙，混合生命都是最顽强的。");
 		successanim();
 	}
 
 	void supwin() {
-		successPane.setText("是什么样的技术，才能将生物的潜能发挥到如此地步！单凭生物本身，就能在无大气环境中自保。虽然不能随意穿梭宇宙，但若有外来客登陆，迎接他们的将是最可怕的噩梦。");
+		successPane.setText("您完成了对 超级生物 的建造\n是什么样的技术，才能将生物的潜能发挥到如此地步！单凭生物本身，就能在无大气环境中自保。虽然不能随意穿梭宇宙，但若有外来客登陆，迎接他们的将是最可怕的噩梦。");
 		successanim();
 	}
 
