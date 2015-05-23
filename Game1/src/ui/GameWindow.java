@@ -210,7 +210,7 @@ public class GameWindow extends JFrame {
 		}
 		imageButton[0].setText("开始游戏");
 
-		imageButton[1].setText("制作人员");
+		imageButton[1].setText("载入游戏");
 
 		imageButton[2].setText("退出游戏");
 
@@ -375,7 +375,7 @@ public class GameWindow extends JFrame {
 		successButton.setHorizontalTextPosition(JButton.CENTER);
 		successButton.setVerticalTextPosition(JButton.CENTER);
 		successButton.setFont(new Font("微软雅黑", Font.BOLD, 20));
-		successButton.setForeground(new Color(0,123,47));
+		successButton.setForeground(new Color(0, 123, 47));
 		successButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -395,7 +395,7 @@ public class GameWindow extends JFrame {
 		successPane.setFocusable(false);
 		StyleConstants.setAlignment(Set, StyleConstants.ALIGN_CENTER);
 		StyleConstants.setFontFamily(Set, "宋体 bold");
-		StyleConstants.setForeground(Set, new Color(0,123,47));
+		StyleConstants.setForeground(Set, new Color(0, 123, 47));
 		StyleConstants.setFontSize(Set, 17);
 		successLabel.add(successPane);
 
@@ -505,9 +505,10 @@ public class GameWindow extends JFrame {
 				blockLabel.setVisible(true);
 				objectPanel.setLocation(232, 720);
 				objectPanel.refresh();
-				objectPanel.setVisible(true);			
+				objectPanel.setVisible(true);
 				objtimer = new Timer(10, new ActionListener() {
-					int i = 0;			
+					int i = 0;
+
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO 自动生成的方法存根
@@ -597,30 +598,28 @@ public class GameWindow extends JFrame {
 							timeField.setText("AC " + time);
 
 							String s = bom.bomb();
-							
-								if(ObjectPanel.button[8].location == 2 ) {
-									win = 1;
-									
-								}
-								if(ObjectPanel.button[9].location == 2 ) {
-									win = 2;
-									
-								}
-								if(ObjectPanel.button[10].location == 2 ) {
-									win = 3;
-									
-								}
-							
-							if (win!=0) {
-								if(win==1) {
+
+							if (ObjectPanel.button[8].location == 2) {
+								win = 1;
+
+							}
+							if (ObjectPanel.button[9].location == 2) {
+								win = 2;
+
+							}
+							if (ObjectPanel.button[10].location == 2) {
+								win = 3;
+
+							}
+
+							if (win != 0) {
+								if (win == 1) {
 									shipwin();
 									win = 0;
-								}
-								else if (win==2) {
+								} else if (win == 2) {
 									mixwin();
 									win = 0;
-								}
-								else {
+								} else {
 									supwin();
 									win = 0;
 								}
@@ -643,16 +642,16 @@ public class GameWindow extends JFrame {
 						i++;
 					}
 				});
-				
+
 				mouseTimer.start();
 				Economy eco = new Economy();
 				Environment env = new Environment();
 				Happiness hap = new Happiness();
 				SciPoint poi = new SciPoint();
 				bom = new Bomb();
-				
-				for(int i=0;i<Tools.al.size();i++){
-					if(objectPanel.button[i].location==2){
+
+				for (int i = 0; i < Tools.al.size(); i++) {
+					if (objectPanel.button[i].location == 2) {
 						ToolFunction.add(Tools.al.get(i));
 						Tools.al.remove(i);
 					}
@@ -1934,6 +1933,43 @@ public class GameWindow extends JFrame {
 	}
 
 	public void save() {
+		mouseTimer = new Timer(100, new ActionListener() {
+			int i = 0;
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO 自动生成的方法存根
+				if (i == 0) {
+					Toolkit tk = Toolkit.getDefaultToolkit();
+					Image image = new ImageIcon("image/cursor2.gif").getImage();
+					Cursor cursor = tk.createCustomCursor(image,
+							new Point(0, 0), "invisi");
+					setCursor(cursor);
+					getGlassPane().setVisible(true);
+					getGlassPane().addMouseListener(new MouseAdapter() {
+					});
+					getGlassPane().addMouseMotionListener(
+							new MouseMotionAdapter() {
+							});
+
+				} else if (i <= 10) {
+
+				} else {
+					getGlassPane().setVisible(false);
+					Toolkit tk = Toolkit.getDefaultToolkit();
+					Image image = new ImageIcon("image/cursor.gif").getImage();
+					Cursor cursor = tk.createCustomCursor(image,
+							new Point(0, 0), "invisi");
+					setCursor(cursor);
+					mouseTimer.stop();
+
+				}
+
+				i++;
+			}
+		});
+
+		mouseTimer.start();
 		int[] savedata = new int[39];
 		savedata[0] = Begin.EV;
 		savedata[1] = Begin.EMV;
@@ -2013,6 +2049,10 @@ public class GameWindow extends JFrame {
 		for (int i = 16; i <= 25; i++) {
 			if (i1[i] == 1) {
 				TecPanel.tecButton[i - 16].ispressed = true;
+				tecPanel.tecStats[i - 16] = 1;
+			} else {
+				TecPanel.tecButton[i - 16].ispressed = false;
+				tecPanel.tecStats[i - 16] = 0;
 			}
 		}
 		for (int i = 26; i <= 36; i++) {
@@ -2066,11 +2106,10 @@ public class GameWindow extends JFrame {
 		for (int i = 16; i <= 25; i++) {
 			if (i1[i] == 1) {
 				TecPanel.tecButton[i - 16].ispressed = true;
-				tecPanel.tecStats[i-16] = 1;
-			}
-			else {
+				tecPanel.tecStats[i - 16] = 1;
+			} else {
 				TecPanel.tecButton[i - 16].ispressed = false;
-				tecPanel.tecStats[i-16] = 0;
+				tecPanel.tecStats[i - 16] = 0;
 			}
 		}
 		for (int i = 26; i <= 36; i++) {
@@ -2094,34 +2133,38 @@ public class GameWindow extends JFrame {
 		tecPanel.load();
 		tecPanel.Refresh();
 		objectPanel.recover();
-		
 
 	}
 
 	void shipwin() {
-		successPane.setText("您完成了对 宇宙飞船 的建造\n恭喜您！您带领您的同胞走到了现在，强大的宇宙飞船给了这个种族在宇宙远航的能力与信心。然而宇宙的危险也将更快展现在年轻的猎手面前。让我们拭目以待！");
+		successPane
+				.setText("您完成了对 宇宙飞船 的建造\n恭喜您！您带领您的同胞走到了现在，强大的宇宙飞船给了这个种族在宇宙远航的能力与信心。然而宇宙的危险也将更快展现在年轻的猎手面前。让我们拭目以待！");
 		successanim();
 	}
 
 	void mixwin() {
-		successPane.setText("您完成了对 混合生物 的建造\n将机械与生物同时研究到如此的高度，让这颗星球获得了在宇宙中安静地前行的能力。虽然没有强大的火力，但无论在本土还是在宇宙，混合生命都是最顽强的。");
+		successPane
+				.setText("您完成了对 混合生物 的建造\n将机械与生物同时研究到如此的高度，让这颗星球获得了在宇宙中安静地前行的能力。虽然没有强大的火力，但无论在本土还是在宇宙，混合生命都是最顽强的。");
 		successanim();
 	}
 
 	void supwin() {
-		successPane.setText("您完成了对 超级生物 的建造\n是什么样的技术，才能将生物的潜能发挥到如此地步！单凭生物本身，就能在无大气环境中自保。虽然不能随意穿梭宇宙，但若有外来客登陆，迎接他们的将是最可怕的噩梦。");
+		successPane
+				.setText("您完成了对 超级生物 的建造\n是什么样的技术，才能将生物的潜能发挥到如此地步！单凭生物本身，就能在无大气环境中自保。虽然不能随意穿梭宇宙，但若有外来客登陆，迎接他们的将是最可怕的噩梦。");
 		successanim();
 	}
 
 	void fail1() {
-		accidenPane.setText("经济大崩溃下，这个星球的成员已经陷入恐慌。政府无法有效集合资源，这颗星球在黑暗森林登场的日期被无限期延长。");
+		accidenPane
+				.setText("经济大崩溃下，这个星球的成员已经陷入恐慌。政府无法有效集合资源，这颗星球在黑暗森林登场的日期被无限期延长。");
 		accidentanim();
 		fail = true;
 
 	}
 
 	void fail2() {
-		accidenPane.setText("民众失去了对政府的信心，经过数年的暴乱游行与武装冲突后，统一联邦瓦解，技术进步的步伐在战火中停滞。");
+		accidenPane
+				.setText("民众失去了对政府的信心，经过数年的暴乱游行与武装冲突后，统一联邦瓦解，技术进步的步伐在战火中停滞。");
 		accidentanim();
 		fail = true;
 
