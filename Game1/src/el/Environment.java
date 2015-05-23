@@ -8,8 +8,8 @@ public class Environment {
 	
 	public void environment(){
 		
-		EMI = -0.045*SciPanel.physicsSum + -0.0675*SciPanel.biologySum +
-				-0.09*SciPanel.chemistrySum + -0.045*SciPanel.computerSum + 1;
+		EMI = 2.5*(-0.045*SciPanel.physicsSum + 0.0675*SciPanel.biologySum +
+				-0.09*SciPanel.chemistrySum + -0.045*SciPanel.computerSum) + Math.random()*1;
 		
 		n = (int) (Begin.EMV + EMI + ToolFunction.OEMIRF());
 		if(n<=0)

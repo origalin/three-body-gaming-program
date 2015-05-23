@@ -13,7 +13,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -25,7 +24,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,10 +31,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -44,9 +40,6 @@ import javax.swing.text.StyledDocument;
 
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
-
-import com.sun.java_cup.internal.runtime.Scanner;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 @SuppressWarnings("serial")
 public class GameWindow extends JFrame {
@@ -652,7 +645,7 @@ public class GameWindow extends JFrame {
 				bom = new Bomb();
 				
 				for(int i=0;i<Tools.al.size();i++){
-					if(objectPanel.button[i].location==2){
+					if(ObjectPanel.button[i].location==2){
 						ToolFunction.add(Tools.al.get(i));
 						Tools.al.remove(i);
 					}
@@ -701,7 +694,7 @@ public class GameWindow extends JFrame {
 		setLocationRelativeTo(null);
 
 		// 科技按钮的信息内容（很长。。。。）
-		tecPanel.tecButton[0].addMouseListener(new MouseListener() {
+		TecPanel.tecButton[0].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -737,7 +730,7 @@ public class GameWindow extends JFrame {
 
 			}
 		});
-		tecPanel.tecButton[1].addMouseListener(new MouseListener() {
+		TecPanel.tecButton[1].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -773,7 +766,7 @@ public class GameWindow extends JFrame {
 
 			}
 		});
-		tecPanel.tecButton[2].addMouseListener(new MouseListener() {
+		TecPanel.tecButton[2].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -809,7 +802,7 @@ public class GameWindow extends JFrame {
 
 			}
 		});
-		tecPanel.tecButton[3].addMouseListener(new MouseListener() {
+		TecPanel.tecButton[3].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -845,7 +838,7 @@ public class GameWindow extends JFrame {
 
 			}
 		});
-		tecPanel.tecButton[4].addMouseListener(new MouseListener() {
+		TecPanel.tecButton[4].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -881,7 +874,7 @@ public class GameWindow extends JFrame {
 
 			}
 		});
-		tecPanel.tecButton[5].addMouseListener(new MouseListener() {
+		TecPanel.tecButton[5].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -917,7 +910,7 @@ public class GameWindow extends JFrame {
 
 			}
 		});
-		tecPanel.tecButton[6].addMouseListener(new MouseListener() {
+		TecPanel.tecButton[6].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -953,7 +946,7 @@ public class GameWindow extends JFrame {
 
 			}
 		});
-		tecPanel.tecButton[7].addMouseListener(new MouseListener() {
+		TecPanel.tecButton[7].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -989,7 +982,7 @@ public class GameWindow extends JFrame {
 
 			}
 		});
-		tecPanel.tecButton[8].addMouseListener(new MouseListener() {
+		TecPanel.tecButton[8].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -1025,7 +1018,7 @@ public class GameWindow extends JFrame {
 
 			}
 		});
-		tecPanel.tecButton[9].addMouseListener(new MouseListener() {
+		TecPanel.tecButton[9].addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -2066,11 +2059,11 @@ public class GameWindow extends JFrame {
 		for (int i = 16; i <= 25; i++) {
 			if (i1[i] == 1) {
 				TecPanel.tecButton[i - 16].ispressed = true;
-				tecPanel.tecStats[i-16] = 1;
+				TecPanel.tecStats[i-16] = 1;
 			}
 			else {
 				TecPanel.tecButton[i - 16].ispressed = false;
-				tecPanel.tecStats[i-16] = 0;
+				TecPanel.tecStats[i-16] = 0;
 			}
 		}
 		for (int i = 26; i <= 36; i++) {

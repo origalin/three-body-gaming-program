@@ -20,10 +20,10 @@ public class Economy{
 	private static double getBasic(){
 		int n = 0;
 		int i = 0;
-		double basic = 0.05;
+		double basic = 0.01;
 		n = Begin.EV/100;
 		for(i=0;i<(n-1);i++){
-			basic -= 0.002;
+			basic -= 0.0004;
 		}
 		return basic;
 	}

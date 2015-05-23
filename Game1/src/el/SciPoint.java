@@ -6,8 +6,8 @@ public class SciPoint{
 	private static double getBasic(){
 		int n = 0;
 		int i = 0;
-		double basic = 40;
-		n = Begin.HP-20;
+		double basic = 30;
+		n = Begin.HP-15;
 		for(i=0;i<(n-1);i++){
 			basic -= 1;
 		}
@@ -24,11 +24,11 @@ public class SciPoint{
 			b = 0;
 		if(c<=0)
 			c = 0;
-		GP = (int)(getBasic()*(0.5*1+0.35*(a+b+c)));
-		if(GP>33)
-			GP = 33;
-		if(GP<=5)
-			GP = 5;
+		GP = (int)(getBasic()*(0.43*1+0.35*(a+b+c)));
+		if(GP>25)
+			GP = 25;
+		if(GP<=2)
+			GP = 2;
 		Begin.HP = Begin.HP + GP;
 	}
 }

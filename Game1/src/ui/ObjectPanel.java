@@ -16,6 +16,7 @@ import javax.swing.Timer;
 import el.Begin;
 import el.Tools;
 
+@SuppressWarnings("serial")
 public class ObjectPanel extends JLabel {
 	static String[] textTitle = { "晶体管计算机", " 多媒体设备", "载具", "高精度工具", "塑料",
 			"智能机械", "核武器", "生物制药", "宇宙飞船", "混合生物", "超级生物" };
@@ -449,7 +450,7 @@ public class ObjectPanel extends JLabel {
 			this.addSetting(object);
 			Begin.EV -= Tools.Money[i];
 			top1.refresh();
-			this.moneyRefresh();
+			ObjectPanel.moneyRefresh();
 		}
 	}
 
@@ -542,6 +543,16 @@ public class ObjectPanel extends JLabel {
 		
 	}
 	public static void judge(){
+		if(button[10].location==0||button[8].location==0||button[9].location==0){
+			if(button[6].location!=2||button[7].location!=2){
+				button[10].setavalible(false);
+		}
+			if(button[5].location!=2||button[7].location!=2){
+				button[9].setavalible(false);
+		}
+			if(button[6].location!=2||button[5].location!=2){
+				button[8].setavalible(false);
+		}
 		if(button[10].location==1){
 			button[8].setavalible(false);
 			button[9].setavalible(false);
@@ -573,4 +584,5 @@ public class ObjectPanel extends JLabel {
 		}
 	}
 
+	}
 }

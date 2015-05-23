@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+@SuppressWarnings("serial")
 public class PlaneLabel extends JLabel{
 	public static int  trance = 0;
  	PlaneLabel(ImageIcon i){
