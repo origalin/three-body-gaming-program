@@ -567,6 +567,7 @@ public class GameWindow extends JFrame {
 							starTimer.setDelay(7);
 							objectPanel.refresh();
 							objectPanel.isAvailable();
+							ObjectPanel.moneyRefresh();
 
 							try {
 								FileInputStream fileau = new FileInputStream(
